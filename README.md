@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/wdiazux)
 
-A theme for [Ghost](https://ghost.org). I used it on my blog: [wdiaz.org](https://www.wdiaz.org), it looks a little different because my blog is using a different font.
+A theme for [Ghost](https://ghost.org). It is my blog theme and it looks little different because I using a different font.
 
 **What that mean cusca?**
 
@@ -13,7 +13,7 @@ Is the abbreviation for Cuscatlán, it was the name of El Salvador before the co
 
 ## Introduction
 
-Cusca was development using [Foundation](http://foundation.zurb.com), and other libraries, like:
+Cusca was development using [Foundation](http://foundation.zurb.com), and other libraries:
 
 - [Fancybox](http://fancyapps.com/fancybox/3/)
 - [FluidVids](https://github.com/toddmotto/fluidvids)
@@ -30,13 +30,13 @@ Inside the Ghost themes folder (`content/themes`) clone the repository:
 ```bash
 git clone https://github.com/wdiazux/cusca.git
 ```
-You will need to enable the Ghost Public API, you will found the options in the Admin panel and Labs or you also can [Read how to do it on my blog](https://www.wdiaz.org/how-to-enable-the-public-api-on-ghost/).
+You will need to enable the Ghost Public API and Subscribers, both option are in the Labs in the Admin panel. You also can [Read how to do it on my blog](https://www.wdiaz.org/how-to-enable-the-public-api-on-ghost/).
 
 ## Setup
 
 ### Disqus
 
-On `post.hbs` you need to replace `[your-disqus-name]` with your Disqus name:
+Inside the `post.hbs` file you need to replace `[your-disqus-name]` with your Disqus name:
 
 ```javascript
 (function() { // DON'T EDIT BELOW THIS LINE
@@ -56,7 +56,7 @@ Do the same for `partials/loop.hbs`:
 
 ### Social Icons
 
-On `partials/header.hbs` replace `[your-user]` with your user names for each social network:
+Inside the `partials/header.hbs` file replace `[your-user]` with your user names for each social network:
 
 ```html
 <li class="nd-social-twitter">
@@ -75,7 +75,7 @@ On `partials/header.hbs` replace `[your-user]` with your user names for each soc
 
 ### Google Analytics
 
-On `partials/google_analytics.hbs` replace `[your-ga-id]` with your google analytics id:
+Inside the `partials/google_analytics.hbs` file replace `[your-ga-id]` with your google analytics id:
 
 ```javascript
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
