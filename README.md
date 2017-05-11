@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/wdiazux)
 
-A theme for [Ghost](https://ghost.org). I used it on my blog: [wdiaz.org](https://www.wdiaz.org).
+A theme for [Ghost](https://ghost.org). I used it on my blog: [wdiaz.org](https://www.wdiaz.org), it looks a little different because my blog is using a different font.
 
 **What that mean cusca?**
 
