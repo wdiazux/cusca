@@ -36,7 +36,7 @@ You will need to enable the Ghost Public API, you will found the options in the 
 
 ### Disqus
 
-On `post.hbs` and `partials/loop.hbs` you need replace [your-disqus-name] with your Disqus name:
+On `post.hbs` and `partials/loop.hbs` you need replace `[your-disqus-name]` with your Disqus name:
 
 ```javascript
 (function() { // DON'T EDIT BELOW THIS LINE
@@ -54,7 +54,7 @@ On `post.hbs` and `partials/loop.hbs` you need replace [your-disqus-name] with y
 
 ### Social Icons
 
-On `partials/header.hbs` replace [your-user] with your user names for each social network:
+On `partials/header.hbs` replace `[your-user]` with your user names for each social network:
 
 ```html
 <li class="nd-social-twitter">
@@ -73,7 +73,7 @@ On `partials/header.hbs` replace [your-user] with your user names for each socia
 
 ### Google Analytics
 
-On `partials/google_analytics.hbs` replace [your-ga-id] with your google analytics id:
+On `partials/google_analytics.hbs` replace `[your-ga-id]` with your google analytics id:
 
 ```javascript
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
