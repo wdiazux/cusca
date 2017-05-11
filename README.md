@@ -34,6 +34,53 @@ You will need to enable the Ghost Public API, you will found the options in the 
 
 ## Setup
 
+### Disqus
+
+On `post.hbs` and `partials/loop.hbs` you need replace [your-disqus-name] with your Disqus name:
+
+```javascript
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.async = true;
+    s.src = 'https://[your-disqus-name].disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+```
+
+```html
+<script id="dsq-count-scr" src="//[your-disqus-name].disqus.com/count.js" async></script>
+```
+
+### Social Icons
+
+On `partials/header.hbs` replace [your-user] with your user names for each social network:
+
+```html
+<li class="nd-social-twitter">
+    <a target="_blank" href="https://twitter.com/[your-user]"><i class="fa fa-twitter fa-lg"></i></a>
+</li>
+<li class="nd-social-youtube">
+    <a target="_blank" href="https://www.youtube.com/user/[your-user]"><i class="fa fa-youtube fa-lg"></i></a>
+</li>
+<li class="nd-social-instagram">
+    <a target="_blank" href="https://www.instagram.com/[your-user]"><i class="fa fa-instagram fa-lg"></i></a>
+</li>
+<li class="nd-social-github">
+    <a target="_blank" href="https://github.com/[your-user]"><i class="fa fa-github fa-lg"></i></a>
+</li>
+```
+
+### Google Analytics
+
+On `partials/google_analytics.hbs` replace [your-ga-id] with your google analytics id:
+
+```javascript
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', '[your-ga-id]', 'auto');
+ga('send', 'pageview');
+```
+
 
 ## License
 
