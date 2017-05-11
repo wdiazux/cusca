@@ -1,0 +1,41 @@
+<header id="header">
+    <div class="primary-header">
+        <div class="row">
+            <div class="columns">
+                <a id="blog-logo" href="{{@blog.url}}">
+                    {{#if @blog.logo}}
+                        <img src="{{@blog.logo}}" alt="{{@blog.title}}" height="100" />
+                    {{else}}
+                        <h1>{{@blog.title}}</h1>
+                    {{/if}}
+                </a>
+                <ul class="no-bullet social-media clearfix">
+                    <li class="nd-social-twitter">
+                        <a target="_blank" href="https://twitter.com/[your-user]"><i class="fa fa-twitter fa-lg"></i></a>
+                    </li>
+                    <li class="nd-social-youtube">
+                        <a target="_blank" href="https://www.youtube.com/user/[your-user]"><i class="fa fa-youtube fa-lg"></i></a>
+                    </li>
+                    <li class="nd-social-instagram">
+                        <a target="_blank" href="https://www.instagram.com/[your-user]"><i class="fa fa-instagram fa-lg"></i></a>
+                    </li>
+                    <li class="nd-social-github">
+                        <a target="_blank" href="https://github.com/[your-user]"><i class="fa fa-github fa-lg"></i></a>
+                    </li>
+                </ul>
+                <div class="header-search">
+                    <form method="get" class="search-form form-inline" action="#">
+                        <div class="input-group">
+                            <input id="search-field" type="search" class="search-field input-group-field" placeholder="Search" value="" name="s" title="Search for:">
+                            <div class="input-group-button">
+                                <button class="button transparent search-submit-icon">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

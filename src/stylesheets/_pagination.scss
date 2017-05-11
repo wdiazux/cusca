@@ -1,0 +1,31 @@
+// Pagination
+// ---------
+
+.pagination {
+  display: flex;
+  margin: 40px 0 24px 0;
+  border: 1px solid #ddd;
+  li {
+    &:not(:last-child) {
+      border-right: 1px solid $medium-gray;
+    }
+    &:not(:first-child) {
+      a {
+        margin-left: -1px;
+      }
+    }
+    &.pagination-previous {
+      @include border-left-radius($global-radius);
+    }
+    &.pagination-next {
+      @include border-right-radius($global-radius);
+    }
+    &.current {
+      z-index: 2;
+    }
+    &.ellipsis {
+      border: 0;
+    }
+  }
+
+}

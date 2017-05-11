@@ -1,0 +1,24 @@
+// Author page
+// ------------
+
+.author-head {
+  position: relative;
+  padding: rem-calc(20 10);
+  border: 1px solid $medium-gray;
+  text-align: center;
+  z-index: 100;
+
+  .author-image {
+    margin: 0;
+    img {
+      width: 100px;
+      margin: 0;
+    }
+  }
+  .page-title {
+    margin: 0;
+  }
+  h1, h2, h3, h4, h5 {
+    margin: 0;
+  }
+}

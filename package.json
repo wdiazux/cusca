@@ -1,0 +1,62 @@
+{
+  "name": "Cusca",
+  "description": "Theme based on bootstrap for Ghost.",
+  "demo": "https://wdiaz.org",
+  "version": "0.0.1",
+  "engines": {
+    "ghost": ">=0.9.0 <1.0.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "William Diaz",
+    "email": "wdiazux@gmail.com",
+    "url": "https://wdiaz.org"
+  },
+  "gpm": {
+    "type": "theme",
+    "categories": [
+      "Personal Blogs"
+    ]
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "foundation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wdiazux/cusca.git"
+  },
+  "bugs": "https://github.com/wdiazux/cusca/issues",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-changed": "^3.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sequence": "^0.4.6",
+    "gulp-svgstore": "^6.1.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-watch": "^4.3.11"
+  },
+  "dependencies": {
+    "@fancyapps/fancybox": "github:fancyapps/fancybox",
+    "fluidvids.js": "github:toddmotto/fluidvids",
+    "font-awesome": "^4.7.0",
+    "foundation-sites": "^6.3.1",
+    "imagesloaded": "^4.1.2",
+    "isotope-layout": "^3.0.4",
+    "jquery": "^3.2.1",
+    "motion-ui": "^1.2.2",
+    "prismjs": "^1.6.0",
+    "scrollreveal": "^3.3.5",
+    "wowjs": "^1.1.3"
+  }
+}

@@ -1,0 +1,10 @@
+// Accordion
+// ---------
+
+.accordion {
+  .accordion-item {
+    &.is-active {
+      background: $primary-bg;
+    }
+  }
+}

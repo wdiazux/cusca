@@ -1,0 +1,10 @@
+// 2. Typography
+// ---------
+
+@include text-emphasis-variant('.text-primary', $primary-color);
+
+@include text-emphasis-variant('.text-success', $success-color);
+
+@include text-emphasis-variant('.text-warning', $warning-color);
+
+@include text-emphasis-variant('.text-alert', $alert-color);

@@ -1,0 +1,14 @@
+{{!< default}}
+{{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
+
+{{!-- The main content area on the homepage --}}
+<div class="row medium-unstack">
+    <main id="content" class="content medium-8 large-9 columns" role="main">
+        {{!-- The tag below includes the post loop - partials/loop.hbs --}}
+        {{> "loop"}}
+    </main>
+
+    <aside class="sidebar medium-4 large-3 columns show-for-medium">
+        {{> "sidebar"}}
+    </aside>
+</div>

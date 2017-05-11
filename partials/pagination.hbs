@@ -1,0 +1,19 @@
+<div class="hidden">
+    <span class="curr-page">{{page}}</span>
+    <span class="total-pages">{{pages}}</span>
+</div>
+
+<nav class="row align-center">
+    <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+        {{#if prev}}
+            <li class="pagination-previous"><a href="{{page_url prev}}">Previous</a></li>
+        {{else}}
+            <li class="pagination-previous disabled">Previous</li>
+        {{/if}}
+        {{#if next}}
+            <li class="pagination-next"><a href="{{page_url next}}">Next</a></li>
+        {{else}}
+            <li class="pagination-next disabled">Next</li>
+        {{/if}}
+    </ul>
+</nav>

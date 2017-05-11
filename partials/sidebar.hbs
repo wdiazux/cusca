@@ -1,0 +1,26 @@
+<div class="widget">
+    <h4 class="widget-title">Featured Posts</h4>
+    <div class="widget-content">
+        <ul id="featured-posts" class="no-bullet"></ul>
+    </div>
+</div>
+
+<div class="widget">
+    <h4 class="widget-title">Tags</h4>
+    <div class="widget-content">
+        <ul class="menu" id="tag-list"></ul>
+    </div>
+</div>
+
+{{!-- Email subscribe form --}}
+{{#if @labs.subscribers}}
+    <div class="widget">
+        <h4 class="widget-title">Subscribe</h4>
+        <div class="widget-content widget-subscribe">
+            <p>Get the latest posts delivered right to your inbox.</p>
+            {{subscribe_form placeholder="Your email address" form_class="subscribe-form"}}
+            <p>or subscribe <a href="http://cloud.feedly.com/#subscription/feed/{{@blog.url}}/rss/"> <strong>via RSS</strong>
+            </a> with Feedly!</p>
+        </div>
+    </div>
+{{/if}}

@@ -1,0 +1,64 @@
+{
+  "root": {
+    "src": "./src",
+    "dest": "./assets"
+  },
+  "node": {
+    "src": "./node_modules"
+  },
+  "tasks": {
+    "static": {
+      "src": "static",
+      "dest": "./"
+    },
+    "lint": {
+      "eslint": {
+        "rules": {
+          "strict": 2
+        },
+        "envs": [
+          "browser",
+          "jquery"
+        ]
+      },
+      "src": "javascripts",
+      "extensions": ["js", "json"]
+    },
+    "js": {
+      "src": "javascripts",
+      "dest": "js",
+      "extensions": ["js", "json"]
+    },
+    "css": {
+      "src": "stylesheets",
+      "dest": "css",
+      "autoprefixer": {
+        "browsers": ["last 2 versions", "ie >= 10"]
+      },
+      "sass": {
+        "errLogToConsole": true,
+        "includePaths": [
+          "node_modules/foundation-sites/scss/",
+          "node_modules/font-awesome/scss/",
+          "node_modules/motion-ui/src"
+        ]
+      },
+      "extensions": ["sass", "scss", "css"]
+    },
+    "images": {
+      "src": "images",
+      "dest": "images",
+      "extensions": ["jpg", "png", "svg", "gif"]
+    },
+    "fonts": {
+      "src": "fonts",
+      "dest": "fonts",
+      "extensions": ["woff2", "woff", "eot", "ttf", "svg"]
+    },
+    "svgSprite": {
+      "src": "icons",
+      "dest": "images",
+      "extensions": ["svg"]
+    }
+  }
+}

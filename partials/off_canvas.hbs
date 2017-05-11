@@ -1,0 +1,42 @@
+<div class="off-canvas position-right" id="offCanvas" data-off-canvas>
+    <!-- Close button -->
+    <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+    </button>
+
+    <div class="off-canvas-ct">
+
+        <div class="off-canvas-widget">
+            <h4>Navigation</h4>
+            <nav class="off-canvas-navigation">
+                <ul class="menu vertical">
+                    {{navigation}}
+                </ul>
+            </nav>
+        </div>
+
+        <div class="off-canvas-widget">
+            <div class="category-widget-section side-widget">
+                <ul class="vertical menu" data-accordion-menu>
+                    <li>
+                        <a href="#" class="tags-widget"><h4>Tag list</h4></a>
+                        <ul class="menu vertical nested" id="tag-list-off"></ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        {{!-- Email subscribe form --}}
+        {{#if @labs.subscribers}}
+            <div class="off-canvas-widget">
+                <div class="off-subscribe-ct">
+                    <h4><i class="fa fa-rss-square" aria-hidden="true"></i> Subscribe</h4>
+                    <p>Get the latest posts delivered right to your inbox.</p>
+                    {{subscribe_form placeholder="Your email address" form_class="subscribe-form"}}
+                    <p>or subscribe <a href="http://cloud.feedly.com/#subscription/feed/{{@blog.url}}/rss/"> via RSS
+                    </a> with Feedly!</p>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>

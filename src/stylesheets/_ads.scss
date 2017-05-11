@@ -1,0 +1,39 @@
+// Advertising
+// -----------
+
+// Advertising container
+.ad-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content .ad-container {
+  margin-top: 30px;
+}
+
+// Sidebar ad
+.sidebar-ad {
+  display: block;
+  width: 160px;
+  height: 600px;
+
+  @include breakpoint(medium down) {
+    display: none;
+  }
+}
+
+// Horizontal ad
+.horizontal-ad {
+  display: block;
+  width: 300px;
+  height: 250px;
+
+  @include breakpoint(medium) {
+    width: 468px;
+    height: 60px;
+  }
+  @include breakpoint(large) {
+    width: 728px;
+    height: 90px;
+  }
+}

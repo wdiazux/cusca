@@ -1,0 +1,17 @@
+// Tag Pages
+// ---------
+
+.tag-head {
+  position: relative;
+  padding: rem-calc(20 10);
+  border: 1px solid $medium-gray;
+  text-align: center;
+  z-index: 100;
+  i {
+    font-size: 70%;
+    margin-right: 10px;
+  }
+  h1, h2, h3, h4, h5 {
+    margin: 0;
+  }
+}

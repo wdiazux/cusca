@@ -1,0 +1,30 @@
+// Reveal search
+// -------------
+
+#results {
+  @include link-black;
+}
+.search-info {
+  margin: 5px 0 15px 0;
+}
+.post-result {
+  margin-top: -1px;
+  border-width: 1px 0 1px 0;
+  border-style: solid;
+  border-color: $medium-gray;
+
+  > a {
+    display: block;
+    padding: 0.8em 1em;
+  }
+  i {
+    margin-right: 8px;
+    font-size: 87.5%;
+  }
+  .search-title {
+   margin: 0;
+  }
+  .result-date {
+    font-size: 87.5%;
+  }
+}

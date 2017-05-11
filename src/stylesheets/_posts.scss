@@ -1,0 +1,108 @@
+// Post list
+// ---------
+
+.grid {
+  margin-top: -1px;
+}
+.grid-item {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0;
+  visibility: hidden;
+  background: $body-background;
+  backface-visibility: hidden;
+
+  @include breakpoint(medium) {
+    margin: 0 -1px -1px 0;
+    width: 50%;
+  }
+
+  .post-tags {
+    margin-top: 10px;
+    font-size: 87.5%;
+    i {
+      margin-right: 8px;
+    }
+
+    a {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+
+  .post-content-body {
+    border: 1px solid #eaeced;
+    padding: rem-calc(9 25 0 25);
+  }
+
+  @include link-black;
+
+  .post-title {
+    margin: 1rem 0;
+  }
+}
+
+
+// Animation
+// ---------
+@keyframes helix {
+  0% {
+    transform: matrix3d(0,0,-1.00,0,0.00,1,0.00,0,1,0,0,0,0,0,0,1);
+  }
+  100% {}
+}
+.hingeIn {
+  animation: helix .5s ease-in-out;
+  transform-style: preserve-3d;
+  transform-origin: center center 0;
+}
+
+.post-excerpt {
+  font-size: 112.5%;
+  line-height: 1.7;
+}
+
+.post-meta {
+  padding-bottom: 20px;
+  margin-top: 15px;
+  font-size: 87.5%;
+
+  span {
+    float: left;
+    min-width: 77px;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+  i {
+    margin-right: 6px;
+    font-size: 105%;
+  }
+}
+
+.cover-image-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.cover-image {
+  position: relative;
+  overflow: hidden;
+  max-height: 418px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    outline: 0;
+    border: none;
+
+    transition: all 3s ease-in-out;
+
+    &:hover {
+      transform: matrix(1.2, 0, 0, 1.2, 0, 0);
+    }
+  }
+}

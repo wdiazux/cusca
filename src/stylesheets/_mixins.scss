@@ -1,0 +1,43 @@
+// Mixins
+// ------
+
+// Black links
+@mixin link-black() {
+  a {
+    color: $body-font-color;
+
+    &:hover, &:focus {
+      color: $primary-color;
+    }
+  }
+}
+
+// Hover
+@mixin hover-focus {
+  &:focus,
+  &:hover {
+    @content
+  }
+}
+
+// Typography
+@mixin text-emphasis-variant($parent, $color) {
+  #{$parent} {
+    color: $color !important;
+  }
+  a#{$parent} {
+    @include hover-focus {
+      color: darken($color, 10%) !important;
+    }
+  }
+}
+
+// Border
+@mixin border-right-radius($radius) {
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+@mixin border-left-radius($radius) {
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}

@@ -1,0 +1,107 @@
+// Header
+// ------
+
+#header {
+  position: relative;
+  @include link-black;
+
+  // Social Media
+  .social-media {
+    width: 100%;
+    float: none;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    text-align: center;
+
+    @include breakpoint(medium) {
+      float: left;
+      margin-top: 54px;
+      width: 30%;
+      text-align: left;
+    }
+
+    .nd-social-twitter a:hover {
+      color: #56ADEE;
+    }
+    .nd-social-youtube a:hover {
+      color: #D02121;
+    }
+    .nd-social-instagram a:hover {
+      color: #FCC163;
+    }
+
+    li {
+      display: inline-block;
+
+      &:not(:first-child) {
+        margin-left: rem-calc(30);
+      }
+      @include breakpoint(medium) {
+        float: left;
+      }
+    }
+  }
+}
+
+.primary-header {
+  text-align: center;
+  border-bottom: 1px solid $medium-gray;
+  padding-top: 20px;
+  padding-bottom: 25px;
+}
+
+// Logo
+#blog-logo {
+  display: inline-flex;
+  width: 45%;
+  height: auto;
+  max-width: 270px;
+  left: 50%;
+  top: 0;
+  align-items: center;
+
+  @include breakpoint(medium){
+    height: 100px;
+    margin-left: -24px;
+  }
+
+  @include breakpoint(large) {
+    width: 270px;
+    margin-left: -93px;
+  }
+  h1 {
+    margin: 1.5rem 0;
+    width: 100%;
+  }
+}
+
+// Search form
+.input-group {
+  position: relative;
+}
+.header-search {
+  margin: 10px auto 0 auto ;
+  text-align: center;
+  width: 249px;
+
+  @include breakpoint(medium) {
+    margin: 39px 0 0 0;
+    float: right;
+    width: 268px;
+  }
+  .search-field {
+    padding-right: 40px;
+  }
+  .search-submit-icon {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    outline: none;
+    transition: all 0.5s ease 0s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

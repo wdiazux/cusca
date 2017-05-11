@@ -1,0 +1,19 @@
+// Buttons
+// -------
+
+.button {
+  white-space: nowrap;
+  user-select: none;
+  border: 1px solid transparent;
+  &.secondary,
+  &.success,
+  &.warning,
+  &.alert {
+    color: $white;
+
+    &:hover,
+    &:focus {
+      color: $white;
+    }
+  }
+}

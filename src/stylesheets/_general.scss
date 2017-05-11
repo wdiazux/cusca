@@ -1,0 +1,28 @@
+// Custom Classes
+// --------------
+
+
+// Transition for anchors
+a {
+  transition: color 0.35s ease-in-out;
+  -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+// Hide element
+.hidden {
+  display: none !important;
+}
+
+// Image circle
+.img-circle {
+  border-radius: 50%;
+}
+
+// Ad container
+.ad-container {
+  overflow: hidden;
+}

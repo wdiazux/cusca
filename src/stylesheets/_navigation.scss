@@ -1,0 +1,61 @@
+// Navigation
+// ----------
+
+.navigation-container {
+  min-height: 80px;
+}
+.header-navigation {
+  li {
+    position: relative;
+    height: 80px;
+    @include link-black;
+
+    &:not(:last-child) {
+      border-right: 1px solid $medium-gray;
+    }
+    a {
+      display: block;
+      padding: rem-calc(31 44);
+      font-size: 112.5%;
+    }
+    &::before {
+      position: absolute;
+      width: 0;
+      height: 3px;
+      content: '';
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 0;
+      background: $primary-color;
+      transition: all 0.35s ease-in-out;
+    }
+    &:hover::before {
+      width: 100%;
+    }
+  }
+}
+
+// Off canvas button
+// -----------------
+.show-off-canvas {
+  display: flex;
+  flex-direction:column;
+  align-items: flex-end;
+  width: 100%;
+  background: $body-background;
+  text-align: right;
+  font-size: 112.5%;
+  @include link-black;
+
+  a {
+    padding: rem-calc(23 20 30);
+  }
+  &.is-stuck {
+    border-bottom: 1px solid $medium-gray;
+    z-index: 500;
+    a {
+      padding: rem-calc(15 20);
+    }
+  }
+}

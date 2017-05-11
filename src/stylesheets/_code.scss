@@ -1,0 +1,254 @@
+/* Skeletor Syntax 0.4.3
+ *
+ * https://github.com/ramonmcros/skeletor-syntax
+ *
+ * Code licensed under the MIT license
+ */
+
+$prism-light-blue: #dce7fd;
+$prism-blue-gray: #7b94a5;
+$prism-blue: #93b4ff;
+$prism-purple: #bd93f9;
+$prism-orchid: #ff8adb;
+$prism-yellow: #f3e4a2;
+$prism-orange: #ffb793;
+$prism-red: #f36a66;
+$prism-green: #84fba2;
+$prism-background: #2b2836;
+$prism-comments: lighten($prism-background, 25%);
+
+pre > code {
+  color: $prism-light-blue;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 87.5%;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1;
+  tab-size: 4;
+  hyphens: none;
+}
+
+/* Code blocks */
+:not(pre) > code {
+  font-size: 90%;
+  border-radius: rem-calc(4);
+  word-wrap: break-word;
+}
+pre {
+  padding: rem-calc(12 13);
+  margin-bottom: 1em;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+pre > code {
+  padding: 0;
+  font-weight: inherit;
+  border: none;
+  background: none;
+}
+
+pre {
+  background: $prism-background;
+}
+
+/* Inline code */
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: $prism-comments;
+}
+
+.token.punctuation {
+  color: $prism-light-blue;
+}
+
+.namespace {
+  opacity: .7;
+}
+
+.token.string,
+.token.attr-value,
+.token.property,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: $prism-blue;
+}
+
+.token.attr-name {
+  color: $prism-purple;
+}
+
+.token.boolean,
+.token.number {
+  color: $prism-orchid;
+}
+
+.token.operator,
+.token.tag,
+.token.char,
+.token.atrule,
+.token.builtin,
+.token.inserted {
+  color: $prism-yellow;
+}
+
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: $prism-light-blue;
+}
+
+.token {
+  &.selector,
+  &.function {
+    color: $prism-purple;
+  }
+
+  &.keyword {
+    color: $prism-purple;
+  }
+
+  &.regex {
+    color: $prism-green;
+  }
+  &.important {
+    color: $prism-orchid;
+  }
+
+  &.important,
+  &.bold {
+    font-weight: bold;
+  }
+  &.italic {
+    font-style: italic;
+  }
+
+  &.entity {
+    cursor: help;
+  }
+}
+
+.language-javascript {
+  color: $prism-light-blue;
+}
+
+.language-css {
+  .token.url {
+    color: $prism-green;
+  }
+}
+
+.language-scss {
+  .token.string {
+    color: $prism-light-blue;
+  }
+  .token.keyword {
+    color: $prism-yellow;
+  }
+
+  .token.variable {
+    color: $prism-green;
+  }
+}
+
+.language-javascript {
+  .token.keyword {
+    color: $prism-yellow;
+  }
+
+  .token.class-name {
+    color: $prism-blue;
+  }
+}
+
+.language-php {
+  .token.keyword {
+    color: $prism-green;
+  }
+
+  .token.constant {
+    color: $prism-orchid;
+  }
+
+  .token.delimiter {
+    color: $prism-blue-gray;
+  }
+}
+
+.language-yaml {
+  .token.scalar.string {
+    color: $prism-blue;
+  }
+  .token.atrule {
+    color: $prism-purple;
+  }
+  .token.important {
+    color: $prism-green;
+  }
+}
+
+.language-markdown {
+  .token.title.important {
+    color: $prism-purple;
+  }
+
+  .token.code {
+    color: $prism-green;
+  }
+
+  .token.list.punctuation {
+    color: $prism-blue;
+  }
+
+  .token.url {
+    color: $prism-blue;
+
+    .variable {
+      color: $prism-yellow;
+    }
+  }
+}
+
+pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+
+  > code {
+    position: relative;
+  }
+
+  > span {
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
+
+    &:before {
+      content: counter(linenumber);
+      color: lighten($prism-background, 25%);
+      display: block;
+      padding-right: 0.8em;
+      text-align: right;
+    }
+  }
+
+  .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid lighten($prism-background, 25%);
+    user-select: none;
+  }
+}

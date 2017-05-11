@@ -1,0 +1,66 @@
+// Off canvas bar
+// ---------------
+
+.off-canvas {
+  @include link-black;
+
+  // Tag list
+  .is-accordion-submenu-parent>a:after {
+    border-color: $white transparent transparent;
+  }
+  .tags-widget {
+    background-color: $secondary-color;
+    color: #fff;
+
+    h4 {
+      margin: 0;
+    }
+    &:hover,
+    &:focus {
+      color: $white;
+    }
+  }
+  .menu.nested {
+    margin: 0;
+  }
+}
+.off-canvas-ct {
+  position: relative;
+  margin-top: 50px;
+  padding: 1em;
+}
+// sections
+.off-canvas-widget {
+  margin-bottom: 50px;
+}
+
+.off-canvas-navigation {
+  li {
+    border-bottom: 1px solid $medium-gray;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+  a {
+    &:hover {
+      background: $medium-gray;
+    }
+  }
+}
+
+// tag list
+#tag-list-off {
+  display: none;
+
+  a {
+    display: flex;
+  }
+}
+
+// subscribers
+.off-subscribe-ct {
+  p {
+    font-size: 87.5%;
+  }
+}
