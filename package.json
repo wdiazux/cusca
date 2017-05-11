@@ -54,9 +54,7 @@
     "imagesloaded": "^4.1.2",
     "isotope-layout": "^3.0.4",
     "jquery": "^3.2.1",
-    "motion-ui": "^1.2.2",
     "prismjs": "^1.6.0",
-    "scrollreveal": "^3.3.5",
     "wowjs": "^1.1.3"
   }
 }
