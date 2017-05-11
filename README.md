@@ -36,7 +36,7 @@ You will need to enable the Ghost Public API, you will found the options in the 
 
 ### Disqus
 
-On `post.hbs` and `partials/loop.hbs` you need replace `[your-disqus-name]` with your Disqus name:
+On `post.hbs` you need to replace `[your-disqus-name]` with your Disqus name:
 
 ```javascript
 (function() { // DON'T EDIT BELOW THIS LINE
@@ -47,6 +47,8 @@ On `post.hbs` and `partials/loop.hbs` you need replace `[your-disqus-name]` with
     (d.head || d.body).appendChild(s);
 })();
 ```
+
+Do the same for `partials/loop.hbs`:
 
 ```html
 <script id="dsq-count-scr" src="//[your-disqus-name].disqus.com/count.js" async></script>
