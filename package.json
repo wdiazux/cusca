@@ -29,7 +29,7 @@
   },
   "bugs": "https://github.com/wdiazux/cusca/issues",
   "devDependencies": {
-    "browser-sync": "^2.18.11",
+    "browser-sync": "^2.18.12",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
@@ -43,7 +43,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sequence": "^0.4.6",
     "gulp-svgstore": "^6.1.0",
-    "gulp-uglify": "^2.1.2",
+    "gulp-uglify": "^3.0.0",
     "gulp-watch": "^4.3.11"
   },
   "dependencies": {
