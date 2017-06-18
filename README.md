@@ -26,7 +26,10 @@ Cusca was development using [Foundation](http://foundation.zurb.com), and other 
   
 ## Installation
 
-Inside the Ghost themes folder (`content/themes`) clone the repository:
+Inside the Ghost themes folder (content/themes) you have to clone the repository or download the last version:
+
+:anchor: [Last release](https://github.com/wdiazux/cusca/releases/latest)
+
 ```bash
 git clone https://github.com/wdiazux/cusca.git
 ```
