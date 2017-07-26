@@ -125,6 +125,8 @@ gulp.task('prism-js', function() {
 gulp.task('vendors-css', function() {
     return gulp.src(paths.vendors.css)
         .pipe(autoprefixer(config.tasks.css.autoprefixer))
+        .pipe(rename({basename: 'vendors'}))
+        .pipe(gulp.dest(paths.css.dest))
         .pipe(cssnano({autoprefixer: false}))
         .pipe(rename({basename: 'vendors', suffix: '.min'}))
         .pipe(gulp.dest(paths.css.dest))
@@ -136,6 +138,7 @@ gulp.task('css', function() {
         .pipe(sass(config.tasks.css.sass))
         .on('error', handleErrors)
         .pipe(autoprefixer(config.tasks.css.autoprefixer))
+        .pipe(gulp.dest(paths.css.dest))
         .pipe(cssnano({autoprefixer: false, zindex: false}))
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(paths.css.dest))
