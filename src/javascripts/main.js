@@ -110,35 +110,6 @@
     }
     createPagination();
 
-
-    /*
-    /*
-     * Ghost Tags
-     *
-     */
-    function tagsSuccess(data) {
-        var $tagList = $('#tag-list'),
-            $tagListoff = $('#tag-list-off');
-
-        $.each(data.tags, function (i, tag) {
-            $tagList.append(
-                '<li><a class="tag" href="/tag/' + tag.slug + '/">' + tag.name + '</a></li>'
-            );
-            $tagListoff.append(
-                '<li><a href="/tag/' + tag.slug + '/">' + tag.name + '</a></li>'
-            );
-        });
-    }
-
-    function getTags() {
-        return $.get(
-            ghost.url.api('tags', {
-                limit: 'all',
-                include: 'count.posts',
-                order: 'count.posts DESC'
-            }));
-    }
-
     /*
      * Featured post
      *
@@ -220,13 +191,10 @@
      */
 
     if (typeof ghost !== 'undefined') {
-        $.when(getTags(), getFeatured())
-            .done(function (response1, response2) {
-                if(response1[1] === 'success') {
-                    tagsSuccess(response1[0]);
-                }
-                if(response2[1] === 'success') {
-                    featuredSuccess(response2[0]);
+        $.when(getFeatured())
+            .done(function (response) {
+                if(response.posts.length >= 1) {
+                    featuredSuccess(response);
                 }
             }).fail(function () {
         });
