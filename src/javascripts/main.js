@@ -112,6 +112,7 @@
 
 
     /*
+    /*
      * Ghost Tags
      *
      */
@@ -175,11 +176,11 @@
             var pubDateNumers = formatDate(date);
             var featuredContent = '';
 
-            if(post.image !== null) {
+            if(post.feature_image !== null) {
                 featuredContent =
                     '<li class=\"clearfix\">' +
                     '<div class=\"featured-image\">' +
-                    '<a href=\"' + post.url + '\" class=\"thumbnail\"><img src=\"' + post.image + '?w=80&q=50\" /></a>' +
+                    '<a href=\"' + post.url + '\" class=\"thumbnail\"><img src=\"' + post.feature_image + '?w=80&q=50\" /></a>' +
                     '</div> ' +
                     '<div class=\"featured-title\">' +
                     '<a href=\"' + post.url + '\">' + post.title + '</a>' +

@@ -13,7 +13,7 @@
                     <div class="main-header-content inner">
                         {{#if profile_image}}
                             <figure class="author-image">
-                                <img class="thumbnail img-circle" src="{{profile_image}}" />
+                                <img class="thumbnail img-circle" alt="{{name}}" src="{{profile_image}}" />
                             </figure>
                         {{/if}}
                         <h1 class="author-title">{{name}}</h1>
@@ -25,7 +25,7 @@
                             {{#if website}}<span class="author-link icon-link"><a href="{{website}}">{{website}}</a></span>{{/if}}
                             <span class="author-stats"><i class="icon-stats"></i>
                                 {{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}}
-                    </span>
+                            </span>
                         </div>
                     </div>
                 </div>

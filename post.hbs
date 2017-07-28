@@ -54,26 +54,30 @@
 
             </article>
 
-            {{!-- Links to Previous/Next posts --}}
+
+            {{!-- If there are a next post use different classes in <aside> --}}
             {{^next_post}}
             <aside class="read-next row">
             {{else}}
             <aside class="read-next row medium-unstack align-right">
             {{/next_post}}
-                {{#prev_post}}
-                    <div class="medium-6 columns text-left">
-                        <a class="read-prev-story" href="{{url}}">{{title}}</a>
-                        <a href="{{url}}"><span class="arrow arrow-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></span></a>
-                    </div>
-                {{/prev_post}}
-                {{#next_post}}
-                    <div class="medium-6 columns text-right">
-                        <a class="read-next-story" href="{{url}}">{{title}}</a>
-                        <a href="{{url}}"><span class="arrow arrow-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
-                    </div>
-                {{/next_post}}
-            </aside>
 
+            {{!-- Links to Previous/Next posts --}}
+            {{#prev_post}}
+                <div class="medium-6 columns text-left">
+                    <a class="read-prev-story" href="{{url}}">{{title}}</a>
+                    <a href="{{url}}"><span class="arrow arrow-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></span></a>
+                </div>
+            {{/prev_post}}
+            {{#next_post}}
+                <div class="medium-6 columns text-right">
+                    <a class="read-next-story" href="{{url}}">{{title}}</a>
+                    <a href="{{url}}"><span class="arrow arrow-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
+                </div>
+            {{/next_post}}
+
+            {{!-- Close <aside> --}}
+             </aside>
 
             {{!-- Comments --}}
             <h3>Comments:</h3>
@@ -82,7 +86,7 @@
             <script>
                 var disqus_config = function () {
                     this.page.url = '{{url absolute="true"}}';  // Replace PAGE_URL with your page's canonical URL variable
-                    this.page.identifier = 'ghost-{{id}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    this.page.identifier = 'ghost-{{comment-id}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                 };
 
                 (function() { // DON'T EDIT BELOW THIS LINE
