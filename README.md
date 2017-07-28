@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/wdiazux)
 
-A theme for [Ghost](https://ghost.org). It is my blog theme and it looks little different because I using a different font.
+A theme for [Ghost](https://ghost.org) 1.0.
 
 **What that mean cusca?**
 
@@ -33,6 +33,9 @@ Inside the Ghost themes folder (content/themes) you have to clone the repository
 ```bash
 git clone https://github.com/wdiazux/cusca.git
 ```
+
+:warning: **Important:**
+
 You will need to enable the Ghost Public API and Subscribers, both option are in the Labs in the Admin panel. You also can [Read how to do it on my blog](https://www.wdiaz.org/how-to-enable-the-public-api-on-ghost/).
 
 ## Setup
