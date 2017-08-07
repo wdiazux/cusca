@@ -37,11 +37,11 @@
 .widget-title {
   display: inline-block;
   position: relative;
-  margin: 0 auto 10px;
+  margin: 0 auto;
   padding: rem-calc(0 20);
   max-width: 90%;
   top: -14px;
-  font-size: 68.8%;
+  font-size: 62.5%;
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -55,6 +55,10 @@
 
   > :last-child {
     margin-bottom: 0;
+  }
+
+  li {
+    font-size: 93.8%;
   }
 
   .menu {

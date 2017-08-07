@@ -6739,7 +6739,7 @@ pre.line-numbers {
       width: 50%; } }
   .grid-item .post-tags {
     margin-top: 10px;
-    font-size: 81.3%; }
+    font-size: 75%; }
     .grid-item .post-tags i {
       margin-right: 8px; }
     .grid-item .post-tags a {
@@ -6753,7 +6753,7 @@ pre.line-numbers {
     .grid-item a:hover, .grid-item a:focus {
       color: #1779ba; }
   .grid-item .post-title {
-    margin: 1rem 0; }
+    margin: 0.6rem 0; }
 
 @-webkit-keyframes helix {
   0% {
@@ -6839,11 +6839,11 @@ pre.line-numbers {
 .widget-title {
   display: inline-block;
   position: relative;
-  margin: 0 auto 10px;
+  margin: 0 auto;
   padding: 0 1.25rem;
   max-width: 90%;
   top: -14px;
-  font-size: 68.8%;
+  font-size: 62.5%;
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -6856,6 +6856,8 @@ pre.line-numbers {
   font-size: 93.8%; }
   .widget-content > :last-child {
     margin-bottom: 0; }
+  .widget-content li {
+    font-size: 93.8%; }
   .widget-content .menu {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
@@ -7029,7 +7031,7 @@ pre.line-numbers {
 
 .post-content,
 .post-heading {
-  padding: 0.8125rem 1.125rem 1.125rem;
+  padding: 0.625rem 1.125rem 0.5625rem;
   border: 1px solid #D9D9D9; }
   @media print, screen and (min-width: 48em) {
     .post-content,
