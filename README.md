@@ -64,7 +64,7 @@ Do the same for `partials/loop.hbs`:
 
 #### For Facebook and Twitter
 
-You need to the Ghost console in `Settings > General > Social accounts`, insert the links yo your profiles.
+You need to go to the Ghost console in `Settings > General > Social accounts`, insert the links to your profiles.
 
 #### For other Networks
 
