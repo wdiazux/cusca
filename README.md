@@ -62,12 +62,15 @@ Do the same for `partials/loop.hbs`:
 
 ### Social Icons
 
+#### For Facebook and Twitter
+
+You need to the Ghost console in `Settings > General > Social accounts`, insert the links yo your profiles.
+
+#### For other Networks
+
 Inside the `partials/header.hbs` file replace `[your-user]` with your user names for each social network:
 
 ```html
-<li class="nd-social-twitter">
-    <a target="_blank" href="https://twitter.com/[your-user]"><i class="fa fa-twitter fa-lg"></i></a>
-</li>
 <li class="nd-social-youtube">
     <a target="_blank" href="https://www.youtube.com/user/[your-user]"><i class="fa fa-youtube fa-lg"></i></a>
 </li>

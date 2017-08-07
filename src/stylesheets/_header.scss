@@ -20,6 +20,9 @@
       text-align: left;
     }
 
+    .nd-social-facebook a:hover {
+      color: #4862A3;
+    }
     .nd-social-twitter a:hover {
       color: #56ADEE;
     }
@@ -34,7 +37,7 @@
       display: inline-block;
 
       &:not(:first-child) {
-        margin-left: rem-calc(30);
+        margin-left: rem-calc(28);
       }
       @include breakpoint(medium) {
         float: left;

@@ -126,7 +126,8 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */ }
 
 /**
@@ -6649,6 +6650,8 @@ pre.line-numbers {
         margin-top: 54px;
         width: 30%;
         text-align: left; } }
+    #header .social-media .nd-social-facebook a:hover {
+      color: #4862A3; }
     #header .social-media .nd-social-twitter a:hover {
       color: #56ADEE; }
     #header .social-media .nd-social-youtube a:hover {
@@ -6658,7 +6661,7 @@ pre.line-numbers {
     #header .social-media li {
       display: inline-block; }
       #header .social-media li:not(:first-child) {
-        margin-left: 1.875rem; }
+        margin-left: 1.75rem; }
       @media print, screen and (min-width: 48em) {
         #header .social-media li {
           float: left; } }
