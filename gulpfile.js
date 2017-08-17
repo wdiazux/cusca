@@ -42,7 +42,7 @@ const paths = {
             path.join(config.node.src, 'jquery/dist/jquery.js'),
             path.join(config.node.src, 'foundation-sites/dist/js/foundation.min.js'),
             path.join(config.node.src, 'motion-ui/dist/motion-ui.js'),
-            path.join(config.root.src, 'lib/jquery.ghostHunter.js'),
+            path.join(config.root.src, 'lib/ghostbot.js'),
             path.join(config.node.src, 'imagesloaded/imagesloaded.pkgd.js'),
             path.join(config.node.src, 'isotope-layout/dist/isotope.pkgd.js'),
             path.join(config.node.src, 'wowjs/dist/wow.js'),

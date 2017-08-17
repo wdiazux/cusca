@@ -1,5 +1,5 @@
 (function ($, undefined) {
-    'use strict'
+    'use strict';
 
     /*
      * Start foundation in all document
@@ -230,30 +230,33 @@
     }
 
     /*
-     * Ghost Hunter
+     * GhostBot
      *
      */
     var searchField = $('#search-field');
-    var ghInfoTemplate = '<h5 class=\"search-info\">Number of posts found: {{amount}}</h5>',
-        ghResultTemplate = '<article class=\"post-result\"><a href=\"{{link}}\">' +
+    var gbInfoTemplate = '<h5 class=\"search-info\">Number of posts found: {{amount}}</h5>',
+        gbResultTemplate = '<article class=\"post-result\"><a href=\"{{link}}\">' +
             '<h3 class=\"search-title\">{{title}}</h3>' +
-            '<i class=\"fa fa-clock-o\"></i><time class=\"result-date\">{{pubDate}}</time>' +
+            '<i class=\"fa fa-clock-o\"></i><time class=\"result-date\">{{pubData}}</time>' +
             '</a></article>';
 
-    searchField.ghostHunter({
-        results: '#results',
-        includepages: true,
-        info_template: ghInfoTemplate,
-        result_template:  ghResultTemplate,
-        before: function(){
-            if(searchField.val().length !== 0) {
-                $.fancybox.open([
-                    {
-                        src  : '#reveal-search',
-                        type : 'inline'
-                    }
-                ]);
-            }
+    var ghostSearch = new GhostBot({
+        inputbox: document.querySelector('#search-field'),
+        target: document.querySelector('#results'),
+        info_template: gbInfoTemplate,
+        result_template: gbResultTemplate
+    });
+
+    $('.search-form').submit(function(e){
+        e.preventDefault();
+
+        if(searchField.val().length !== 0) {
+            $.fancybox.open([
+                {
+                    src  : '#reveal-search',
+                    type : 'inline'
+                }
+            ]);
         }
     });
 
@@ -275,7 +278,7 @@
                 }
             });
         }
-    };
+    }
 
     aTagWrap('.post-content img','fancy-box','no-fancy-box');
 
