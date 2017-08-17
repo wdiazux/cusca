@@ -6988,9 +6988,11 @@ pre.line-numbers {
 .off-canvas .menu.nested {
   margin: 0; }
 
+.off-canvas .close-off-canvas {
+  padding: 10px 15px; }
+
 .off-canvas-ct {
   position: relative;
-  margin-top: 50px;
   padding: 1em; }
 
 .off-canvas-widget {
