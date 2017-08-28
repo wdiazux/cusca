@@ -9,7 +9,7 @@
     <h4 class="widget-title">Tags</h4>
     <div class="widget-content">
         <ul class="menu" id="tag-list">
-            {{#get "tags"}}
+            {{#get "tags" limit="all" order="name asc"}}
                 {{#foreach tags}}
                     <li><a class="tag" href="{{url}}">{{name}}</a></li>
                 {{else}}
