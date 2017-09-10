@@ -1,15 +1,15 @@
 <ul id="featured-posts" class="no-bullet">
     {{#foreach sidebarPosts}}
         <li class="clearfix">
-            {{#if feature_image}}
-                <div class="clearfix">
-                    <div class="featured-image">
-                        <a href="{{url}}" class="thumbnail"><img src="{{feature_image}}?w=80&q=50"></a>
-                    </div>
-            {{else}}
-                <div class="featured-title-expanded">
-            {{/if}}
+            <div class="clearfix">
+                {{#if feature_image}}
+                 <div class="featured-image">
+                     <a href="{{url}}" class="thumbnail"><img src="{{feature_image}}?w=80&q=50"></a>
+                 </div>
                 <div class="featured-title">
+                {{else}}
+                <div class="featured-title-expanded">
+                {{/if}}
                     <a href="{{url}}">{{title}}</a>
 
                     <div class="featured-meta">
