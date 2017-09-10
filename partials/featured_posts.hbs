@@ -1,0 +1,23 @@
+<ul id="featured-posts" class="no-bullet">
+    {{#foreach sidebarPosts}}
+        <li class="clearfix">
+            {{#if feature_image}}
+                <div class="clearfix">
+                    <div class="featured-image">
+                        <a href="{{url}}" class="thumbnail"><img src="{{feature_image}}?w=80&q=50"></a>
+                    </div>
+            {{else}}
+                <div class="featured-title-expanded">
+            {{/if}}
+                <div class="featured-title">
+                    <a href="{{url}}">{{title}}</a>
+
+                    <div class="featured-meta">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <time class="featured-time" datetime="{{date published_at format="YYYY-MM-DD"}}">{{date published_at format="MMMM DD YYYY"}}</time>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/foreach}}
+</ul>

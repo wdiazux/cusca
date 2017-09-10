@@ -1,7 +1,9 @@
 <div class="widget">
     <h4 class="widget-title">Featured Posts</h4>
     <div class="widget-content">
-        <ul id="featured-posts" class="no-bullet"></ul>
+        {{#get "posts" filter="featured:true" limit="8" as |featured|}}
+            {{> "featured_posts" sidebarTitle="Featured Posts" sidebarPosts=featured}}
+        {{/get}}
     </div>
 </div>
 
