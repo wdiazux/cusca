@@ -2545,6 +2545,10 @@ input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
   color: #888; }
 
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+  color: #888; }
+
 input::placeholder,
 textarea::placeholder {
   color: #888; }
@@ -2747,6 +2751,8 @@ select {
   .is-invalid-input:not(:focus)::-webkit-input-placeholder {
     color: #d9534f; }
   .is-invalid-input:not(:focus):-ms-input-placeholder {
+    color: #d9534f; }
+  .is-invalid-input:not(:focus)::-ms-input-placeholder {
     color: #d9534f; }
   .is-invalid-input:not(:focus)::placeholder {
     color: #d9534f; }
@@ -6767,17 +6773,20 @@ pre.line-numbers {
           transform-origin: center center 0; }
 
 .post-meta {
+  text-align: center;
   padding-bottom: 20px;
   margin-top: 15px;
   font-size: 81.3%; }
   .post-meta span {
-    float: left;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
     min-width: 77px;
     position: relative; }
     .post-meta span:not(:last-child) {
-      margin-right: 20px; }
+      margin-right: 15px; }
   .post-meta i {
-    margin-right: 6px;
+    margin-right: 4px;
     font-size: 105%; }
 
 .cover-image-container {

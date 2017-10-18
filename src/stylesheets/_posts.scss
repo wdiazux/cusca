@@ -58,21 +58,22 @@
 }
 
 .post-meta {
+  text-align: center;
   padding-bottom: 20px;
   margin-top: 15px;
   font-size: 81.3%;
 
   span {
-    float: left;
+    display: inline-flex;
     min-width: 77px;
     position: relative;
 
     &:not(:last-child) {
-      margin-right: 20px;
+      margin-right: 15px;
     }
   }
   i {
-    margin-right: 6px;
+    margin-right: 4px;
     font-size: 105%;
   }
 }
