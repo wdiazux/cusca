@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.4.3
+ * Version 6.4.4-rc1
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -1896,6 +1896,11 @@ textarea {
       .column-block > :last-child {
         margin-bottom: 0; } }
 
+.align-left {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+
 .align-right {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
@@ -1914,6 +1919,11 @@ textarea {
 .align-spaced {
   -ms-flex-pack: distribute;
       justify-content: space-around; }
+
+.align-left.vertical.menu > li > a {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
 
 .align-right.vertical.menu > li > a {
   -webkit-box-pack: end;
@@ -2643,7 +2653,6 @@ label {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0px;
           flex: 1 1 0px;
-  height: auto;
   min-width: 0; }
 
 .input-group-button {
