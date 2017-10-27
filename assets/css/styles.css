@@ -6734,6 +6734,8 @@ pre.line-numbers {
     .grid-item {
       margin: 0 -1px -1px 0;
       width: 50%; } }
+  .grid-item .post-meta {
+    text-align: center; }
   .grid-item .post-tags {
     margin-top: 10px;
     font-size: 75%; }
@@ -6773,7 +6775,6 @@ pre.line-numbers {
           transform-origin: center center 0; }
 
 .post-meta {
-  text-align: center;
   padding-bottom: 20px;
   margin-top: 15px;
   font-size: 81.3%; }
