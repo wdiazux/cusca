@@ -37,32 +37,6 @@ function Ajax() {
     return aja;
 }
 
-function pad (str, max) {
-    'use strict';
-    str = str.toString();
-    return str.length < max ? pad("0" + str, max) : str;
-}
-
-function formatDate(date, type) {
-    'use strict';
-    var monthNames = [
-        "January", "February", "March",
-        "April", "May", "June", "July",
-        "August", "September", "October",
-        "November", "December"
-    ];
-
-    var day = date.getDate();
-    var monthIndex = date.getMonth();
-    var year = date.getFullYear();
-
-    if(type === 'text') {
-        return pad(day, 2) + ' ' + monthNames[monthIndex] + ' ' + year;
-    } else {
-        return year + '-' + pad(monthIndex + 1, 2) + '-' + pad(day, 2);
-    }
-}
-
 var GhostBot = function (options) {
     'use strict';
     this.defaults = {
