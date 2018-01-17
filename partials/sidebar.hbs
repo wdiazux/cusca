@@ -1,26 +1,32 @@
-<div class="widget">
-    <h4 class="widget-title">Featured Posts</h4>
-    <div class="widget-content">
-        {{#get "posts" filter="featured:true" limit="8" as |featured|}}
-            {{> "featured_posts" sidebarTitle="Featured Posts" sidebarPosts=featured}}
-        {{/get}}
-    </div>
-</div>
+{{!-- Featured posts --}}
+{{#get "posts" filter="featured:true" limit="8" as |featured|}}
+    {{#if posts }}
+        <div class="widget">
+            <h4 class="widget-title">Featured Posts</h4>
+            <div class="widget-content">
+                {{> "featured_posts" sidebarTitle="Featured Posts" sidebarPosts=featured}}
+            </div>
+        </div>
+    {{/if}}
+{{/get}}
 
-<div class="widget">
-    <h4 class="widget-title">Tags</h4>
-    <div class="widget-content">
-        <ul class="menu" id="tag-list">
-            {{#get "tags" limit="all" order="name asc"}}
-                {{#foreach tags}}
-                    <li><a class="tag" href="{{url}}">{{name}}</a></li>
-                {{else}}
-                    <li>There are not</li>
-                {{/foreach}}
-            {{/get}}
-        </ul>
-    </div>
-</div>
+{{!-- Tags --}}
+{{#get "tags" limit="all" order="name asc" }}
+    {{#if tags }}
+        <div class="widget">
+            <h4 class="widget-title">Tags</h4>
+            <div class="widget-content">
+                <ul class="menu" id="tag-list">
+                    {{#foreach tags}}
+                        <li>
+                            <a class="tag" href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/foreach}}
+                </ul>
+            </div>
+        </div>
+    {{/if}}
+{{/get}}
 
 {{!-- Email subscribe form --}}
 {{#if @labs.subscribers}}
@@ -29,8 +35,10 @@
         <div class="widget-content widget-subscribe">
             <p>Get the latest posts delivered right to your inbox.</p>
             {{subscribe_form placeholder="Your email address" form_class="subscribe-form"}}
-            <p>or subscribe <a href="http://cloud.feedly.com/#subscription/feed/{{@blog.url}}/rss/"> <strong>via RSS</strong>
-            </a> with Feedly!</p>
+            <p>or subscribe
+                <a href="http://cloud.feedly.com/#subscription/feed/{{@blog.url}}/rss/">
+                    <strong>via RSS</strong>
+                </a> with Feedly!</p>
         </div>
     </div>
 {{/if}}
