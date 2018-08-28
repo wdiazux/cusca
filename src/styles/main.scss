@@ -26,7 +26,7 @@ production stylesheet in assets/built/screen.css
 
 */
 
-@import "~foundation-sites/scss/foundation";
+@import "foundation";
 
 /* 1. Global - Set up the things
 /* ---------------------------------------------------------- */
@@ -79,15 +79,6 @@ body {
     width: 100%;
 }
 
-/* Usage:
-
-<div class="outer">
-    <div class="inner">
-        Centered content
-    </div>
-</div>
-
-*/
 
 /* 3. Special Template Styles
 /* ---------------------------------------------------------- */
