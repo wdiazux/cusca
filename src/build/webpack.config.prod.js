@@ -2,7 +2,6 @@ const UglifyJsPlugin= require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 // Webpack Development Configuration
-
 const config = {
     optimization: {
         minimizer: [

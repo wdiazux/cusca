@@ -36,10 +36,7 @@ const config = {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['es2015']
-                    }
+                    loader: 'babel-loader'
                 }
             },
             {
@@ -103,8 +100,8 @@ const config = {
     plugins: [
         new CleanPlugin(['assets']),
         new MiniCssExtractPlugin({
-            filename: prod ? 'styles/[name].[hash].css' : 'styles/[name].css',
-            chunkFilename: prod ? 'styles/[id].[hash].css' : 'styles/[id].css',
+            filename: 'styles/[name].css',
+            chunkFilename: 'styles/[id].css',
         }),
         new CopyWebpackPlugin([ { from: './fonts' } ],
             { copyUnmodified: true }
