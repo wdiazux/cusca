@@ -27,7 +27,7 @@ const config = {
         filename: 'scripts/[name].js',
         // Everything gets initially output to this directory.
         // /js and /fonts are odd because of how Font Awesome builds.
-        path: path.resolve(__dirname, '../assets/')
+        path: path.resolve(__dirname, '../../assets/')
     },
     // This is the extra rules that we have to handle our SCSS and ES2015.
     module: {
@@ -66,7 +66,10 @@ const config = {
                     {
                         loader: 'sass-loader',
                         options: {
-                            sourceMap: true
+                            sourceMap: true,
+                            includePaths: [
+                                './node_modules/foundation-sites/scss/'
+                            ]
                         }
                     }
                 ]
@@ -98,7 +101,10 @@ const config = {
         ]
     },
     plugins: [
-        new CleanPlugin(['assets']),
+        new CleanPlugin(['assets'], {
+            root: path.resolve(__dirname, '../../'),
+            allowExternal: true
+        }),
         new MiniCssExtractPlugin({
             filename: 'styles/[name].css',
             chunkFilename: 'styles/[id].css',

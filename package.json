@@ -82,5 +82,9 @@
     "posts_per_page": 10
   },
   "homepage": "https://github.com/wdiazux/cusca#readme",
-  "main": "gulpfile.js"
+  "main": "gulpfile.js",
+  "dependencies": {
+    "foundation-sites": "^6.5.0-rc.2",
+    "jquery": "^3.3.1"
+  }
 }
