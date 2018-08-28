@@ -3,9 +3,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/wdiazux)
 
-A theme for [Ghost 1.0](https://ghost.org).
+A theme for [Ghost 2.x](https://ghost.org).
 
-**What that mean cusca?**
+**What that mean CUSCA?**
 
 Is the abbreviation for Cuscatlán, it was the name of El Salvador before the conquest and means "the land of precious things" in Nahuatl.
 

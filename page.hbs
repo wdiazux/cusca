@@ -1,30 +1,50 @@
 {{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
 
-{{!-- This is a page template. A page outputs content just like any other post, and has all the same
-    attributes by default, but you can also customise it to behave differently if you prefer. --}}
-
-{{!-- Everything inside the #post tags pulls data from the page --}}
-{{#post}}
-    <div class="row ">
-        <main id="content" class="content columns" role="main">
-            <article class="{{post_class}}">
-                <header class="post-header">
-                    {{#if feature_image}}
-                        <figure class="image-feature"><img src="{{feature_image}}" /></figure>
-                    {{/if}}
-
-                    <div class="post-heading">
-                        <h1 class="post-title">{{title}}</h1>
-                    </div>
-                </header>
-
-                <section class="post-content">
-                    {{content}}
-                </section>
-
-            </article>
-
-        </main>
+{{!-- The big featured header, it uses blog cover image as a BG if available --}}
+<header class="site-header outer">
+    <div class="inner">
+        {{> "site-nav"}}
     </div>
+</header>
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
+
+            <header class="post-full-header">
+                <h1 class="post-full-title">{{title}}</h1>
+            </header>
+
+            {{#if feature_image}}
+            <figure class="post-full-image" style="background-image: url({{feature_image}})">
+            </figure>
+            {{/if}}
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    {{content}}
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</main>
 
 {{/post}}
+
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+{{#contentFor "scripts"}}
+<script>
+$(function() {
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+});
+</script>
+{{/contentFor}}

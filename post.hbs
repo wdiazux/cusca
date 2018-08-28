@@ -1,113 +1,198 @@
 {{!< default}}
 
-{{!-- The comment above "< default" means - insert everything in this file into
-    the {{{body}}} of the default.hbs template, containing the blog header/footer. --}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+<header class="site-header outer">
+    <div class="inner">
+        {{> "site-nav"}}
+    </div>
+</header>
 
 {{!-- Everything inside the #post tags pulls data from the post --}}
 {{#post}}
-    <div class="row medium-unstack">
-        <main id="content" class="content medium-8 large-9 columns" role="main">
-            <article class="{{post_class}}">
 
-                <header class="post-header">
-                    {{#if feature_image}}
-                        <figure class="image-feature"><img src="{{feature_image}}" /></figure>
-                    {{/if}}
+<main id="site-main" class="site-main outer">
+    <div class="inner">
 
-                    <div class="post-heading">
-                        <h1 class="post-title">{{title}}</h1>
-                        <section class="post-meta">
-                            <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date
-                                    format="DD MMMM YYYY"}}</time> {{tags prefix=" on "}}
-                        </section>
-                    </div>
-                </header>
+        <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
 
-                <section class="post-content">
-                    {{content}}
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                    {{#primary_tag}}
+                        <span class="date-divider">/</span> <a href="{{url}}">{{name}}</a>
+                    {{/primary_tag}}
                 </section>
+                <h1 class="post-full-title">{{title}}</h1>
+            </header>
 
-                <footer class="post-footer">
-                    <section class="share">
-                        <p>Share this post: <br/>
-                            <a class="share-icon icon-twitter" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
-                               onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                            <a class="share-icon icon-facebook"
-                               href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
-                               onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                            <a class="share-icon icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
-                               onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
-                            <a class="share-icon icon-reddit" href="https://www.reddit.com/submit?url={{url absolute="true"}}"
-                               onclick="window.open(this.href, 'reddit-share', 'width=850,height=530');return false;">
-                                <i class="fa fa-reddit-alien"></i>
-                            </a>
-                        </p>
-                    </section>
+            {{#if feature_image}}
+            <figure class="post-full-image" style="background-image: url({{feature_image}})">
+            </figure>
+            {{/if}}
 
-                </footer>
-
-            </article>
-
-
-            {{!-- If there are a next post use different classes in <aside> --}}
-            {{^next_post}}
-            <aside class="read-next row">
-            {{else}}
-            <aside class="read-next row medium-unstack align-right">
-            {{/next_post}}
-
-            {{!-- Links to Previous/Next posts --}}
-            {{#prev_post}}
-                <div class="medium-6 columns text-left">
-                    <a class="read-prev-story" href="{{url}}">{{title}}</a>
-                    <a href="{{url}}"><span class="arrow arrow-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></span></a>
+            <section class="post-full-content">
+                <div class="post-content">
+                    {{content}}
                 </div>
-            {{/prev_post}}
-            {{#next_post}}
-                <div class="medium-6 columns text-right">
-                    <a class="read-next-story" href="{{url}}">{{title}}</a>
-                    <a href="{{url}}"><span class="arrow arrow-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
-                </div>
-            {{/next_post}}
+            </section>
 
-            {{!-- Close <aside> --}}
-             </aside>
+            {{!-- Email subscribe form at the bottom of the page --}}
+            {{#if @labs.subscribers}}
+            <section class="subscribe-form">
+                <h3 class="subscribe-form-title">Subscribe to {{@blog.title}}</h3>
+                <p>Get the latest posts delivered right to your inbox</p>
+                {{subscribe_form placeholder="youremail@example.com"}}
+            </section>
+            {{/if}}
 
-            {{!-- Comments --}}
-            <h3>Comments:</h3>
+            <footer class="post-full-footer">
 
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
-                    this.page.url = '{{url absolute="true"}}';  // Replace PAGE_URL with your page's canonical URL variable
-                    this.page.identifier = '{{comment_id}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                };
+                {{!-- There are two options for how we display the byline/author-info.
+                If the post has more than one author, we load a specific template
+                from includes/byline-multiple.hbs, otherwise, we just use the
+                default byline. --}}
 
-                (function() { // DON'T EDIT BELOW THIS LINE
-                    var d = document, s = d.createElement('script');
-                    s.async = true;
-                    s.src = 'https://[your-disqus-name].disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                {{#has author="count:>1"}}
+                    {{> "byline-multiple"}}
+                {{else}}
+                    {{> "byline-single"}}
+                {{/has}}
 
-        </main>
+            </footer>
 
-        {{!-- Sidebar --}}
-        <aside class="sidebar medium-4 large-3 columns show-for-medium">
-            {{> "sidebar"}}
-        </aside>
+            {{!--
+            <section class="post-full-comments">
+                If you want to embed comments, this is a good place to do it!
+            </section>
+            --}}
+
+        </article>
+
     </div>
+</main>
+
+{{!-- Links to Previous/Next posts --}}
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            {{#if primary_tag}}
+            {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
+                {{#if related_posts}}
+                <article class="read-next-card"
+                    {{#if ../primary_tag.feature_image}}
+                        style="background-image: url({{../primary_tag.feature_image}})"
+                    {{else}}
+                        {{#if @blog.cover_image}}
+                            style="background-image: url({{@blog.cover_image}})"{{/if}}
+                    {{/if}}
+                >
+                    <header class="read-next-card-header">
+                        <small class="read-next-card-header-sitetitle">&mdash; {{@blog.title}} &mdash;</small>
+                        {{#../primary_tag}}
+                        <h3 class="read-next-card-header-title"><a href="{{url}}">{{name}}</a></h3>
+                        {{/../primary_tag}}
+                    </header>
+                    <div class="read-next-divider">{{> "icons/infinity"}}</div>
+                    <div class="read-next-card-content">
+                        <ul>
+                            {{#foreach related_posts}}
+                            <li><a href="{{url}}">{{title}}</a></li>
+                            {{/foreach}}
+                        </ul>
+                    </div>
+                    <footer class="read-next-card-footer">
+                        <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='No posts' singular='% post' plural='See all % posts'}} →</a>
+                    </footer>
+                </article>
+                {{/if}}
+            {{/get}}
+            {{/if}}
+
+            {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs --}}
+            {{#next_post}}
+                {{> "post-card"}}
+            {{/next_post}}
+
+            {{!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs --}}
+            {{#prev_post}}
+                {{> "post-card"}}
+            {{/prev_post}}
+
+        </div>
+    </div>
+</aside>
+
+{{!-- Floating header which appears on-scroll, included from includes/floating-header.hbs --}}
+{{> floating-header}}
+
 {{/post}}
 
-{{#contentFor "js"}}
-    <script src="{{asset "js/prism.min.js"}}"></script>
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+{{#contentFor "scripts"}}
+<script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('#reading-progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+
+});
+</script>
 {{/contentFor}}
