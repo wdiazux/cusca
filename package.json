@@ -85,6 +85,7 @@
   "main": "gulpfile.js",
   "dependencies": {
     "foundation-sites": "^6.5.0-rc.2",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "what-input": "^5.1.1"
   }
 }
