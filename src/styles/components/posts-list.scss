@@ -1,0 +1,26 @@
+.post-card-ex {
+  max-height: 10px;
+}
+/*
+.post-card-ex {
+  width: calc(100% - 1.875rem);
+  @include breakpoint(medium) {
+    width: calc(50% - 1.875rem);
+  }
+  @include breakpoint(large) {
+    width: calc(33.33333% - 1.875rem);
+  }
+}
+
+
+.post-card {
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+.post-card-inner {
+  position: relative;
+  height: 100%;
+  background: $white;
+  overflow: hidden;
+}
+*/

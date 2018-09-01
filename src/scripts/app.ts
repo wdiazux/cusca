@@ -14,12 +14,22 @@ function importAll(r) {
 
 const images = importAll(require.context('../img/', false, /\.(png|gif|jpe?g|svg)$/));
 
-
 // Foundations
 // -----------
 
-import Foundation from 'foundation-sites';
+import 'foundation-sites';
 
 $(function() {
     $(document).foundation();
+});
+
+// Grid
+// ----
+import * as Shuffle from 'shufflejs';
+
+$(function () {
+    const shuffleInstance = new Shuffle(document.querySelector('.post-feed'), {
+        itemSelector: '.post-card',
+        sizer: '.post-card-ex'
+    });
 });

@@ -15,7 +15,7 @@ const config = {
     // We are looking at the Bootstrap files you installed with NPM.
     entry: {
         'main' : [
-            './scripts/app.js',
+            './scripts/app.ts',
             './styles/main.scss'
         ]
     },
@@ -40,9 +40,12 @@ const config = {
                 }
             },
             {
-                test: /\.tsx?$/,
+                test: /\.ts$/,
                 use: {
-                    loader: 'ts-loader'
+                    loader: 'awesome-typescript-loader',
+                    options: {
+                        configFileName: 'tsconfig.json'
+                    }
                 },
             },
             {
@@ -52,6 +55,7 @@ const config = {
                     {
                         loader: 'css-loader',
                         options: {
+                            name: '[path][name].[ext]',
                             importLoaders: 1,
                             sourceMap: true
                         }
