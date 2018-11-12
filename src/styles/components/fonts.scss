@@ -1,0 +1,13 @@
+/* Fonts */
+
+/* Font awesome */
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import "fontawesome";
+@import "regular";
+@import "solid";
+@import "brands";
+
+/* Roboto */
+$roboto-font-path: '~roboto-fontface/fonts';
+@import "roboto-fontface-regular";
+@import "roboto-fontface-regular-italic";

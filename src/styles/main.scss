@@ -26,8 +26,9 @@ production stylesheet in assets/built/screen.css
 
 */
 
+@import 'components/fonts';
 @import 'settings';
-@import "foundation";
+@import 'foundation';
 
 // Global styles
 @include foundation-global-styles;
@@ -83,5 +84,11 @@ production stylesheet in assets/built/screen.css
 
 // Custom theme ghost style
 // ------------------------
+@import 'components/general';
+@import 'components/mixins';
+@import 'components/tags';
 @import 'components/main-content';
+@import 'components/footer';
 @import 'components/posts-list';
+@import 'components/top-bar';
+@import 'components/pagination';

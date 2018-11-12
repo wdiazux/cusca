@@ -51,7 +51,7 @@ const config = {
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
-                    prod ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -72,7 +72,9 @@ const config = {
                         options: {
                             sourceMap: true,
                             includePaths: [
-                                './node_modules/foundation-sites/scss/'
+                                './node_modules/foundation-sites/scss/',
+                                './node_modules/@fortawesome/fontawesome-free/scss/',
+                                './node_modules/roboto-fontface/css/roboto/sass/'
                             ]
                         }
                     }
@@ -91,13 +93,15 @@ const config = {
                 ]
             },
             {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                exclude: /images/,
                 use: [
                     {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',
-                            outputPath: './fonts/'
+                            outputPath: 'fonts/',
+                            publicPath: '../../assets/fonts/',
                         }
                     }
                 ]
@@ -121,5 +125,5 @@ const config = {
 
 // Export a merge of base- and dev/prod- config
 module.exports = env => {
-    return merge(config, ENV_CONF)
+    return merge(config, ENV_CONF);
 };

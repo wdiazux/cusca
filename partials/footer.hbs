@@ -1,0 +1,109 @@
+<footer class="site-footer outer">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell medium-6 large-4">
+                <div class="widget">
+                    {{#get "posts" limit="3" order="published_at desc"}}
+                        {{#if posts}}
+                            <h6 class="widget-title">Recent post</h5>
+                                {{#foreach posts}}
+                                    <div class="media-object stack-for-small recent-post-ct">
+                                        {{#if feature_image}}
+                                            <div class="media-object-section">
+                                                <a href="{{url}}">
+                                                    <div class="thumbnail recent-post-img" style="background: url({{feature_image}}) no-repeat center center; background-size: cover;"></div>
+                                                </a>
+                                            </div>
+                                        {{/if}}
+                                        <div class="media-object-section">
+                                            <a href="{{url}}">
+                                                <p class="recent-post-title">
+                                                    <strong>{{title}}</strong>
+                                                </p>
+                                                <p class="recent-post-date">
+                                                    <i class="far fa-clock" aria-hidden="true"></i>
+                                                    <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">
+                                                        {{date format="DD MMMM YYYY"}}
+                                                    </time>
+                                                </p>
+                                            </a>
+                                        </div>
+                                        <a class="tag" href="{{url}}">{{name}}</a>
+                                    </div>
+                                {{/foreach}}
+                        {{/if}}
+                    {{/get}}
+                </div>
+            </div>
+            <div class="cell medium-6 large-4">
+                {{#get "tags" limit="all" order="name asc" }}
+                    {{#if tags }}
+                        <div class="widget no-margin">
+                            <h6 class="widget-title">Blog Tags</h5>
+                            <ul class="tags horizontal-list" id="tag-list">
+                                {{#foreach tags}}
+                                    <li>
+                                        <a class="tag" href="{{url}}">{{name}}</a>
+                                    </li>
+                                {{/foreach}}
+                            </ul>
+                        </div>
+                    {{/if}}
+                {{/get}}
+            </div>
+
+            <div class="cell medium-6 medium-offset-3 large-offset-0 large-4">
+                <div class="widget">
+                    <h6 class="widget-title">Subscribe</h5>
+                        <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox.</p>
+                        {{subscribe_form placeholder="youremail@example.com"}}
+                </div>
+                <div class="widget">
+                    <h6 class="widget-title">Social networks</h5>
+                    <ul class="horizontal-list social-networks">
+                        <li>
+                            <a href="https://www.youtube.com/WilliamDiaz" target="blank">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/wdiazux/" target="blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/wdiazux" target="blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/wdiazux/" target="blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/wdiazux" target="blank">
+                                <i class="fab fa-github-alt"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/wdiazux/" target="blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="blank">
+                                <i class="fa fa-rss"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="grid-container">
+            <section class="copyright">&copy; {{date format="YYYY"}} <a href="{{@blog.url}}">{{@blog.title}}</a> - All rights reserved - Powered by <a href="https://ghost.org/" target="blank">Ghost</a>.</section>
+        </div>
+    </div>
+</footer>

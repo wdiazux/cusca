@@ -1,0 +1,49 @@
+// Pagination
+// ---------
+
+.pagination-ct {
+   align-items: center;
+   justify-content: center;
+}
+
+.pagination {
+  display: inline-flex;
+  margin: 1rem 0 2rem 0;
+  border: 1px solid #ddd;
+
+  a,
+  button,
+  .current,
+  .disabled {
+      padding: rem-calc(9) rem-calc(15);
+  }
+
+  li {
+    margin-right: - rem-calc(2);
+    font-size: rem-calc(16);
+
+    &:not(:last-child) {
+      border-right: 1px solid $medium-gray;
+    }
+    &:not(:first-child) {
+      a {
+        margin-left: -1px;
+      }
+    }
+    &.pagination-previous {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+    &.pagination-next {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+    &.current {
+      z-index: 2;
+    }
+    &.ellipsis {
+      padding: rem-calc(9) rem-calc(15);
+    }
+  }
+
+}

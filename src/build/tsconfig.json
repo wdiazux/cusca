@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "types": [
       "webpack-env"
     ]

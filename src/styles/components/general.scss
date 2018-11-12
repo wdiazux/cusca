@@ -1,0 +1,21 @@
+body .hidden {
+  display: none;
+}
+body .no-margin {
+  margin: 0;
+}
+.horizontal-list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  flex-wrap: wrap;
+  flex-direction: row;
+  box-orient: horizontal;
+  box-direction: normal;
+  list-style: none;
+}
+.align-center {
+  text-align: center;
+}

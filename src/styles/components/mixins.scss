@@ -1,0 +1,7 @@
+%body-color-anchor {
+    color: $body-font-color;
+    &:hover,
+    &:focus {
+        color: $anchor-color-hover;
+    }
+}

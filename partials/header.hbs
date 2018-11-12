@@ -1,0 +1,32 @@
+{{!-- The big featured header, it uses blog cover image as a BG if available --}}
+<header class="site-header outer">
+    <div class="grid-container">
+        <nav class="top-bar" data-sticky data-options="marginTop:0;">
+            <div class="top-bar-left">
+                {{#if @blog.logo}}
+                    <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}"/>
+                {{else}}
+                    {{@blog.title}}
+                {{/if}}
+            </div>
+            <div class="top-bar-right">
+                {{> "site-nav"}}
+            </div>
+        </nav>
+    </div>
+
+    {{#is "home"}}
+        <div class="inner" {{#if @blog.cover_image}} style="background-image: url({{@blog.cover_image}}){{else}}no-cover{{/if}}">
+            <div class="site-header-content">
+                <h1 class="site-title">
+                    {{#if @blog.logo}}
+                        <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}" />
+                    {{else}}
+                        {{@blog.title}}
+                    {{/if}}
+                </h1>
+                <h2 class="site-description">{{@blog.description}}</h2>
+            </div>
+        </div>
+    {{/is}}
+</header>
