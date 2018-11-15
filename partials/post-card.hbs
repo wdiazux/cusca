@@ -31,15 +31,17 @@
             <footer class="post-card-meta">
                 {{^if feature_image}}
                     {{#if tags}}
-                        <ul class="tags">
-                            {{#foreach tags}}
-                                <li><a href="{{url}}" class="tag">#{{name}}</a></li>
-                            {{/foreach}}
-                        </ul>
+                        <div class="post-card-tags-ct">
+                            <ul class="tags">
+                                {{#foreach tags}}
+                                    <li><a href="{{url}}" class="tag">#{{name}}</a></li>
+                                {{/foreach}}
+                            </ul>
+                        </div>
                     {{/if}}
                 {{/if}}
 
-                <ul class="author-list no-bullet">
+                <ul class="author-list horizontal-list">
                     {{#foreach authors}}
                         <li class="author-list-item">
                             <a href="{{url}}">
@@ -57,6 +59,12 @@
                         </li>
                     {{/foreach}}
                 </ul>
+                <span class="card-post-date">
+                    <i class="far fa-clock"></i>
+                    <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">
+                        {{date format="DD MMMM YYYY"}}
+                    </time>
+                </span>
             </footer>
         </div>
     </div>

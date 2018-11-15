@@ -46,7 +46,7 @@
   },
   "contributors": "https://github.com/wdiazux/cusca/graphs/contributors",
   "devDependencies": {
-    "@babel/core": "^7.1.5",
+    "@babel/core": "^7.1.6",
     "@types/webpack-env": "^1.13.6",
     "ajv": "^6.5.5",
     "autoprefixer": "^9.3.1",

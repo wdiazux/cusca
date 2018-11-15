@@ -11,11 +11,17 @@
     border-radius: 5px;
     overflow: hidden;
 }
-.post-card-header,
-.post-card-excerpt,
-.post-card-meta,
-.post-card-featured-image {
-    @include clearfix;
+.post-card-meta {
+    display: flex;
+    flex-flow: row wrap;
+    box-orient: horizontal;
+    box-direction: normal;
+    justify-content: space-between;
+    font-size: rem-calc(13);
+    
+    > * {
+        flex: 0 0 auto;
+    }
 }
 .post-card-inner {
     background: $white;
@@ -67,6 +73,7 @@
 .author-list {
     display: inline-flex;
     margin: 0;
+    max-width: calc(100% - 150px);
 }
 .author-list-item {
     display: inline-flex;
@@ -81,8 +88,8 @@
 .static-avatar {
     display: inline-block;
     margin: 0 5px 0 0;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     overflow: hidden;
     background: $primary-color;
