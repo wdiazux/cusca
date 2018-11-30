@@ -7,31 +7,53 @@ $header-font-color: #91a2bd;
   background: rgba($header-background, 0.95);
   color: $header-font-color;
 
-  a {
-    color: $footer-font-color;
+  a,
+  .bar-icon {
+    color: $header-font-color;
 
     &:focus,
     &:hover {
       color: $white;
     }
   }
+
+  .bar-icon {
+    font-size: rem-calc(25);
+  }
 }
 .top-bar-left,
 .top-bar-right {
   padding: rem-calc(15) 0;
+}
+.top-bar-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .top-menu {
   justify-content: flex-end;
   height: 100%;
 
   .menu-item {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
     a {
       text-transform: uppercase;
       font-weight: bold;
     }
+    @include breakpoint(medium only) {
+      a {
+        text-align: center;
+        border-bottom: 1px solid $header-font-color;
+        &:hover,
+        &:focus {
+          border-color: $white;
+        }
+      }
+      &:last-child a {
+        border-bottom: none;
+      }
+    }
   }
+}
+.site-logo {
+  height: 40px;
 }

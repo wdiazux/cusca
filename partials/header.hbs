@@ -1,16 +1,21 @@
 {{!-- The big featured header, it uses blog cover image as a BG if available --}}
 <header class="site-header outer">
-    <nav class="top-bar" data-sticky data-options="marginTop:0;">
+    <nav class="top-bar" data-sticky data-options="marginTop:0;" data-sticky-on="small">
         <div class="grid-container">
             <div class="grid-x">
-                <div class="cell small-4 medium-3 large-3 top-bar-left">
+                <div class="cell small-12 large-3 top-bar-left">
                     {{#if @blog.logo}}
                         <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}"/>
                     {{else}}
                         {{@blog.title}}
                     {{/if}}
+                    <span data-responsive-toggle="main-menu" data-hide-for="large">
+                        <button type="button" data-toggle>
+                            <i class="fas fa-bars bar-icon"></i>
+                        </button>
+                    </span>
                 </div>
-                <div class="cell small-8 medium-9 large-9 top-bar-right">
+                <div class="cell small-12 large-9 top-bar-right" id="main-menu">
                     {{> "site-nav"}}
                 </div>
             </div>
