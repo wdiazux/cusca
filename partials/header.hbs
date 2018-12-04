@@ -1,5 +1,13 @@
 {{!-- The big featured header, it uses blog cover image as a BG if available --}}
-<header class="site-header outer">
+<header class="site-header" id="site-header">
+    {{#is "home, tag"}}
+        <div class="site-header-bg" id="site-header-bg">
+            <div class="cover-image" style="background: url({{#if @blog.cover_image}} {{@blog.cover_image}} {{else}}{{asset "img/sven-scheuermeier-178631-unsplash.jpg" }}{{/if}}) no-repeat bottom center; background-size: cover;"></div>
+            <div class="header-overlay"></div>
+        </div>
+    {{/is}}
+
+    {{!-- Top bar  --}}
     <nav class="top-bar" data-sticky data-options="marginTop:0;" data-sticky-on="small">
         <div class="grid-container">
             <div class="grid-x">
@@ -9,7 +17,7 @@
                     {{else}}
                         {{@blog.title}}
                     {{/if}}
-                    <span data-responsive-toggle="main-menu" data-hide-for="large">
+                    <span class="toggle-responsive-btn" data-responsive-toggle="main-menu" data-hide-for="large">
                         <button type="button" data-toggle>
                             <i class="fas fa-bars bar-icon"></i>
                         </button>
@@ -22,17 +30,18 @@
         </div>
     </nav>
 
-    {{#is "home"}}
-        <div class="inner" {{#if @blog.cover_image}} style="background-image: url({{@blog.cover_image}}){{else}}no-cover{{/if}}">
-            <div class="site-header-content">
-                <h1 class="site-title">
-                    {{#if @blog.logo}}
-                        <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}" />
-                    {{else}}
-                        {{@blog.title}}
-                    {{/if}}
-                </h1>
-                <h2 class="site-description">{{@blog.description}}</h2>
+    {{#is "home, tag"}}
+        <div class="header-title">
+            <div class="site-header-content grid-container">
+                <div class="header-title-inner grid-x">
+                    <h1 class="site-title">
+                        {{#if @blog.logo}}
+                            <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}" />
+                        {{else}}
+                            {{@blog.title}}
+                        {{/if}}
+                    </h1>
+                </div>
             </div>
         </div>
     {{/is}}

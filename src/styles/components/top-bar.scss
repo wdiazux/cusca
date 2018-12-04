@@ -3,8 +3,11 @@
 $header-background: #1a2940;
 $header-font-color: #91a2bd;
 
-.top-bar {
+.bg .top-bar {
   background: rgba($header-background, 0.95);
+}
+
+.top-bar {
   color: $header-font-color;
 
   a,
@@ -39,7 +42,7 @@ $header-font-color: #91a2bd;
       text-transform: uppercase;
       font-weight: bold;
     }
-    @include breakpoint(medium only) {
+    @include breakpoint(medium down) {
       a {
         text-align: center;
         border-bottom: 1px solid $header-font-color;

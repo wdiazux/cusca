@@ -87,21 +87,36 @@ const config = {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',
-                            outputPath: './img/'
+                            outputPath: 'img/',
+                            publicPath: '../../assets/img/'
                         }
                     }
                 ]
             },
             {
                 test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-                exclude: /images/,
+                exclude: /img/,
                 use: [
                     {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',
                             outputPath: 'fonts/',
-                            publicPath: '../../assets/fonts/',
+                            publicPath: '../../assets/fonts/'
+                        }
+                    }
+                ]
+            },
+            {
+                type: 'javascript/auto',
+                test: /\.json$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'scripts/',
+                            publicPath: '../../scripts/'
                         }
                     }
                 ]
@@ -117,9 +132,9 @@ const config = {
             filename: 'styles/[name].css',
             chunkFilename: 'styles/[id].css',
         }),
-        new CopyWebpackPlugin([ { from: './fonts' } ],
-            { copyUnmodified: true }
-        )
+        new CopyWebpackPlugin([
+            { from: 'fonts/**/', to: 'fonts' }
+        ], { copyUnmodified: true })
     ]
 };
 

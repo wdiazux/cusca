@@ -8,13 +8,11 @@ import * as $ from 'jquery';
 // Here, we're requiring all images inside JS in order to use the webpack
 // fileloader even on images that are not otherwise required in js
 
-/*
 function importAll(r) {
     return r.keys().map(r);
 }
-
 const images = importAll(require.context('../img/', false, /\.(png|gif|jpe?g|svg)$/));
-*/
+
 
 // Foundations
 // -----------
@@ -38,6 +36,7 @@ $(function () {
 });
 
 // Pagination
+// ----------
 $(function () {
     const pagination = (currentPage: number, pageCount: number) => {
         const delta = 2
@@ -95,3 +94,136 @@ $(function () {
     }
     createPagination();
 });
+
+// Top bar
+// -------
+
+const siteHeaderBg = $('.site-header-bg');
+const siteHeader = $('.site-header');
+declare function particlesJS(tag_id: any, params: any): void;
+
+import 'particles.js';
+
+if(siteHeaderBg.length) {
+    window.onscroll = _ => {
+        if($(window).scrollTop() - siteHeaderBg.scrollTop() - siteHeaderBg.height() >= -120) {
+            siteHeader.addClass('bg');
+            siteHeaderBg.css('opacity', 0.3);
+        } else {
+            siteHeader.removeClass('bg');
+            siteHeaderBg.css('opacity', 1);
+        }
+    };
+    particlesJS('site-header-bg', {
+        "particles": {
+            "number": {
+                "value": 100,
+                "density": {
+                    "enable": true,
+                    "value_area": 1000
+                }
+            },
+            "color": {
+                "value": ["#aa73ff", "#f8c210", "#83d238", "#33b1f8"]
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+                "image": {
+                    "src": "img/github.svg",
+                    "width": 100,
+                    "height": 100
+                }
+            },
+            "opacity": {
+                "value": 0.5,
+                "random": false,
+                "anim": {
+                    "enable": false,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 40,
+                    "size_min": 0.1,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 6,
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "grab"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 140,
+                    "line_linked": {
+                        "opacity": 1
+                    }
+                },
+                "bubble": {
+                    "distance": 400,
+                    "size": 40,
+                    "duration": 2,
+                    "opacity": 8,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 200,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": true
+    });
+} else {
+    siteHeader.addClass('bg');
+}
