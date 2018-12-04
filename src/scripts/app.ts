@@ -106,7 +106,7 @@ import 'particles.js';
 
 if(siteHeaderBg.length) {
     window.onscroll = _ => {
-        if($(window).scrollTop() - siteHeaderBg.scrollTop() - siteHeaderBg.height() >= -120) {
+        if($(window).scrollTop() - siteHeaderBg.scrollTop() - siteHeaderBg.height() >= -240) {
             siteHeader.addClass('bg');
             siteHeaderBg.css('opacity', 0.3);
         } else {
