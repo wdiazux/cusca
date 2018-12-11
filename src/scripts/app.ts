@@ -47,10 +47,10 @@ $(function () {
         }
 
         if (currentPage - delta > 2) {
-            range.unshift("...")
+            range.unshift('...')
         }
         if (currentPage + delta < pageCount - 1) {
-            range.push("...")
+            range.push('...')
         }
 
         range.unshift(1)
@@ -104,16 +104,30 @@ declare function particlesJS(tag_id: any, params: any): void;
 
 import 'particles.js';
 
+const setHeaderBg = () => {
+    if($(window).scrollTop() - siteHeaderBg.scrollTop() - siteHeaderBg.height() >= -240) {
+        siteHeader.addClass('bg');
+        siteHeaderBg.css('opacity', 0.3);
+    } else {
+        siteHeader.removeClass('bg');
+        siteHeaderBg.css('opacity', 1);
+    }
+}
+
+$(function () {
+    if(siteHeaderBg.length) {
+        setHeaderBg();
+    }
+});
+
 if(siteHeaderBg.length) {
-    window.onscroll = _ => {
-        if($(window).scrollTop() - siteHeaderBg.scrollTop() - siteHeaderBg.height() >= -240) {
-            siteHeader.addClass('bg');
-            siteHeaderBg.css('opacity', 0.3);
-        } else {
-            siteHeader.removeClass('bg');
-            siteHeaderBg.css('opacity', 1);
-        }
-    };
+    document.addEventListener('wheel', (evt) => {
+        setHeaderBg();
+    }, {
+        capture: true,
+        passive: true
+    });
+
     particlesJS('site-header-bg', {
         "particles": {
             "number": {
@@ -134,11 +148,6 @@ if(siteHeaderBg.length) {
                 },
                 "polygon": {
                     "nb_sides": 5
-                },
-                "image": {
-                    "src": "img/github.svg",
-                    "width": 100,
-                    "height": 100
                 }
             },
             "opacity": {
