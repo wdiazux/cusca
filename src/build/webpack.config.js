@@ -54,11 +54,6 @@ const config = {
                     MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
-                        options: {
-                            name: '[path][name].[ext]',
-                            importLoaders: 1,
-                            sourceMap: true
-                        }
                     },
                     {
                         loader: 'postcss-loader',
