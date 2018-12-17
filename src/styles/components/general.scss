@@ -4,6 +4,9 @@ body .hidden {
 body .no-margin {
   margin: 0;
 }
+button:focus {
+  outline:0;
+}
 .horizontal-list {
   display: flex;
   padding: 0;

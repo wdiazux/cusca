@@ -17,7 +17,7 @@ $header-font-color: #91a2bd;
     }
   }
 
-  .site-logo {
+  .top-bar-title {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -25,6 +25,7 @@ $header-font-color: #91a2bd;
 
   .bar-icon {
     font-size: rem-calc(25);
+    cursor: pointer;
   }
 }
 
@@ -33,7 +34,7 @@ $header-font-color: #91a2bd;
   background: rgba($header-background, 0.95);
 
 
-  .site-logo {
+  .top-bar-title {
     opacity: 1;
     visibility: visible;
   }
@@ -55,6 +56,7 @@ $header-font-color: #91a2bd;
   overflow-y: auto;
 
   @include breakpoint(medium down) {
+    display: none;
     padding-top: 0;
   }
 }
@@ -84,6 +86,12 @@ $header-font-color: #91a2bd;
       }
     }
   }
+}
+
+.top-bar .top-bar-title {
+  color: $white;
+  font-size: rem-calc(24);
+  font-weight: bold;
 }
 
 .site-logo {

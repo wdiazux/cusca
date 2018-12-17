@@ -46,9 +46,7 @@
                         <li class="author-list-item">
                             <a href="{{url}}">
                                 {{#if profile_image}}
-                                    <span class="static-avatar">
-                                        <img class="author-profile-image" src="{{profile_image}}" alt="{{name}}"/>
-                                    </span>
+                                    <span class="static-avatar" style="background: url({{profile_image}}) no-repeat center center; background-size: cover;"></span>
                                 {{else}}
                                     <span class="static-avatar author-profile-image">
                                         {{> "icons/avatar"}}

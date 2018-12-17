@@ -121,7 +121,7 @@ $(function () {
 });
 
 if(siteHeaderBg.length) {
-    document.addEventListener('wheel', (evt) => {
+    document.addEventListener('scroll', (evt) => {
         setHeaderBg();
     }, {
         capture: true,
@@ -131,17 +131,17 @@ if(siteHeaderBg.length) {
     particlesJS('site-header-bg', {
         "particles": {
             "number": {
-                "value": 100,
+                "value": 60,
                 "density": {
                     "enable": true,
-                    "value_area": 1000
+                    "value_area": 1420
                 }
             },
             "color": {
                 "value": ["#aa73ff", "#f8c210", "#83d238", "#33b1f8"]
             },
             "shape": {
-                "type": "circle",
+                "type": "triangle",
                 "stroke": {
                     "width": 0,
                     "color": "#000000"
@@ -161,7 +161,7 @@ if(siteHeaderBg.length) {
                 }
             },
             "size": {
-                "value": 3,
+                "value": 12,
                 "random": true,
                 "anim": {
                     "enable": false,

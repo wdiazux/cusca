@@ -12,11 +12,13 @@
         <div class="grid-container">
             <div class="grid-x">
                 <div class="cell small-12 large-3 top-bar-left">
-                    {{#if @blog.logo}}
-                        <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}"/>
-                    {{else}}
-                        {{@blog.title}}
-                    {{/if}}
+                    <a href="{{@blog.url}}" class="top-bar-title">
+                        {{#if @blog.logo}}
+                            <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}"/>
+                        {{else}}
+                            {{@blog.title}}
+                        {{/if}}
+                    </a>
                     <span class="toggle-responsive-btn" data-responsive-toggle="main-menu" data-hide-for="large">
                         <button type="button" data-toggle>
                             <i class="fas fa-bars bar-icon"></i>
