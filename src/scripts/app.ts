@@ -121,7 +121,7 @@ $(function () {
 });
 
 if(siteHeaderBg.length) {
-    document.addEventListener('scroll', (evt) => {
+    document.addEventListener('scroll', () => {
         setHeaderBg();
     }, {
         capture: true,

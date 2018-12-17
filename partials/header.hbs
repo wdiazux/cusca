@@ -1,6 +1,6 @@
 {{!-- The big featured header, it uses blog cover image as a BG if available --}}
 <header class="site-header" id="site-header">
-    {{#is "home, tag"}}
+    {{#is "home, tag, author"}}
         <div class="site-header-bg" id="site-header-bg">
             <div class="cover-image" style="background: url({{#if @blog.cover_image}} {{@blog.cover_image}} {{else}}{{asset "img/sven-scheuermeier-178631-unsplash.jpg" }}{{/if}}) no-repeat bottom center; background-size: cover;"></div>
             <div class="header-overlay"></div>
@@ -32,17 +32,45 @@
         </div>
     </nav>
 
-    {{#is "home, tag"}}
+    {{#is "home, tag, author"}}
         <div class="header-title">
             <div class="site-header-content grid-container">
                 <div class="header-title-inner grid-x">
-                    <h1 class="site-title">
+
+                    {{#is "home"}}
                         {{#if @blog.logo}}
                             <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}" />
                         {{else}}
-                            {{@blog.title}}
+                            <h1 class="site-title">{{@blog.title}}</h1>
                         {{/if}}
-                    </h1>
+                    {{else}}
+                        {{#is "tag"}}
+                            {{#tag}}
+                                <h1 class="site-title">#{{name}}</h1>
+                            {{/tag}}
+                        {{/is}}
+                        {{#is "author"}}
+                            {{#author}}
+                                <h1 class="site-title">{{name}}</h1>
+                                <div class="author-meta">
+                                    {{#if location}}
+                                        <div class="author-location">{{location}} <span class="bull">&bull;</span></div>
+                                    {{/if}}
+                                    {{#if website}}
+                                        <a class="social-link social-link-wb" href="{{website}}" target="_blank" rel="noopener">{{> "icons/website"}}</a>
+                                    {{/if}}
+                                    {{#if twitter}}
+                                        <a class="social-link social-link-tw" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                                    {{/if}}
+                                    {{#if facebook}}
+                                        <a class="social-link social-link-fb" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                                    {{/if}}
+                                    <a class="social-link social-link-rss" href="https://feedly.com/i/subscription/feed/{{url absolute="true"}}rss/" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
+                                </div>
+                            {{/author}}
+                        {{/is}}
+                    {{/is}}
+
                 </div>
             </div>
         </div>
