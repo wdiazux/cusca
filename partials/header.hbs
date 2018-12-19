@@ -54,21 +54,34 @@
                         {{#is "author"}}
                             {{#author}}
                                 <h1 class="site-title">{{name}}</h1>
-                                <div class="author-meta">
-                                    {{#if location}}
-                                        <div class="author-location">{{location}} <span class="bull">&bull;</span></div>
-                                    {{/if}}
+                                <ul class="horizontal-list">
                                     {{#if website}}
-                                        <a class="social-link social-link-wb" href="{{website}}" target="_blank" rel="noopener">{{> "icons/website"}}</a>
+                                        <li>
+                                            <a href="{{website}}" target="_blank" rel="noopener">
+                                                <i class="fas fa-link"></i>
+                                            </a>
+                                        </li>
                                     {{/if}}
                                     {{#if twitter}}
-                                        <a class="social-link social-link-tw" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                                        <li>
+                                            <a href="{{twitter_url}}" target="_blank" rel="noopener">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
                                     {{/if}}
                                     {{#if facebook}}
-                                        <a class="social-link social-link-fb" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                                        <li>
+                                            <a href="{{facebook_url}}" target="_blank" rel="noopener">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
                                     {{/if}}
-                                    <a class="social-link social-link-rss" href="https://feedly.com/i/subscription/feed/{{url absolute="true"}}rss/" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
-                                </div>
+                                    <li>
+                                        <a href="https://feedly.com/i/subscription/feed/{{url absolute="true"}}rss/" target="_blank" rel="noopener">
+                                            <i class="fas fa-rss"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             {{/author}}
                         {{/is}}
                     {{/is}}
