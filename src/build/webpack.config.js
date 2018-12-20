@@ -17,6 +17,9 @@ const config = {
         'main' : [
             './scripts/app.ts',
             './styles/main.scss'
+        ],
+        'post' : [
+            './styles/post.scss'
         ]
     },
     // This next line generates source maps to help with debugging.
@@ -52,9 +55,7 @@ const config = {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                    },
+                    'css-loader',
                     {
                         loader: 'postcss-loader',
                         options: {
