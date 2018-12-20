@@ -19,6 +19,7 @@ const config = {
             './styles/main.scss'
         ],
         'post' : [
+            './scripts/post.ts',
             './styles/post.scss'
         ]
     },

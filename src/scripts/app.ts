@@ -1,6 +1,7 @@
 // jQuery
 // ------
-import * as $ from 'jquery';
+
+import $ = require('jquery');
 
 // Images
 // -------
@@ -104,14 +105,37 @@ declare function particlesJS(tag_id: any, params: any): void;
 
 import 'particles.js';
 
+let lastScrollY = window.scrollY;
+let lastHeaderHeight = siteHeader.height();
+let ticking = false;
+
+const onScroll = () => {
+    lastScrollY = window.scrollY;
+    requestTick();
+}
+
+const onResize = () => {
+    lastHeaderHeight = siteHeader.height();
+    requestTick();
+}
+
+const requestTick = () => {
+    if (!ticking) {
+        requestAnimationFrame(setHeaderBg);
+    }
+    ticking = true;
+}
+
 const setHeaderBg = () => {
-    if($(window).scrollTop() - siteHeaderBg.scrollTop() - siteHeaderBg.height() >= -240) {
+    if(lastScrollY - siteHeaderBg.scrollTop() - lastHeaderHeight >= -240) {
         siteHeader.addClass('bg');
         siteHeaderBg.css('opacity', 0.3);
     } else {
         siteHeader.removeClass('bg');
         siteHeaderBg.css('opacity', 1);
     }
+
+    ticking = false;
 }
 
 $(function () {
@@ -122,11 +146,12 @@ $(function () {
 
 if(siteHeaderBg.length) {
     document.addEventListener('scroll', () => {
-        setHeaderBg();
+        onScroll();
     }, {
         capture: true,
         passive: true
     });
+    document.addEventListener('resize', onResize, false);
 
     particlesJS('site-header-bg', {
         "particles": {
