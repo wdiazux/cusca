@@ -19,7 +19,6 @@ const images = importAll(require.context('../img/', false, /\.(png|gif|jpe?g|svg
 // -----------
 
 import 'foundation-sites';
-
 $(function() {
     $(document).foundation();
 });

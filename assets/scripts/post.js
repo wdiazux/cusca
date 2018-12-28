@@ -1,6 +1,65 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/ 		var executeModules = data[2];
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 		// add entry modules from loaded chunk to deferred list
+/******/ 		deferredModules.push.apply(deferredModules, executeModules || []);
+/******/
+/******/ 		// run deferred modules when all chunks ready
+/******/ 		return checkDeferredModules();
+/******/ 	};
+/******/ 	function checkDeferredModules() {
+/******/ 		var result;
+/******/ 		for(var i = 0; i < deferredModules.length; i++) {
+/******/ 			var deferredModule = deferredModules[i];
+/******/ 			var fulfilled = true;
+/******/ 			for(var j = 1; j < deferredModule.length; j++) {
+/******/ 				var depId = deferredModule[j];
+/******/ 				if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 			}
+/******/ 			if(fulfilled) {
+/******/ 				deferredModules.splice(i--, 1);
+/******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 			}
+/******/ 		}
+/******/ 		return result;
+/******/ 	}
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"post": 0
+/******/ 	};
+/******/
+/******/ 	var deferredModules = [];
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -79,9 +138,18 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
 /******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/
+/******/ 	// add entry module to deferred list
+/******/ 	deferredModules.push([1,"main-vendors"]);
+/******/ 	// run deferred modules when ready
+/******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -94,7 +162,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n// FitVids\n// -------\nexports.__esModule = true;\nvar $ = $;\n$(function () {\n    // Start fitVids\n    var postContent = $('#site-main');\n    postContent.fitVids();\n    // End fitVids\n});\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zY3JpcHRzL3Bvc3QudHMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vc3JjL3NjcmlwdHMvcG9zdC50cz81YzFkIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIEZpdFZpZHNcbi8vIC0tLS0tLS1cblxuaW1wb3J0IGZpdFZpZHMgPSByZXF1aXJlKCdmaXR2aWRzJyk7XG5cbmNvbnN0ICQgPSAkO1xuJChmdW5jdGlvbiAoKSB7XG4gICAgLy8gU3RhcnQgZml0Vmlkc1xuICAgIHZhciBwb3N0Q29udGVudCA9ICQoJyNzaXRlLW1haW4nKTtcbiAgICBwb3N0Q29udGVudC5maXRWaWRzKCk7XG4gICAgLy8gRW5kIGZpdFZpZHNcbn0pO1xuIl0sIm1hcHBpbmdzIjoiO0FBQUE7QUFDQTs7QUFJQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTsiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./scripts/post.ts\n");
+eval("\n// jQuery\n// ------\nexports.__esModule = true;\nvar $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n$(function () {\n    // Start fitVids\n    //var postContent = $('#site-main');\n    //postContent.fitVids();\n    // End fitVids\n    console.log($);\n});\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zY3JpcHRzL3Bvc3QudHMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vc3JjL3NjcmlwdHMvcG9zdC50cz81YzFkIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGpRdWVyeVxuLy8gLS0tLS0tXG5cbmltcG9ydCAkID0gcmVxdWlyZSgnanF1ZXJ5Jyk7XG5cbi8vIEZpdFZpZHNcbi8vIC0tLS0tLS1cblxuaW1wb3J0IGZpdFZpZHMgPSByZXF1aXJlKCdmaXR2aWRzJyk7XG5cbiQoZnVuY3Rpb24gKCkge1xuICAgIC8vIFN0YXJ0IGZpdFZpZHNcbiAgICAvL3ZhciBwb3N0Q29udGVudCA9ICQoJyNzaXRlLW1haW4nKTtcbiAgICAvL3Bvc3RDb250ZW50LmZpdFZpZHMoKTtcbiAgICAvLyBFbmQgZml0Vmlkc1xuICAgIGNvbnNvbGUubG9nKCQpO1xufSk7XG4iXSwibWFwcGluZ3MiOiI7QUFBQTtBQUNBOztBQUVBO0FBT0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7Iiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./scripts/post.ts\n");
 
 /***/ }),
 

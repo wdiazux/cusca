@@ -120,6 +120,20 @@ const config = {
             }
         ]
     },
+    optimization: {
+        splitChunks: {
+          chunks: 'all',
+          automaticNameDelimiter: '-',
+          name: true,
+          cacheGroups: {
+            vendors: {
+              test: /[\\/]node_modules[\\/](jquery|foundation-sites|shufflejs)[\\/]/,
+              name: 'main-vendors',
+              priority: 1
+            }
+          }
+        }
+    }, 
     plugins: [
         new CleanPlugin(['assets'], {
             root: path.resolve(__dirname, '../../'),
