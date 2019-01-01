@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
 const CleanPlugin = require('clean-webpack-plugin');
@@ -122,16 +123,16 @@ const config = {
     },
     optimization: {
         splitChunks: {
-          chunks: 'all',
-          automaticNameDelimiter: '-',
-          name: true,
-          cacheGroups: {
-            vendors: {
-              test: /[\\/]node_modules[\\/](jquery|foundation-sites|shufflejs)[\\/]/,
-              name: 'main-vendors',
-              priority: 1
+            automaticNameDelimiter: '-',
+            name: true,
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/](jquery|foundation-sites|shufflejs)[\\/]/,
+                    chunks: 'all',
+                    name: 'main-vendors',
+                    priority: 1
+                }
             }
-          }
         }
     }, 
     plugins: [
@@ -145,7 +146,11 @@ const config = {
         }),
         new CopyWebpackPlugin([
             { from: 'fonts/**/', to: 'fonts' }
-        ], { copyUnmodified: true })
+        ], { copyUnmodified: true }),
+        new webpack.ProvidePlugin({
+            '$': 'jquery',
+            '_': 'lodash'
+        })
     ]
 };
 

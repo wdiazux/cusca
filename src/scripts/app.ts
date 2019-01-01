@@ -1,7 +1,7 @@
 // jQuery
 // ------
 
-import $ = require('jquery');
+import jQuery = require('jquery');
 
 // Images
 // -------
@@ -19,16 +19,15 @@ const images = importAll(require.context('../img/', false, /\.(png|gif|jpe?g|svg
 // -----------
 
 import 'foundation-sites';
-$(function() {
+$(document).ready(() => {
     $(document).foundation();
 });
 
 // Grid
 // ----
-//import * as Shuffle from 'shufflejs';
 const Shuffle = require('shufflejs').default;
 
-$(function () {
+$(document).ready(() => {
     const shuffleInstance = new Shuffle(document.querySelector('.post-feed'), {
         itemSelector: '.post-card',
         sizer: '.post-card-ex'
@@ -37,26 +36,26 @@ $(function () {
 
 // Pagination
 // ----------
-$(function () {
+$(document).ready(() => {
     const pagination = (currentPage: number, pageCount: number) => {
-        const delta = 2
+        const delta = 2;
 
-        let range = []
+        let range = [];
         for (let i = Math.max(2, currentPage - delta); i <= Math.min(pageCount - 1, currentPage + delta); i++) {
-            range.push(i)
+            range.push(i);
         }
 
         if (currentPage - delta > 2) {
-            range.unshift('...')
+            range.unshift('...');
         }
         if (currentPage + delta < pageCount - 1) {
-            range.push('...')
+            range.push('...');
         }
 
-        range.unshift(1)
-        range.push(pageCount)
+        range.unshift(1);
+        range.push(pageCount);
 
-        return range
+        return range;
     }
 
     const createPagination = () => {
@@ -65,17 +64,16 @@ $(function () {
         let url = window.location.href;
 
         if(totalPages > 1) {
-            var paginationArr = pagination(currentPage, totalPages);
-            var paginationItem;
-            var isCurrent = '';
+            let paginationArr = pagination(currentPage, totalPages);
+            let paginationItem:string;
 
-            for (var i = paginationArr.length - 1; i >= 0; i--) {
-                var pageNum = paginationArr[i];
+            for (let i = paginationArr.length - 1; i >= 0; i--) {
+                let pageNum = paginationArr[i];
 
                 if (pageNum === currentPage) {
                     paginationItem = '<li class="current">' + pageNum + '</li>';
                 } else if (typeof pageNum === 'number') {
-                    var urlArray = url.split('/');
+                    let urlArray = url.split('/');
                     if(urlArray[urlArray.length - 3] === 'page') {
                         url = url.replace(/\/page\/.*$/,'') + '/';
                     }
@@ -100,7 +98,6 @@ $(function () {
 
 const siteHeaderBg = $('.site-header-bg');
 const siteHeader = $('.site-header');
-declare function particlesJS(tag_id: any, params: any): void;
 
 import 'particles.js';
 

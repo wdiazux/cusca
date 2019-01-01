@@ -1,4 +1,29 @@
+@import 'util/unit';
+@import 'util/breakpoint';
+@import 'components/fancybox';
+@import 'components/prismjs';
+
 #commments,
 .read-next {
   background: #f0f0f0;
+}
+
+.post-full-image {
+  display: flex;
+  width: 100%;
+  height: 500px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  @include breakpoint(medium down) {
+    height: 350px;
+  }
+  @include breakpoint(small down) {
+    height: 250px;
+  }
+}
+
+.post-full-title {
+  text-align: center;
+  margin-bottom: 2rem;
 }
