@@ -149,7 +149,7 @@ const config = {
         ], { copyUnmodified: true }),
         new webpack.ProvidePlugin({
             '$': 'jquery',
-            '_': 'lodash'
+            'jQuery': 'jquery'
         })
     ]
 };
