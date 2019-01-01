@@ -1,7 +1,7 @@
 {{!-- The big featured header, it uses blog cover image as a BG if available --}}
 <header class="site-header" id="site-header">
     {{!--  Featured image --}}
-    {{#is "home, paged, tag, author"}}
+    {{#is "index, tag, author"}}
         <div class="site-header-bg" id="site-header-bg">
             <div class="cover-image" style="background: url({{#if @blog.cover_image}} {{@blog.cover_image}} {{else}}{{asset "img/sven-scheuermeier-178631-unsplash.jpg" }}{{/if}}) no-repeat bottom center; background-size: cover;"></div>
             <div class="header-overlay"></div>
@@ -39,7 +39,7 @@
             <div class="site-header-content grid-container">
                 <div class="header-title-inner grid-x">
 
-                    {{#is "home, paged"}}
+                    {{#is "index"}}
                         {{#if @blog.logo}}
                             <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}" />
                         {{else}}
@@ -85,7 +85,6 @@
                             {{/author}}
                         {{/is}}
                     {{/is}}
-
                 </div>
             </div>
         </div>
