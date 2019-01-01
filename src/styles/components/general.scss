@@ -4,14 +4,23 @@ body .hidden {
 body .no-margin {
   margin: 0;
 }
+
+// Buttons
+// -------
 button:focus {
   outline:0;
 }
+
+// Code
+// ----
 code {
   padding: 0;
   border: 0;
   font-weight: inherit;
 }
+
+// List
+// ----
 .horizontal-list {
   display: flex;
   padding: 0;
@@ -24,6 +33,9 @@ code {
   box-direction: normal;
   list-style: none;
 }
+
+// Classes
+// -------
 .align-center {
   text-align: center;
 }

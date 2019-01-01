@@ -61,6 +61,26 @@
 //  56. Xy Grid
 @import '~foundation-sites/scss/util/util';
 
+
+// Colors
+// ------
+
+$white:       #fefefe;
+$black:       #0a0a0a;
+$red:         #e72c30;
+$orange:      #f0ad4e;
+$yellow:      #ffd500;
+$green:       #5cb85c;
+$blue:        #1779ba;
+$light-red:   #f9f2f4;
+
+// Create grayscale
+$dark-gray:     #292b2c;
+$gray:          #888;
+$light-gray:    #636c72;
+$medium-gray:   #D9D9D9;
+$lightest-gray: #f7f7f9;
+
 // 1. Global
 // ---------
 
@@ -69,10 +89,10 @@ $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
         primary: #cc4b37,
-        secondary: #1779ba,
-        success: #3adb76,
-        warning: #ffae00,
-        alert: #e72c30,
+        secondary: $blue,
+        success: $green,
+        warning: $orange,
+        alert: $red,
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
@@ -160,12 +180,12 @@ $header-small-font-color: $medium-gray;
 $paragraph-lineheight: 1.6;
 $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
-$code-color: $black;
+$code-color: $primary-color;
 $code-font-family: $font-family-monospace;
 $code-font-weight: $global-weight-normal;
-$code-background: $light-gray;
-$code-border: 1px solid $medium-gray;
-$code-padding: rem-calc(2 5 1);
+$code-background: $lightest-gray;
+$code-border: none;
+$code-padding: rem-calc(4 6.4);
 $anchor-color: $primary-color;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 $anchor-text-decoration: none;
