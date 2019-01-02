@@ -46,17 +46,11 @@
 
                     {{#has author="count:>1"}}
                         {{> "byline-multiple"}}
-                {{else}}
+                    {{else}}
                         {{> "byline-single"}}
                     {{/has}}
 
                 </footer>
-
-                {{!--
-                <section class="post-full-comments">
-                If you want to embed comments, this is a good place to do it!
-                </section>
-                --}}
 
             </article>
 
@@ -64,7 +58,7 @@
     </main>
 
     {{!-- Links to Previous/Next posts --}}
-    <aside class="read-next">
+    <section id="read-next" class="read-next">
         <div class="grid-container">
             <div class="read-next-feed">
                 {{#if primary_tag}}
@@ -112,10 +106,10 @@
 
             </div>
         </div>
-    </aside>
+    </section>
 
     {{!-- Comments --}}
-    <section id="comments">
+    <section id="comments" class="comments">
         <div class="grid-container">
             <h3>Comments:</h3>
 
@@ -128,7 +122,7 @@
              (function() { // DON'T EDIT BELOW THIS LINE
                  var d = document, s = d.createElement('script');
                  s.async = true;
-                 s.src = 'https://[your-disqus-name].disqus.com/embed.js';
+                 s.src = 'https://wdiaz.disqus.com/embed.js';
                  s.setAttribute('data-timestamp', +new Date());
                  (d.head || d.body).appendChild(s);
              })();

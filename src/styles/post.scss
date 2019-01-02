@@ -3,9 +3,15 @@
 @import 'components/fancybox';
 @import 'components/prismjs';
 
-#commments,
+.comments,
 .read-next {
   background: #f0f0f0;
+}
+.read-next {
+  padding: 2rem;
+}
+.comments {
+  padding-bottom: 3rem;
 }
 
 .post-full-image {
