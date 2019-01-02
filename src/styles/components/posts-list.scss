@@ -1,96 +1,96 @@
 .post-card {
-    a {
-        @extend %body-color-anchor;
-    }
+  a {
+     @extend %body-color-anchor;
+  }
 }
 .post-card-content {
-    padding: 0.75rem;
+  padding: 0.75rem;
 }
 .post-card-inner {
-    position: relative;
-    border-radius: 5px;
-    overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .post-card-meta {
-    display: flex;
-    flex-flow: row wrap;
-    box-orient: horizontal;
-    box-direction: normal;
-    justify-content: space-between;
-    font-size: rem-calc(13);
-    
-    > * {
-        flex: 0 0 auto;
-    }
+  display: flex;
+  flex-flow: row wrap;
+  box-orient: horizontal;
+  box-direction: normal;
+  justify-content: space-between;
+  font-size: rem-calc(13);
+
+  > * {
+    flex: 0 0 auto;
+  }
 }
 .post-card-inner {
-    background: $white;
+  background: $white;
 }
 .post-card-featured-image {
-    position: relative;
-    &:hover,
-    &:focus {
-        .post-card-image {
-            img {
-                transform: matrix(1.2,0,0,1.2,0,0)
-            }
-            &:before {
-                opacity: 1;
-            }
-        }
+  position: relative;
+  &:hover,
+  &:focus {
+    .post-card-image {
+      img {
+        transform: matrix(1.2,0,0,1.2,0,0)
+      }
+      &:before {
+        opacity: 1;
+      }
     }
+  }
 }
 .post-card-image {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  img {
+    display: block;
     width: 100%;
+    height: auto;
+    outline: 0;
+    border: none;
+    transition: all 0.3s ease-in-out;
+  }
 
-    img {
-        display: block;
-        width: 100%;
-        height: auto;
-        outline: 0;
-        border: none;
-        transition: all 0.3s ease-in-out;
-    }
-
-    &:before {
-        position: absolute;
-        content: " ";
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        z-index: 1;
-        background: rgba(0, 0, 0, 0.6);
-        transition: all 0.3s ease-in-out;
-    }
+  &:before {
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease-in-out;
+  }
 }
 .post-card-ex {
-    max-height: 10px;
+  display: none;
+  max-height: 10px;
 }
 .author-list {
-    display: inline-flex;
-    margin: 0;
-    max-width: calc(100% - 150px);
+  display: inline-flex;
+  margin: 0;
 }
 .author-list-item {
+  display: inline-flex;
+  position: relative;
+
+  > a {
     display: inline-flex;
     position: relative;
-
-    > a {
-        display: inline-flex;
-        position: relative;
-        align-items: center;
-    }
+    align-items: center;
+  }
 }
 .static-avatar {
-    display: inline-block;
-    margin: 0 5px 0 0;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: $primary-color;
+  display: inline-block;
+  margin: 0 5px 0 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: $primary-color;
 }

@@ -1,0 +1,23 @@
+.read-next {
+  .post-card-featured-image {
+    &:hover,
+    &:focus {
+      .post-card-image {
+        img {
+          transform: matrix(1.2,0,0,1.2,0,-100)
+        }
+      }
+    }
+    .tags {
+      max-height: calc(100% - 10px);
+    }
+  }
+  .post-card-image {
+    height: 150px;
+    img {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
