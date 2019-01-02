@@ -39,7 +39,8 @@
 }
 
 .title-wrapper,
-.post-content {
+.post-content,
+.comments-container {
   @include breakpoint(medium up) {
     @include xy-cell(8);
     @include xy-cell-offset(2, $gutters: $grid-margin-gutters, $gutter-type: margin);
