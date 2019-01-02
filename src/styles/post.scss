@@ -1,5 +1,8 @@
+@import 'settings';
+@import '_global';
 @import 'util/unit';
 @import 'util/breakpoint';
+@import 'xy-grid/_xy-grid';
 @import 'components/post-feed';
 @import 'components/fancybox';
 @import 'components/prismjs';
@@ -33,4 +36,12 @@
 .post-full-title {
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.title-wrapper,
+.post-content {
+  @include breakpoint(medium up) {
+    @include xy-cell(8);
+    @include xy-cell-offset(2, $gutters: $grid-margin-gutters, $gutter-type: margin);
+  }
 }
