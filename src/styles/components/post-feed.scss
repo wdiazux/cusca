@@ -1,10 +1,28 @@
 .read-next {
+
+  .post-card {
+    display: flex;
+    position: relative;
+    margin: 0 20px 40px;
+    flex: 1 1 300px;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 300px;
+  }
+  .post-card-content,
+  .post-card-inner {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   .post-card-featured-image {
     &:hover,
     &:focus {
       .post-card-image {
         img {
-          transform: matrix(1.2,0,0,1.2,0,-100)
+          transform: matrix(1.2,0,0,1.2,0,0) translateY(-50%);
         }
       }
     }
@@ -20,4 +38,9 @@
       transform: translateY(-50%);
     }
   }
+}
+
+.related-articles {
+  display: flex;
+  flex-flow: row wrap;
 }

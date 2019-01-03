@@ -28,10 +28,13 @@ $(document).ready(() => {
 const Shuffle = require('shufflejs').default;
 
 $(document).ready(() => {
-    const shuffleInstance = new Shuffle(document.querySelector('.post-feed'), {
-        itemSelector: '.post-card',
-        sizer: '.post-card-ex'
-    });
+    const postFeed = document.querySelector('.post-feed');
+    if(document.body.contains(postFeed)) {
+        const shuffleInstance = new Shuffle(postFeed, {
+            itemSelector: '.post-card',
+            sizer: '.post-card-ex'
+        });
+    }
 });
 
 // Pagination

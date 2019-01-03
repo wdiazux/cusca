@@ -14,9 +14,8 @@
 .post-card-meta {
   display: flex;
   flex-flow: row wrap;
-  box-orient: horizontal;
-  box-direction: normal;
   justify-content: space-between;
+  align-items: flex-end;
   font-size: rem-calc(13);
 
   > * {
@@ -68,8 +67,10 @@
   }
 }
 .post-card-ex {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   max-height: 10px;
+  z-index: -100;
 }
 .author-list {
   display: inline-flex;

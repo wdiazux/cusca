@@ -61,51 +61,51 @@
 
     {{!-- Links to Previous/Next posts --}}
     <section id="read-next" class="read-next">
-        <div class="grid-container">
-            <div class="post-feed grid-x grid-padding-x grid-padding-y small-up-1 medium-up-2 large-up-3">
-                    {{#if primary_tag}}
-                        {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
-                            {{#if related_posts}}
-                                <article class="read-next-card post-card cell no-image"
-                                         {{#if ../primary_tag.feature_image}}
-                                         style="background-image: url({{../primary_tag.feature_image}})"
-                                         {{else}}
-                                         {{#if @blog.cover_image}}
-                                         style="background-image: url({{@blog.cover_image}})"{{/if}}
-                                         {{/if}}
-                                >
-                                    <header class="read-next-card-header">
-                                        <small class="read-next-card-header-sitetitle">&mdash; {{@blog.title}} &mdash;</small>
-                                        {{#../primary_tag}}
-                                            <h3 class="read-next-card-header-title"><a href="{{url}}">{{name}}</a></h3>
-                                        {{/../primary_tag}}
-                                    </header>
-                                    <div class="read-next-divider">{{> "icons/infinity"}}</div>
-                                    <div class="read-next-card-content">
-                                        <ul>
-                                            {{#foreach related_posts}}
-                                                <li><a href="{{url}}">{{title}}</a></li>
-                                            {{/foreach}}
-                                        </ul>
-                                    </div>
-                                    <footer class="read-next-card-footer">
-                                        <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='No posts' singular='% post' plural='See all % posts'}} →</a>
-                                    </footer>
-                                </article>
-                            {{/if}}
-                        {{/get}}
+        <div class="related-articles">
+            {{#if primary_tag}}
+                {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
+                    {{#if related_posts}}
+                        <article class="read-next-card post-card no-image"
+                                 {{#if ../primary_tag.feature_image}}
+                                     style="background-image: url({{../primary_tag.feature_image}})"
+                                 {{else}}
+                                     {{#if @blog.cover_image}}
+                                         style="background-image: url({{@blog.cover_image}})"
+                                     {{/if}}
+                                 {{/if}}
+                        >
+                            <div class="post-card-inner">
+                                <header class="read-next-card-header">
+                                    {{#../primary_tag}}
+                                        <h3 class="read-next-card-header-title"><a href="{{url}}">#{{name}}</a></h3>
+                                    {{/../primary_tag}}
+                                </header>
+                                <div class="read-next-divider">{{> "icons/infinity"}}</div>
+                                <div class="read-next-card-content">
+                                    <ul>
+                                        {{#foreach related_posts}}
+                                            <li><a href="{{url}}">{{title}}</a></li>
+                                        {{/foreach}}
+                                    </ul>
+                                </div>
+                                <footer class="read-next-card-footer">
+                                    <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='No posts' singular='% post' plural='See all % posts'}} →</a>
+                                </footer>
+                            </div>
+                        </article>
                     {{/if}}
+                {{/get}}
+            {{/if}}
 
-                    {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs --}}
-                    {{#next_post}}
-                        {{> "feed-card"}}
-                    {{/next_post}}
+            {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs --}}
+            {{#next_post}}
+                {{> "feed-card"}}
+            {{/next_post}}
 
-                    {{!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs --}}
-                    {{#prev_post}}
-                        {{> "feed-card"}}
-                    {{/prev_post}}
-            </div>
+            {{!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs --}}
+            {{#prev_post}}
+                {{> "feed-card"}}
+            {{/prev_post}}
         </div>
     </section>
 
