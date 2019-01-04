@@ -3,7 +3,7 @@
     {{!--  Featured image --}}
     {{#is "index, tag, author"}}
         <div class="site-header-bg" id="site-header-bg">
-            <div class="cover-image" style="background: url({{#if @blog.cover_image}} {{@blog.cover_image}} {{else}}{{asset "img/sven-scheuermeier-178631-unsplash.jpg" }}{{/if}}) no-repeat bottom center; background-size: cover;"></div>
+            <div class="cover-image" style="background: url({{#if @blog.cover_image}} {{@blog.cover_image}} {{else}}{{asset "img/sven-scheuermeier-178631-unsplash.jpg" }}{{/if}}) no-repeat center center; background-size: cover;"></div>
             <div class="header-overlay"></div>
         </div>
     {{/is}}
