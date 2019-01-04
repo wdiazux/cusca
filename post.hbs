@@ -15,10 +15,11 @@
         <div class="grid-container post-container">
 
             <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
-
                 <header class="post-full-header">
                     {{#if feature_image}}
-                        <figure class="post-full-image" style="background: url({{feature_image}}) no-repeat center center; background-size: cover;"></figure>
+                        <figure class="post-full-image">
+                            <img src="{{feature_image}}">
+                        </figure>
                     {{/if}}
 
                     <section class="post-full-meta">
@@ -42,9 +43,9 @@
                 <footer class="post-full-footer">
 
                     {{!-- There are two options for how we display the byline/author-info.
-                    If the post has more than one author, we load a specific template
-                    from includes/byline-multiple.hbs, otherwise, we just use the
-                    default byline. --}}
+                           If the post has more than one author, we load a specific template
+                           from includes/byline-multiple.hbs, otherwise, we just use the
+                           default byline. --}}
 
                     {{#has author="count:>1"}}
                         {{> "byline-multiple"}}
@@ -53,7 +54,6 @@
                     {{/has}}
 
                 </footer>
-
             </article>
 
         </div>
@@ -61,51 +61,58 @@
 
     {{!-- Links to Previous/Next posts --}}
     <section id="read-next" class="read-next">
-        <div class="related-articles">
-            {{#if primary_tag}}
-                {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
-                    {{#if related_posts}}
-                        <article class="read-next-card post-card no-image"
-                                 {{#if ../primary_tag.feature_image}}
-                                     style="background-image: url({{../primary_tag.feature_image}})"
-                                 {{else}}
-                                     {{#if @blog.cover_image}}
-                                         style="background-image: url({{@blog.cover_image}})"
+        <div class="grid-container">
+            <div class="related-articles">
+                {{#if primary_tag}}
+                    {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
+                        {{#if related_posts}}
+                            <article class="read-next-card post-card no-image"
+                                     {{#if ../primary_tag.feature_image}}
+                                         style="background: url({{../primary_tag.feature_image}}) no-repeat center center; background-size: cover;"
+                                     {{else}}
+                                         {{#if @blog.cover_image}}
+                                             style="background: url({{@blog.cover_image}}) no-repeat center center; background-size: cover;"
+                                         {{else}}
+                                             style="background: url({{asset "img/photo-1523980669340-3d154e47d5fd.jpg"}}) no-repeat center center; background-size: cover;"
+                                         {{/if}}
                                      {{/if}}
-                                 {{/if}}
-                        >
-                            <div class="post-card-inner">
-                                <header class="read-next-card-header">
-                                    {{#../primary_tag}}
-                                        <h3 class="read-next-card-header-title"><a href="{{url}}">#{{name}}</a></h3>
-                                    {{/../primary_tag}}
-                                </header>
-                                <div class="read-next-divider">{{> "icons/infinity"}}</div>
-                                <div class="read-next-card-content">
-                                    <ul>
-                                        {{#foreach related_posts}}
-                                            <li><a href="{{url}}">{{title}}</a></li>
-                                        {{/foreach}}
-                                    </ul>
+                            >
+                                <div class="post-card-inner">
+                                    <div class="post-card-content">
+                                        <header class="read-next-card-header">
+                                            {{#../primary_tag}}
+                                                <h3 class="read-next-card-header-title">
+                                                    <a href="{{url}}"><i class="fas fa-bookmark"></i> {{name}}</a>
+                                                </h3>
+                                            {{/../primary_tag}}
+                                        </header>
+                                        <div class="read-next-card-content">
+                                            <ul>
+                                                {{#foreach related_posts}}
+                                                    <li><a href="{{url}}">{{title}}</a></li>
+                                                {{/foreach}}
+                                            </ul>
+                                        </div>
+                                        <footer class="read-next-card-footer">
+                                            <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='No posts' singular='% post' plural='See all % posts'}} →</a>
+                                        </footer>
+                                    </div>
                                 </div>
-                                <footer class="read-next-card-footer">
-                                    <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='No posts' singular='% post' plural='See all % posts'}} →</a>
-                                </footer>
-                            </div>
-                        </article>
-                    {{/if}}
-                {{/get}}
-            {{/if}}
+                            </article>
+                        {{/if}}
+                    {{/get}}
+                {{/if}}
 
-            {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs --}}
-            {{#next_post}}
-                {{> "feed-card"}}
-            {{/next_post}}
+                {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs --}}
+                {{#next_post}}
+                    {{> "feed-card"}}
+                {{/next_post}}
 
-            {{!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs --}}
-            {{#prev_post}}
-                {{> "feed-card"}}
-            {{/prev_post}}
+                {{!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs --}}
+                {{#prev_post}}
+                    {{> "feed-card"}}
+                {{/prev_post}}
+            </div>
         </div>
     </section>
 

@@ -1,13 +1,17 @@
 .read-next {
-
   .post-card {
     display: flex;
     position: relative;
     margin: 0 20px 40px;
-    flex: 1 1 300px;
+    flex: 1 1 250px;
     flex-direction: column;
-    overflow: hidden;
-    min-height: 300px;
+
+    &:first-child {
+      margin: 0 20px 40px 0;
+    }
+    &:last-child {
+      margin: 0 0 40px 20px;
+    }
   }
   .post-card-content,
   .post-card-inner {
@@ -16,6 +20,7 @@
     flex-direction: column;
     justify-content: space-between;
   }
+
 
   .post-card-featured-image {
     &:hover,
@@ -31,7 +36,7 @@
     }
   }
   .post-card-image {
-    height: 150px;
+    height: 135px;
     img {
       position: absolute;
       top: 50%;
@@ -40,7 +45,70 @@
   }
 }
 
+.read-next-card {
+  color: $white;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background: linear-gradient(135deg, rgba(26,41,64,.95), rgba(26,41,64,.85));
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .post-card-inner {
+    background: none;
+  }
+  a {
+    color: $white;
+
+    &:hover,
+    &:focus {
+      color: $white;
+    }
+  }
+}
+
 .related-articles {
   display: flex;
   flex-flow: row wrap;
+}
+
+.read-next-card-header-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+
+  i {
+    font-size: 70%;
+  }
+}
+.read-next-card-content {
+  ul {
+    margin: 0;
+    list-style: none;
+     > li {
+       a {
+         display: block;
+         max-width: 86%;
+         margin-left: 7%;
+         padding: rem-calc(15 0);
+         text-align: center;
+         font-weight: 500;
+         border-bottom: 1px solid hsla(0,0%,100%,.3);
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+       }
+     }
+  }
+}
+
+.read-next-card-footer {
+  position: relative;
+  margin: rem-calc(15 0 3);
+  text-align: center;
 }
