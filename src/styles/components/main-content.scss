@@ -2,7 +2,12 @@
   padding: 3rem 0 3rem 0;
   background: #f0f0f0;
 }
+
+.post-template .main-content,
+.page-template .main-content {
+  background: #fff;
+}
+
 .post-template .main-content {
   padding: 3rem 0 0 0;
-  background: #fff;
 }

@@ -132,6 +132,7 @@
   position: relative;
   padding: rem-calc(5 10);
   margin-bottom: rem-calc(25);
+  font-size: 87%;
   background: $lightest-gray;
 
   .fa,
@@ -159,6 +160,7 @@
   width: 100%;
   bottom: 0;
   left: 0;
+  font-size: 87%;
   color: $white;
   background: rgba(0, 0, 0, 0.8);
   z-index: 20;

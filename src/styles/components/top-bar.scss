@@ -3,6 +3,9 @@
 $header-background: #1a2940;
 $header-font-color: #91a2bd;
 
+.sticky.is-stuck {
+  z-index: 100;
+}
 
 .top-bar {
   color: $header-font-color;
