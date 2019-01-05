@@ -4,6 +4,7 @@
 @import 'util/breakpoint';
 @import 'xy-grid/_xy-grid';
 @import 'components/post-feed';
+@import 'components/spinkit';
 @import 'components/fancybox';
 @import 'components/prismjs';
 
@@ -18,18 +19,95 @@
   padding-bottom: 3rem;
 }
 
+%rectangle {
+  position: absolute;
+  content: '';
+  top: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.post-full-image {
+  img,
+  .post-full-image-background,
+  .post-full-meta {
+    opacity: 0;
+    transition-property: transform,opacity;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-in;
+  }
+}
+
+.post-full-image.loaded {
+  img,
+  .post-full-image-background,
+  .post-full-meta {
+    opacity: 1;
+  }
+}
+
 .post-full-image {
   display: block;
+  position: relative;
   width: 100%;
   height: 500px;
   overflow: hidden;
   text-align: center;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  background: rgb(241, 241, 241);
+
+  &:before {
+    @extend %rectangle;
+    width: 250px;
+    height: 250px;
+    left: 6%;
+    transform: rotate(45deg);
+  }
+  &:after {
+    @extend %rectangle;
+    width: 250px;
+    height: 250px;
+    left: 12%;
+    transform: rotate(135deg);
+  }
+
+  @include breakpoint(medium) {
+    &:before {
+      width: 350px;
+      height: 350px;
+    }
+    &:after {
+      width: 350px;
+      height: 350px;
+    }
+  }
+  @include breakpoint(large) {
+    &:before {
+      width: 500px;
+      height: 500px;
+    }
+    &:after {
+      width: 500px;
+      height: 500px;
+    }
+  }
 
   img {
-    width: auto;
-    max-height: 100%;
+    position: absolute;
+    max-width: 90%;
+    max-height: 87%;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 10px;
+    z-index: 4;
+    transform: translateY(-40%);
+  }
+  &.loaded img {
+    transform: translateY(-53%);
   }
 
   @include breakpoint(medium down) {
@@ -37,6 +115,52 @@
   }
   @include breakpoint(small down) {
     height: 250px;
+  }
+}
+
+.post-full-image-background {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0)
+}
+
+.post-full-meta {
+  position: absolute;
+  padding: rem-calc(5 10);
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  color: $white;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+  text-align: left;
+
+  .fa,
+  .far,
+  .fas {
+    font-size: 80%;
+  }
+
+  .meta-divider {
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    margin: 0 10px;
+    background: rgba(255, 255, 255, 0.5)
+  }
+
+  .meta-tag {
+    text-transform: uppercase;
+    color: $white;
+
+    &:hover,
+    &:focus {
+      color: $white;
+    }
   }
 }
 

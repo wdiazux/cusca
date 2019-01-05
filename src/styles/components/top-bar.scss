@@ -6,6 +6,7 @@ $header-font-color: #91a2bd;
 
 .top-bar {
   color: $header-font-color;
+  z-index: 100;
 
   a,
   .bar-icon {
@@ -26,6 +27,27 @@ $header-font-color: #91a2bd;
   .bar-icon {
     font-size: rem-calc(25);
     cursor: pointer;
+  }
+  .search-hot {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+    }
+  }
+  .search-icon {
+    padding: .7rem 1rem;
+    cursor: pointer;
+  }
+  @include breakpoint(large) {
+    .search-menu-text {
+      display: none;
+    }
   }
 }
 
@@ -52,7 +74,11 @@ $header-font-color: #91a2bd;
 
 .top-bar-right {
   max-height: 200px;
-  overflow-y: auto;
+  overflow-y: hidden;
+
+  &:hover {
+    overflow-y: auto;
+  }
 
   @include breakpoint(medium down) {
     display: none;

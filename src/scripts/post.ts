@@ -26,7 +26,64 @@ import 'prismjs/components/prism-handlebars';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-typescript';
 
+
+// Feature Image Background
+// ------------------------
+
+import Vibrant = require('node-vibrant');
+
+//import 'jquery.adaptive-backgrounds/src/jquery.adaptive-backgrounds';
+
+
 $(document).ready(() => {    
+    // Feature Image Background
+    // ------------------------
+    const featureImageCt = <HTMLElement>document.querySelector('.post-full-image');
+    if(featureImageCt) {
+        const featureImage = featureImageCt.querySelector('img');
+        const postFullImageBg = <HTMLElement>document.querySelector('.post-full-image-background'); 
+        let paletteReady:boolean = false;
+        let featureColor:string;
+        
+        let featureImageElm = new Image();
+        featureImageElm.src = featureImage.src;
+        
+        featureImageElm.addEventListener('load', () => {
+            if(!paletteReady) getPalette();
+        });
+        
+        const getPalette = () => {
+            paletteReady = true;
+            
+            Vibrant.from(featureImage.src).getPalette((err, palette) => {
+                let paletteColor:string;
+                let bgColor:string; 
+                
+                if(palette['DarkVibrant']) { paletteColor = 'DarkVibrant'; }
+                else if(palette['DarkMuted']) { paletteColor = 'DarkMuted'; }
+                else if(palette['Vibrant']) { paletteColor = 'Vibrant'; }
+                else { paletteColor = 'Nothing'; }
+                
+                if(paletteColor !== 'Nothing') {
+                    bgColor = palette[paletteColor].getRgb().join();
+                } else {
+                    bgColor = '255, 255, 255';
+                } 
+                
+                featureImageCt.classList.add('loaded');
+                featureImageCt.style.background = 'url(' + featureImage.src + ') no-repeat center center;';
+                featureImageCt.style.backgroundSize = 'cover';
+                postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
+               
+                setTimeout(() => {
+                    const spinKit = document.getElementById('spinkit');
+                    spinKit.parentNode.removeChild(spinKit); 
+                }, 600);
+            });
+        }
+    }
+    
+    //$.adaptiveBackground.run();
     // Fancybox
     // ---------
     const wrapImages = (elem:string, elemClass:string, exclude:string) => {
