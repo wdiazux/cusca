@@ -32,7 +32,7 @@
                                 <div class="sk-cube sk-cube9"></div>
                             </div>
 
-                            <section class="post-full-meta">
+                            <section class="post-full-meta-feature">
                                 <i class="far fa-calendar-alt"></i> <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
                                 {{#primary_tag}}
                                     <div class="meta-divider"></div> <i class="fas fa-tag"></i> <a href="{{url}}" class="meta-tag">{{name}}</a>
@@ -44,6 +44,15 @@
                     <div class="title-wrapper">
                         <h1 class="post-full-title">{{title}}</h1>
                     </div>
+
+                    {{#unless feature_image}}
+                        <section class="post-full-meta">
+                            <i class="far fa-calendar-alt"></i> <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                            {{#primary_tag}}
+                                <div class="meta-divider"></div> <i class="fas fa-tag"></i> <a href="{{url}}" class="meta-tag">{{name}}</a>
+                            {{/primary_tag}}
+                        </section>
+                    {{/unless}}
                 </header>
 
 

@@ -1,44 +1,59 @@
 {{!< default}}
 {{!-- The tag above means: insert everything in this file
-into the {body} of the default.hbs template --}}
+   into the {body} of the default.hbs template --}}
 
+{{#contentFor "styles"}}
+    <link rel="stylesheet" type="text/css" href="{{asset "styles/post.css"}}"/>
+{{/contentFor}}
 
 {{!-- Everything inside the #post tags pulls data from the post --}}
 {{#post}}
 
-<main id="site-main" class="site-main outer">
-    <div class="inner">
+    <main id="site-main" class="site-main">
+        <div class="grid-container post-container">
 
-        <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
+            <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
 
-            <header class="post-full-header">
-                <h1 class="post-full-title">{{title}}</h1>
-            </header>
+            <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
+                <header class="post-full-header">
+                    {{#if feature_image}}
+                        <figure class="post-full-image">
+                            <div class="post-full-image-background"></div>
+                            <img src="{{feature_image}}" />
+                            <div class="sk-cube-grid" id="spinkit">
+                                <div class="sk-cube sk-cube1"></div>
+                                <div class="sk-cube sk-cube2"></div>
+                                <div class="sk-cube sk-cube3"></div>
+                                <div class="sk-cube sk-cube4"></div>
+                                <div class="sk-cube sk-cube5"></div>
+                                <div class="sk-cube sk-cube6"></div>
+                                <div class="sk-cube sk-cube7"></div>
+                                <div class="sk-cube sk-cube8"></div>
+                                <div class="sk-cube sk-cube9"></div>
+                            </div>
 
-            {{#if feature_image}}
-            <figure class="post-full-image" style="background-image: url({{feature_image}})">
-            </figure>
-            {{/if}}
+                        </figure>
+                    {{/if}}
 
-            <section class="post-full-content">
-                <div class="post-content">
-                    {{content}}
-                </div>
-            </section>
+                    <div class="title-wrapper">
+                        <h1 class="post-full-title">{{title}}</h1>
+                    </div>
+                </header>
 
-        </article>
+                <section class="post-full-content">
+                    <div class="post-content">
+                        {{content}}
+                    </div>
+                </section>
 
-    </div>
-</main>
+            </article>
+
+        </div>
+    </main>
 
 {{/post}}
 
 {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
 {{#contentFor "scripts"}}
-<script>
-$(function() {
-    var $postContent = $(".post-full-content");
-    $postContent.fitVids();
-});
-</script>
+    <script type="text/javascript" defer src="{{asset "/scripts/post.js"}}"></script>
 {{/contentFor}}
