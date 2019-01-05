@@ -102,4 +102,4 @@ ga('send', 'pageview');
 
 ## License
 
-The theme is under the MIT License, but if you are going to use the for commercial purposes, please note the libraries are not all free.
+This version is using the MIT license and the libraries are also MIT or compatibles with it.
