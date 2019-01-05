@@ -15,14 +15,12 @@ Is the abbreviation for Cuscatlán, it was the name of El Salvador before the co
 
 Cusca was development using [Foundation](http://foundation.zurb.com), and other libraries:
 
+- [Shuffle](https://vestride.github.io/Shuffle/)
 - [Fancybox](http://fancyapps.com/fancybox/3/)
-- [FluidVids](https://github.com/toddmotto/fluidvids)
 - [FontAwesome](http://fontawesome.io)
-- [ImagesLoaded](https://imagesloaded.desandro.com)
-- [Isotope](https://isotope.metafizzy.co)
 - [Prism.js](http://prismjs.com)
-- [Wow.js](http://mynameismatthieu.com/WOW/)
-- [Skeletor Syntax](https://github.com/ramonmcros/skeletor-syntax)
+- [Node Vibrant](https://github.com/akfish/node-vibrant)
+- [Particles.js](https://vincentgarreau.com/particles.js/)
   
 ## Installation
 
@@ -68,17 +66,26 @@ You need to go to the Ghost console in `Settings > General > Social accounts`, i
 
 #### For other Networks
 
-Inside the `partials/header.hbs` file replace `[your-user]` with your user names for each social network:
+Inside the `partials/footer.hbs` file replace `[your-user]` with your user names for each social network:
 
 ```html
-<li class="nd-social-youtube">
-    <a target="_blank" href="https://www.youtube.com/user/[your-user]"><i class="fa fa-youtube fa-lg"></i></a>
+<li>
+    <a href="https://www.youtube.com/[your-user]" target="blank"><i class="fab fa-youtube"></i></a>
 </li>
-<li class="nd-social-instagram">
-    <a target="_blank" href="https://www.instagram.com/[your-user]"><i class="fa fa-instagram fa-lg"></i></a>
+<li>
+    <a href="https://www.facebook.com/[your-user]" target="blank"><i class="fab fa-facebook-f"></i></a>
 </li>
-<li class="nd-social-github">
-    <a target="_blank" href="https://github.com/[your-user]"><i class="fa fa-github fa-lg"></i></a>
+<li>
+    <a href="https://twitter.com/[your-user]" target="blank"><i class="fab fa-twitter"></i></a>
+</li>
+<li>
+    <a href="https://www.instagram.com/[your-user]" target="blank"><i class="fab fa-instagram"></i></a>
+</li>
+<li>
+    <a href="https://github.com/[your-user]" target="blank"><i class="fab fa-github-alt"></i></a>
+</li>
+<li>
+    <a href="https://www.linkedin.com/in/[your-user]" target="blank"><i class="fab fa-linkedin-in"></i></a>
 </li>
 ```
 
