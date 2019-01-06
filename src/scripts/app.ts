@@ -260,3 +260,12 @@ if(siteHeaderBg.length) {
 } else {
     siteHeader.addClass('bg');
 }
+
+
+// Search
+// ------
+
+import GhostSearch from 'ghost-search';
+console.log(GhostSearch);
+
+let ghostSearch = new GhostSearch();

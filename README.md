@@ -21,6 +21,7 @@ Cusca was development using [Foundation](http://foundation.zurb.com), and other 
 - [Prism.js](http://prismjs.com)
 - [Node Vibrant](https://github.com/akfish/node-vibrant)
 - [Particles.js](https://vincentgarreau.com/particles.js/)
+- [Ghost Search](https://github.com/HauntedThemes/ghost-search)
   
 ## Installation
 

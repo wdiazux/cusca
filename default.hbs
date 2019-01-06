@@ -35,6 +35,8 @@
 
         </div>
 
+        {{> search}}
+
         {{!-- jQuery + Fitvids, which makes all video embeds responsive --}}
         <script type="text/javascript" defer src="{{asset "/scripts/main-vendors.js"}}"></script>
         <script type="text/javascript" defer src="{{asset "/scripts/main.js"}}"></script>
@@ -45,5 +47,7 @@
         {{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
         {{ghost_foot}}
 
+        {{!-- Google Analytics --}}
+        {{> "google_analytics"}}
     </body>
 </html>
