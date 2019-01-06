@@ -23,6 +23,7 @@ $(document).ready(() => {
     $(document).foundation();
 });
 
+
 // Grid
 // ----
 const Shuffle = require('shufflejs').default;
@@ -37,8 +38,10 @@ $(document).ready(() => {
     }
 });
 
+
 // Pagination
 // ----------
+
 $(document).ready(() => {
     const pagination = (currentPage: number, pageCount: number) => {
         const delta = 2;
@@ -268,4 +271,11 @@ if(siteHeaderBg.length) {
 import GhostSearch from 'ghost-search';
 console.log(GhostSearch);
 
-let ghostSearch = new GhostSearch();
+$(document).ready(() => {
+    const search = document.querySelector('.search');
+    const openSearch = document.querySelector('[data-open-search]');
+    let ghostSearch = new GhostSearch();
+    
+    const openSearch = () => { search.style.display = 'block'; }
+    const closeSearch = () => { search.style.display = 'none'; }
+});
