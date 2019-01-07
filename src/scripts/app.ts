@@ -269,13 +269,28 @@ if(siteHeaderBg.length) {
 // ------
 
 import GhostSearch from 'ghost-search';
-console.log(GhostSearch);
+//console.log(GhostSearch);
 
 $(document).ready(() => {
-    const search = document.querySelector('.search');
-    const openSearch = document.querySelector('[data-open-search]');
-    let ghostSearch = new GhostSearch();
+    const body = document.querySelector('body');
+    const search = <HTMLElement>document.querySelector('#search');
+    const openSearchElm = document.querySelectorAll('[data-open-search]');
+    const closeSearchElm = document.querySelectorAll('[data-close-search]');
+    //let ghostSearch = new GhostSearch();
     
-    const openSearch = () => { search.style.display = 'block'; }
-    const closeSearch = () => { search.style.display = 'none'; }
+    const openSearch = () => {
+        search.style.display = 'block';
+        body.classList.add('noscroll');
+    }
+    const closeSearch = () => {
+        search.style.display = 'none';
+        body.classList.remove('noscroll');
+    }
+    
+    openSearchElm.forEach((elm) => {
+        elm.addEventListener('click', openSearch);
+    });
+    closeSearchElm.forEach((elm) => {
+        elm.addEventListener('click', closeSearch);
+    });
 });

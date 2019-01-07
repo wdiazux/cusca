@@ -89,15 +89,17 @@
                     {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
                         {{#if related_posts}}
                             <article class="read-next-card post-card no-image"
-                                     {{#if ../primary_tag.feature_image}}
-                                         style="background: url({{../primary_tag.feature_image}}) no-repeat center center; background-size: cover;"
-                                     {{else}}
-                                         {{#if @blog.cover_image}}
-                                             style="background: url({{@blog.cover_image}}) no-repeat center center; background-size: cover;"
-                                         {{else}}
-                                             style="background: url({{asset "img/photo-1523980669340-3d154e47d5fd.jpg"}}) no-repeat center center; background-size: cover;"
-                                         {{/if}}
-                                     {{/if}}
+                                         style="background: url(
+                                            {{#if ../primary_tag.feature_image}}
+                                                {{../primary_tag.feature_image}}
+                                            {{else}}
+                                                {{#if @blog.cover_image}}
+                                                    {{@blog.cover_image}}
+                                                {{else}}
+                                                    {{asset "img/photo-1523980669340-3d154e47d5fd.jpg"}}
+                                                {{/if}}
+                                            {{/if}}
+                                            ) no-repeat center center; background-size: cover;"
                             >
                                 <div class="post-card-inner">
                                     <div class="post-card-content">
