@@ -54,6 +54,7 @@ $header-font-color: #91a2bd;
   }
 }
 .header-title-inner {
+  flex-direction: column;
   text-align: center;
   justify-content: center;
   align-content: center;
@@ -63,4 +64,29 @@ $header-font-color: #91a2bd;
   margin: 0;
   color: $white;
   font-weight: bold;
+}
+.social-author {
+  text-align: center;
+
+  .horizontal-list {
+    display: inline-flex;
+
+    > li {
+      margin-right: rem-calc(15);
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+
+      a {
+        color: $header-font-color;
+
+        &:focus,
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
 }

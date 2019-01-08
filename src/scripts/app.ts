@@ -268,15 +268,14 @@ if(siteHeaderBg.length) {
 // Search
 // ------
 
-import GhostSearch from 'ghost-search';
-//console.log(GhostSearch);
+import {GhostSearch} from 'ghost-search';
 
 $(document).ready(() => {
     const body = document.querySelector('body');
     const search = <HTMLElement>document.querySelector('#search');
     const openSearchElm = document.querySelectorAll('[data-open-search]');
     const closeSearchElm = document.querySelectorAll('[data-close-search]');
-    //let ghostSearch = new GhostSearch();
+    let ghostSearch = new GhostSearch();
     
     const openSearch = () => {
         search.style.display = 'block';

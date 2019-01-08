@@ -32,8 +32,6 @@ import 'prismjs/components/prism-typescript';
 
 import Vibrant = require('node-vibrant');
 
-//import 'jquery.adaptive-backgrounds/src/jquery.adaptive-backgrounds';
-
 
 $(document).ready(() => {    
     // Feature Image Background
@@ -43,7 +41,6 @@ $(document).ready(() => {
         const featureImage = featureImageCt.querySelector('img');
         const postFullImageBg = <HTMLElement>document.querySelector('.post-full-image-background'); 
         let paletteReady:boolean = false;
-        let featureColor:string;
         
         let featureImageElm = new Image();
         featureImageElm.src = featureImage.src;
@@ -71,8 +68,8 @@ $(document).ready(() => {
                 } 
                 
                 featureImageCt.classList.add('loaded');
-                featureImageCt.style.background = 'url(' + featureImage.src + ') no-repeat center center;';
-                featureImageCt.style.backgroundSize = 'cover';
+                //featureImageCt.style.background = 'url(' + featureImage.src + ') no-repeat center center';
+                //featureImageCt.style.backgroundSize = 'cover';
                 postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
                
                 setTimeout(() => {
@@ -83,7 +80,6 @@ $(document).ready(() => {
         }
     }
     
-    //$.adaptiveBackground.run();
     // Fancybox
     // ---------
     const wrapImages = (elem:string, elemClass:string, exclude:string) => {

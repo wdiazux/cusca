@@ -204,3 +204,52 @@
     @include xy-cell-offset(2, $gutters: $grid-margin-gutters, $gutter-type: margin);
   }
 }
+
+// Images (required by Ghost)
+// --------------------------
+
+/* Preventing full-width image overlap with post image.  */
+.post-full-image + .post-full-content .kg-content *:first-child .kg-image {
+    width: 100%;
+}
+
+.post-content {
+  .kg-width-wide .kg-image {
+    //TODO
+  }
+  .kg-width-full .kg-image {
+    //TODO
+  }
+}
+
+.kg-gallery-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%; // TODO
+}
+
+.kg-gallery-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    &:not(:first-of-type) {
+      margin: 0.75em 0 0 0;
+    }
+}
+
+.kg-gallery-image {
+  img {
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &:not(:first-of-type) {
+    margin: 0 0 0 0.75em;
+  }
+}
+
+.kg-card {
+  margin: rem-calc(0 0 16);
+}
