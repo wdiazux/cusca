@@ -3,6 +3,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const CleanPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CheckerPlugin } = require('awesome-typescript-loader')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Detect Node Environment Variable and load corresponing webpack config-extras
@@ -23,6 +24,9 @@ const config = {
             './scripts/post.ts',
             './styles/post.scss'
         ]
+    },
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx']
     },
     // This next line generates source maps to help with debugging.
     // Don't want source maps? Get rid of it.
@@ -150,7 +154,8 @@ const config = {
         new webpack.ProvidePlugin({
             '$': 'jquery',
             'jQuery': 'jquery'
-        })
+        }),
+        new CheckerPlugin()
     ]
 };
 
