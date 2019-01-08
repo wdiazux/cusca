@@ -54,11 +54,13 @@ $header-font-color: #91a2bd;
   }
 }
 .header-title-inner {
-  flex-direction: column;
   text-align: center;
   justify-content: center;
   align-content: center;
   padding: rem-calc(90) 0 rem-calc(140) 0;
+}
+.author-template .header-title-inner {
+  flex-direction: column; // for social media author page
 }
 .site-title {
   margin: 0;
