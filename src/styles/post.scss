@@ -254,4 +254,8 @@
 
 .kg-card {
   margin: rem-calc(0 0 16);
+
+   > * {
+     margin: 0 auto !important;
+   }
 }

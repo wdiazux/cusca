@@ -12,6 +12,7 @@ export default class GhostSearch {
     api: any; 
     options: any; 
 
+    // TODO create a better constructor
     constructor(input?:string, results?:string, api?:any, options?:any) {
         this.input = input || '#ghost-search-field';
         this.results = results || '#ghost-search-results';
@@ -63,13 +64,14 @@ export default class GhostSearch {
         return div.firstChild; 
     }
 
-    template(result) {
-        console.log(result);
+    // TODO: create an interface
+    template(result:any) {
         let url = [location.protocol, '//', location.host].join('');
         return '<li><a href="' + url + '/' + result.slug + '/">' + result.title + '</a></li>';
     }
     
-    displayResults(data){
+    // TODO: create an interface
+    displayResults(data:any){
         let resultsElm = <HTMLElement>document.querySelector(this.results);
         if (resultsElm.nodeType) {
             while (document.querySelector(this.results).firstChild) {
@@ -94,6 +96,7 @@ export default class GhostSearch {
     }
 
 
+    // TODO: create an interface
     search(resource){
         let data = resource[this.api.resource];
         this.check = true;
