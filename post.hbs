@@ -68,12 +68,15 @@
                            If the post has more than one author, we load a specific template
                            from includes/byline-multiple.hbs, otherwise, we just use the
                            default byline. --}}
+                    <div class="post-full-container">
+                        {{#has author="count:>1"}}
+                            {{> "byline-multiple"}}
+                        {{else}}
+                            {{> "byline-single"}}
+                        {{/has}}
 
-                    {{#has author="count:>1"}}
-                        {{> "byline-multiple"}}
-                    {{else}}
-                        {{> "byline-single"}}
-                    {{/has}}
+                        {{> "share-post"}}
+                    </div>
 
                 </footer>
             </article>

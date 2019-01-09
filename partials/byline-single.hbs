@@ -3,9 +3,9 @@
     <section class="author-card">
         <a href="{{url}}" class="author" data-tooltip tabindex="1" title="{{name}}" data-position="top" data-alignment="center">
             {{#if profile_image}}
-                <img class="author-profile-image" src="{{profile_image}}" alt="{{name}}" />
+                <span class="author-profile-image" style="background: url({{profile_image}}) no-repeat center center; background-size: cover;"></span>
             {{else}}
-                <span class="avatar-wrapper">{{> "icons/avatar"}}</span>
+                <span class="author-profile-image avatar-wrapper">{{> "icons/avatar"}}</span>
             {{/if}}
         </a>
     </section>
