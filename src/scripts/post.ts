@@ -74,7 +74,9 @@ $(document).ready(() => {
                
                 setTimeout(() => {
                     const spinKit = document.getElementById('spinkit');
-                    spinKit.parentNode.removeChild(spinKit); 
+                    if(document.body.contains(spinKit)) {
+                        spinKit.parentNode.removeChild(spinKit);
+                    }
                 }, 600);
             });
         }

@@ -279,6 +279,7 @@
   background: #f0f0f0;
   max-height: 70px;
 
+  .author-list-item,
   > section:first-child {
     margin-right: rem-calc(10);
   }
@@ -307,8 +308,15 @@
   }
 }
 
+.author-list {
+  li:last-child {
+    margin-right: 0;
+  }
+}
+
 %circles {
   display: inline-block;
+  position: relative;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -328,9 +336,20 @@
 }
 .share-icon {
   @extend %circles;
+  color: $white;
   font-size: rem-calc(25);
 
   > i {
     padding: rem-calc(12);
   }
+}
+.open-share {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0);
 }

@@ -80,6 +80,11 @@
 .author-list-item {
   display: inline-flex;
   position: relative;
+  margin-right: rem-calc(5);
+
+  &:last-child {
+    margin-right: 0;
+  }
 
   > a {
     display: inline-flex;
