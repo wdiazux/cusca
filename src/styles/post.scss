@@ -353,3 +353,104 @@
   cursor: pointer;
   background: rgba(255, 255, 255, 0);
 }
+.share-post {
+  position: relative;
+
+  &:hover,
+  &:focus {
+    .share-icons {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+.share-icons {
+  position: absolute;
+  flex-flow: row nowrap;
+  padding: .75rem;
+  bottom: 125%;
+  left: 50%;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 0;
+  background-color: #0a0a0a;
+  transform: translateX(-50%);
+  transition: visibility 0.2s linear, opacity 0.2s linear;
+  z-index: 80;
+
+  &::before {
+    display: block;
+    position: absolute;
+    content: " ";
+    width: 0;
+    height: 0;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: auto;
+    border: inset 0.75rem;
+    border-bottom-width: 0;
+    border-top-style: solid;
+    border-color: #0a0a0a transparent transparent;
+  }
+
+  > li {
+    margin-right: rem-calc(7);
+  }
+}
+
+%social-circle {
+  display: inline-block;
+  position: relative;
+  padding: rem-calc(6);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+  color: $white;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $white;
+  }
+}
+.social-icon {
+  @extend %social-circle;
+}
+.icon-twitter {
+  background-color: #56ADEE;
+  &:hover, &:focus {
+    background-color: darken(#56ADEE, 20%);
+  }
+}
+.icon-facebook {
+  background-color: #4862A2;
+
+  &:hover, &:focus {
+    background-color: darken(#4862A2, 20%);
+  }
+}
+.icon-google-plus {
+  background-color: #DB4437;
+
+  &:hover, &:focus {
+    background-color: darken(#DB4437, 20%);
+  }
+}
+.icon-reddit {
+  background-color: #CEE3F8;
+
+  &:hover, &:focus {
+    background-color: darken(#CEE3F8, 20%);
+  }
+}
+.icon-flipboard {
+  background-color: #ff2a31;
+
+  &:hover, &:focus {
+    background-color: darken(#ff2a31, 20%);
+  }
+}
