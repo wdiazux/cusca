@@ -328,7 +328,6 @@
 .author-card {
   a {
     border-bottom: none;
-    cursor: pointer;
   }
   .author-profile-image {
     @extend %circles;
@@ -453,4 +452,7 @@
   &:hover, &:focus {
     background-color: darken(#ff2a31, 20%);
   }
+}
+.tooltip {
+  z-index: 80;
 }
