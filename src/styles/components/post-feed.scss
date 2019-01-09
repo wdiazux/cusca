@@ -2,15 +2,24 @@
   .post-card {
     display: flex;
     position: relative;
-    margin: 0 20px 40px;
+    margin: 0 0 2rem 0;
     flex: 1 1 250px;
     flex-direction: column;
 
-    &:first-child {
-      margin: 0 20px 40px 0;
+    @include breakpoint(medium) {
+      &:first-child {
+        margin: 0 2rem 2rem 0;
+      }
+      &:last-child {
+        margin: 0 0 2rem 0;
+      }
     }
-    &:last-child {
-      margin: 0 0 40px 20px;
+    @include breakpoint(large) {
+      margin: 0 2rem 2rem 0;
+
+      &:last-child {
+        margin: 0 0 2rem 0;
+      }
     }
   }
   .post-card-content,
