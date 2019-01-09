@@ -5,6 +5,12 @@ body .no-margin {
   margin: 0;
 }
 
+// Links
+// -----
+a {
+  @include word-wrap;
+}
+
 // Buttons
 // -------
 button:focus {

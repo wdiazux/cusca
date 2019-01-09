@@ -84,8 +84,8 @@ production stylesheet in assets/built/screen.css
 
 // Custom theme ghost style
 // ------------------------
-@import 'components/general';
 @import 'components/mixins';
+@import 'components/general';
 @import 'components/tags';
 @import 'components/main-content';
 @import 'components/footer';
