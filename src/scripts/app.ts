@@ -275,17 +275,18 @@ $(document).ready(() => {
     const search = <HTMLElement>document.querySelector('#search');
     const openSearchElm = document.querySelectorAll('[data-open-search]');
     const closeSearchElm = document.querySelectorAll('[data-close-search]');
+    let inputElm = <HTMLInputElement>document.querySelector('#ghost-search-field');
     let ghostSearch = new GhostSearch();
     
     const openSearch = () => {
         search.style.display = 'block';
         body.classList.add('noscroll');
+        inputElm.focus();
     }
     const closeSearch = () => {
         search.style.display = 'none';
         body.classList.remove('noscroll');
         
-        let inputElm = <HTMLInputElement>document.querySelector('#ghost-search-field');
         let resultsElm = <HTMLElement>document.querySelector('#ghost-search-results');
         document.querySelector('.search-container').classList.remove('dirty');
         inputElm.value = '';
