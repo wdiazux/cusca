@@ -81,6 +81,8 @@ export default class GhostSearch {
 
         let inputElm = <HTMLInputElement>document.querySelector(this.input);
         let inputValue = inputElm.value;
+        
+        document.querySelector('.search-container').classList.add('dirty');
 
         const results = fuzzysort.go(inputValue, data, {
             keys: this.options.keys,
@@ -101,7 +103,7 @@ export default class GhostSearch {
         let data = resource[this.api.resource];
         this.check = true;
 
-        document.querySelectorAll(this.input)[0].addEventListener('keyup', e => {
+        document.querySelector(this.input).addEventListener('keyup', e => {
             this.displayResults(data)
         });
     }
@@ -140,7 +142,7 @@ export default class GhostSearch {
             return;
         }
         
-        document.querySelectorAll(this.input)[0].addEventListener('focus', () => {
+        document.querySelector(this.input).addEventListener('focus', () => {
             if (!this.check) {
                 this.fetch();
             };

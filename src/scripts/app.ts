@@ -284,6 +284,17 @@ $(document).ready(() => {
     const closeSearch = () => {
         search.style.display = 'none';
         body.classList.remove('noscroll');
+        
+        let inputElm = <HTMLInputElement>document.querySelector('#ghost-search-field');
+        let resultsElm = <HTMLElement>document.querySelector('#ghost-search-results');
+        document.querySelector('.search-container').classList.remove('dirty');
+        inputElm.value = '';
+
+        if (resultsElm.nodeType) {
+            while (resultsElm.firstChild) {
+                resultsElm.removeChild(resultsElm.firstChild);
+            }
+        };
     }
     
     openSearchElm.forEach((elm) => {
