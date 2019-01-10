@@ -81,7 +81,7 @@ export default class GhostSearch {
 
         let inputElm = <HTMLInputElement>document.querySelector(this.input);
         let inputValue = inputElm.value;
-        
+       
         document.querySelector('.search-container').classList.add('dirty');
 
         const results = fuzzysort.go(inputValue, data, {
@@ -137,6 +137,34 @@ export default class GhostSearch {
         return true;
     }
 
+    // TODO reformat these functions
+    openSearch() {
+        const search = <HTMLElement>document.querySelector('#search');
+        let inputElm = <HTMLInputElement>document.querySelector('#ghost-search-field');
+        search.style.display = 'block';
+        document.querySelector('body').classList.add('noscroll');
+
+        inputElm.focus();
+    }
+    
+    closeSearch() {
+        const search = <HTMLElement>document.querySelector('#search');
+        let inputElm = <HTMLInputElement>document.querySelector('#ghost-search-results');
+        
+        search.style.display = 'none';
+        document.querySelector('body').classList.remove('noscroll');
+        
+        let resultsElm = <HTMLElement>document.querySelector(this.results);
+        document.querySelector('.search-container').classList.remove('dirty');
+        inputElm.value = '';
+
+        if (resultsElm.nodeType) {
+            while (resultsElm.firstChild) {
+                resultsElm.removeChild(resultsElm.firstChild);
+            }
+        };
+    }
+    
     init(){
          if (!this.validate()) {
             return;
@@ -146,6 +174,12 @@ export default class GhostSearch {
             if (!this.check) {
                 this.fetch();
             };
+        });
+        
+        document.body.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape') {
+                this.closeSearch();
+            }
         });
     }
 }

@@ -206,7 +206,7 @@ if(siteHeaderBg.length) {
             },
             "move": {
                 "enable": true,
-                "speed": 6,
+                "speed": 3,
                 "direction": "none",
                 "random": false,
                 "straight": false,
@@ -271,37 +271,14 @@ if(siteHeaderBg.length) {
 import GhostSearch from './search';
 
 $(document).ready(() => {
-    const body = document.querySelector('body');
-    const search = <HTMLElement>document.querySelector('#search');
     const openSearchElm = document.querySelectorAll('[data-open-search]');
     const closeSearchElm = document.querySelectorAll('[data-close-search]');
-    let inputElm = <HTMLInputElement>document.querySelector('#ghost-search-field');
     let ghostSearch = new GhostSearch();
-    
-    const openSearch = () => {
-        search.style.display = 'block';
-        body.classList.add('noscroll');
-        inputElm.focus();
-    }
-    const closeSearch = () => {
-        search.style.display = 'none';
-        body.classList.remove('noscroll');
-        
-        let resultsElm = <HTMLElement>document.querySelector('#ghost-search-results');
-        document.querySelector('.search-container').classList.remove('dirty');
-        inputElm.value = '';
 
-        if (resultsElm.nodeType) {
-            while (resultsElm.firstChild) {
-                resultsElm.removeChild(resultsElm.firstChild);
-            }
-        };
-    }
-    
     openSearchElm.forEach((elm) => {
-        elm.addEventListener('click', openSearch);
+        elm.addEventListener('click', ghostSearch.openSearch);
     });
     closeSearchElm.forEach((elm) => {
-        elm.addEventListener('click', closeSearch);
+        elm.addEventListener('click', ghostSearch.closeSearch);
     });
 });
