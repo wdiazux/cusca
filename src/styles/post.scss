@@ -200,7 +200,11 @@
 .comments-container,
 .post-full-meta,
 .post-full-footer {
-  @include breakpoint(medium up) {
+  @include breakpoint(medium) {
+    @include xy-cell(9 of 11);
+    @include xy-cell-offset(1, $gutters: $grid-margin-gutters, $gutter-type: margin);
+  }
+  @include breakpoint(large) {
     @include xy-cell(8);
     @include xy-cell-offset(2, $gutters: $grid-margin-gutters, $gutter-type: margin);
   }
@@ -440,10 +444,10 @@
   }
 }
 .icon-reddit {
-  background-color: #CEE3F8;
+  background-color: #ff4500;
 
   &:hover, &:focus {
-    background-color: darken(#CEE3F8, 20%);
+    background-color: darken(#ff4500, 20%);
   }
 }
 .icon-flipboard {
