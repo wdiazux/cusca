@@ -100,6 +100,26 @@ ga('create', '[your-ga-id]', 'auto');
 ga('send', 'pageview');
 ```
 
+## Modify the theme
+
+You need to run a ghost instance in the port 2368 it is the default ghost port,
+the theme was development using Webpack, so first you need to install it and
+their dependencies with this command:
+
+``` bash
+npm install
+```
+
+Then you have four commands provided by the Webpack configuration file:
+* `npm run dev` to compile files in development.
+* `npm run start` for live development.
+* `npm run build:prod` to build a production environment.
+* `npm run test` to test the theme with gscan.
+
+If you are looking to modify the style or something in the scripts, the source
+files are in the `src` directory `assets` is the destination directory and it
+shouldn't be modified.
+This version use Typescript for javascript and SASS to generate CSS.
 
 ## License
 
