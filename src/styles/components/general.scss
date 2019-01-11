@@ -8,11 +8,16 @@ body .no-margin {
 // Links
 // -----
 a {
-  @include word-wrap;
   transition: color 0.25s ease-in-out;
 
   &:focus {
     outline: 0;
+  }
+}
+.post-card-excerpt,
+.post-content {
+  a {
+    @include word-wrap;
   }
 }
 
