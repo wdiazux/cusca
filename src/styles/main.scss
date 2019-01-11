@@ -48,27 +48,27 @@ production stylesheet in assets/built/screen.css
 @include foundation-switch;
 @include foundation-table;
 // Basic components
-@include foundation-badge;
-@include foundation-breadcrumbs;
+//@include foundation-badge;
+//@include foundation-breadcrumbs;
 @include foundation-callout;
 @include foundation-card;
-@include foundation-dropdown;
+//@include foundation-dropdown;
 @include foundation-pagination;
 @include foundation-tooltip;
 
 // Containers
-@include foundation-accordion;
+//@include foundation-accordion;
 @include foundation-media-object;
-@include foundation-orbit;
+//@include foundation-orbit;
 @include foundation-responsive-embed;
 @include foundation-tabs;
 @include foundation-thumbnail;
 // Menu-based containers
 @include foundation-menu;
 @include foundation-menu-icon;
-@include foundation-accordion-menu;
-@include foundation-drilldown-menu;
-@include foundation-dropdown-menu;
+//@include foundation-accordion-menu;
+//@include foundation-drilldown-menu;
+//@include foundation-dropdown-menu;
 
 // Layout components
 @include foundation-off-canvas;

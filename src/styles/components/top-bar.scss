@@ -27,6 +27,10 @@ $header-font-color: #91a2bd;
     transition: all 0.3s ease;
   }
 
+  .site-logo {
+    height: 40px;
+  }
+
   .bar-icon {
     font-size: rem-calc(25);
     cursor: pointer;
@@ -118,6 +122,3 @@ $header-font-color: #91a2bd;
   font-weight: bold;
 }
 
-.site-logo {
-  height: 40px;
-}

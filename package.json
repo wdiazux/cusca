@@ -102,6 +102,7 @@
     "roboto-fontface": "^0.10.0",
     "shufflejs": "^5.2.1",
     "tern": "^0.23.0",
+    "typeface-montserrat": "0.0.54",
     "what-input": "^5.1.3"
   }
 }
