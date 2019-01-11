@@ -6,7 +6,15 @@
 
 .horizontal-ad {
   display: block;
-  min-width: 200px;
-  min-height: 50px;
-  max-height: 250px;
+  width: 300px;
+  height: 300px;
+
+  @include breakpoint(medium) {
+    width: 468px;
+    height: 60px;
+  }
+  @include breakpoint(large) {
+   width: 728px;
+   height: 90px;
+  }
 }
