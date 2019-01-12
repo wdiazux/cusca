@@ -2,7 +2,7 @@
   "name": "cusca",
   "description": "A clean theme for Ghost.",
   "demo": "https://wdiaz.org",
-  "version": "0.1.0",
+  "version": "2.0",
   "engines": {
     "ghost": ">=2.0.0"
   },
