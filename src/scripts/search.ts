@@ -151,7 +151,7 @@ export default class GhostSearch {
         const search = <HTMLElement>document.querySelector('#search');
         let inputElm = <HTMLInputElement>document.querySelector('#ghost-search-results');
   
-        if(search.style.display === 'none' || search.style.display === '') { return null;  }
+        if(search.style.display === 'none' || search.style.display === '') { return;  }
         
         search.style.display = 'none';
         document.querySelector('body').classList.remove('noscroll');

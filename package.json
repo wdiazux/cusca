@@ -2,7 +2,7 @@
   "name": "cusca",
   "description": "A clean theme for Ghost.",
   "demo": "https://wdiaz.org",
-  "version": "2.0",
+  "version": "2.0.0",
   "engines": {
     "ghost": ">=2.0.0"
   },
@@ -74,6 +74,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "typescript": "^3.2.2",
+    "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.28.3",
     "webpack-cli": "^3.2.1",
     "webpack-merge": "^4.2.1"
