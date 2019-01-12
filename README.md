@@ -121,6 +121,7 @@ files are in the `src` directory `assets` is the destination directory and it
 shouldn't be modified.
 This version use Typescript for javascript and SASS to generate CSS.
 
-## License
+## Copyright & License
 
+- Copyright (c) 2017-2019 William Diaz - Released under the [MIT license](LICENSE).
 This version is using the MIT license and the libraries are also MIT or compatibles with it.
