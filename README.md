@@ -71,22 +71,22 @@ Inside the `partials/footer.hbs` file replace `[your-user]` with your user names
 
 ```html
 <li>
-    <a href="https://www.youtube.com/[your-user]" target="blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.youtube.com/[your-user]" target="_blank" rel="noopener" title="Youtube"><i class="fab fa-youtube"></i></a>
 </li>
 <li>
-    <a href="https://www.facebook.com/[your-user]" target="blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.facebook.com/[your-user]" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
 </li>
 <li>
-    <a href="https://twitter.com/[your-user]" target="blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://twitter.com/[your-user]" target="_blank" rel="noopener" title="Twitter"><i class="fab fa-twitter"></i></a>
 </li>
 <li>
-    <a href="https://www.instagram.com/[your-user]" target="blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.instagram.com/[your-user]" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
 </li>
 <li>
-    <a href="https://github.com/[your-user]" target="blank"><i class="fab fa-github-alt"></i></a>
+    <a href="https://github.com/[your-user]" target="_blank" rel="noopener" title="Github"><i class="fab fa-github-alt"></i></a>
 </li>
 <li>
-    <a href="https://www.linkedin.com/in/[your-user]" target="blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://www.linkedin.com/in/[your-user]" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
 </li>
 ```
 
