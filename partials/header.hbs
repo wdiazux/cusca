@@ -3,7 +3,7 @@
     {{!--  Featured image --}}
     {{#is "index, tag, author"}}
         <div class="site-header-bg" id="site-header-bg">
-            <div class="cover-image" style="background: url({{#if @blog.cover_image}} {{@blog.cover_image}} {{else}}{{asset "img/sven-scheuermeier-178631-unsplash.jpg" }}{{/if}}) no-repeat center center; background-size: cover;"></div>
+            <div class="cover-image" style="background: url({{#if @site.cover_image}} {{@site.cover_image}} {{else}}{{asset "img/sven-scheuermeier-178631-unsplash.jpg" }}{{/if}}) no-repeat center center; background-size: cover;"></div>
             <div class="header-overlay"></div>
         </div>
     {{/is}}
@@ -13,11 +13,11 @@
         <div class="grid-container">
             <div class="grid-x">
                 <div class="cell small-12 large-3 top-bar-left">
-                    <a href="{{@blog.url}}" class="top-bar-title">
-                        {{#if @blog.logo}}
-                            <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}"/>
+                    <a href="{{@site.url}}" class="top-bar-title">
+                        {{#if @site.logo}}
+                            <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}"/>
                         {{else}}
-                            {{@blog.title}}
+                            {{@site.title}}
                         {{/if}}
                     </a>
                     <span class="toggle-responsive-btn" data-responsive-toggle="main-menu" data-hide-for="large">
@@ -40,10 +40,10 @@
                 <div class="header-title-inner grid-x">
 
                     {{#is "index"}}
-                        {{#if @blog.logo}}
-                            <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}" />
+                        {{#if @site.logo}}
+                            <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
                         {{else}}
-                            <h1 class="site-title">{{@blog.title}}</h1>
+                            <h1 class="site-title">{{@site.title}}</h1>
                         {{/if}}
                     {{else}}
                         {{#is "tag"}}
