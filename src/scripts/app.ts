@@ -33,7 +33,8 @@ $(document).ready(() => {
     if(document.body.contains(postFeed)) {
         const shuffleInstance = new Shuffle(postFeed, {
             itemSelector: '.post-card',
-            sizer: '.post-card-ex'
+            sizer: '.post-card-ex',
+            buffer: 1
         });
     }
 });
