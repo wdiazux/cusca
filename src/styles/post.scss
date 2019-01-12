@@ -127,11 +127,28 @@
   background: rgba(255, 255, 255, 0)
 }
 
-.post-full-meta {
-  position: relative;
+%meta {
+  display: flex;
   padding: rem-calc(5 10);
+  width: 100%;
+  font-size: 85%;
+  text-align: left;
+  font-weight: 500;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  .post-date {
+    margin-right: rem-calc(15);
+  }
+  .post-full-meta-date {
+    text-transform: uppercase;
+  }
+}
+
+.post-full-meta {
+  @extend %meta;
+  position: relative;
   margin-bottom: rem-calc(25);
-  font-size: 87%;
   background: $lightest-gray;
 
   .fa,
@@ -140,43 +157,24 @@
     font-size: 80%;
   }
 
-  .meta-divider {
-    display: inline-block;
-    width: 1px;
-    height: 12px;
-    margin: 0 10px;
-    background: rgba(0, 0, 0, 0.5)
-  }
-
   .meta-tag {
     text-transform: uppercase;
     color: $body-font-color;
   }
 }
 .post-full-meta-feature {
+  @extend %meta;
   position: absolute;
-  padding: rem-calc(5 10);
-  width: 100%;
   bottom: 0;
   left: 0;
-  font-size: 87%;
   color: $white;
   background: rgba(0, 0, 0, 0.8);
   z-index: 20;
-  text-align: left;
 
   .fa,
   .far,
   .fas {
     font-size: 80%;
-  }
-
-  .meta-divider {
-    display: inline-block;
-    width: 1px;
-    height: 12px;
-    margin: 0 10px;
-    background: rgba(255, 255, 255, 0.5)
   }
 
   .meta-tag {

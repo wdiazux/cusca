@@ -33,9 +33,13 @@
                             </div>
 
                             <section class="post-full-meta-feature">
-                                <i class="far fa-calendar-alt"></i> <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                                <div class="post-date">
+                                    <i class="far fa-calendar-alt"></i> <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                                </div>
                                 {{#primary_tag}}
-                                    <div class="meta-divider"></div> <i class="fas fa-tag"></i> <a href="{{url}}" class="meta-tag">{{name}}</a>
+                                    <div class="primary-tag">
+                                        <i class="fas fa-tag"></i> <a href="{{url}}" class="meta-tag">{{name}}</a>
+                                    </div>
                                 {{/primary_tag}}
                             </section>
                         </figure>
@@ -47,9 +51,13 @@
 
                     {{#unless feature_image}}
                         <section class="post-full-meta">
-                            <i class="far fa-calendar-alt"></i> <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                            <div class="post-date">
+                                <i class="far fa-calendar-alt"></i> <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                            </div>
                             {{#primary_tag}}
-                                <div class="meta-divider"></div> <i class="fas fa-tag"></i> <a href="{{url}}" class="meta-tag">{{name}}</a>
+                                <div class="primary-tag">
+                                    <div class="meta-divider"></div> <i class="fas fa-tag"></i> <a href="{{url}}" class="meta-tag">{{name}}</a>
+                                </div>
                             {{/primary_tag}}
                         </section>
                     {{/unless}}
