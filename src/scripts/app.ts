@@ -29,7 +29,7 @@ $(document).ready(() => {
 const Shuffle = require('shufflejs').default;
 
 $(document).ready(() => {
-    const postFeed = document.querySelector('.post-feed');
+    const postFeed:HTMLElement = document.querySelector('.post-feed');
     if(document.body.contains(postFeed)) {
         const shuffleInstance = new Shuffle(postFeed, {
             itemSelector: '.post-card',
@@ -38,9 +38,17 @@ $(document).ready(() => {
         });
         
         shuffleInstance.on(Shuffle.EventType.LAYOUT, function () {
-            var items = document.querySelectorAll('.post-card');
+            let items = document.querySelectorAll('.post-card');
+            const spinKit = document.getElementById('spinkit');
+            
             items.forEach((elm) => {
                 elm.classList.add('in');
+                postFeed.classList.add('loaded');
+            });
+            setTimeout(() => {
+                if(document.body.contains(spinKit)) {
+                    spinKit.parentNode.removeChild(spinKit);
+                }
             });
         });
     }
