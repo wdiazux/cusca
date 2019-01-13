@@ -49,7 +49,7 @@ $(document).ready(() => {
                 if(document.body.contains(spinKit)) {
                     spinKit.parentNode.removeChild(spinKit);
                 }
-            });
+            }, 600);
         });
     }
     
