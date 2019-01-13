@@ -131,7 +131,7 @@ const config = {
             name: true,
             cacheGroups: {
                 vendors: {
-                    test: /[\\/]node_modules[\\/](jquery|foundation-sites|shufflejs|ghost-search)[\\/]/,
+                    test: /[\\/]node_modules[\\/](jquery|foundation-sites|shufflejs|particles.js)[\\/]/,
                     chunks: 'all',
                     name: 'main-vendors',
                     priority: 1
