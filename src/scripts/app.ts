@@ -41,8 +41,6 @@ $(document).ready(() => {
             let items = document.querySelectorAll('.post-card');
             const spinKit = document.getElementById('spinkit');
             
-            //for (let elm of items) {
-            //}
             for(let i=0; i < items.length; i++) {
                 items[i].classList.add('in');
             }
