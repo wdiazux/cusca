@@ -61,12 +61,6 @@ Do the same for `partials/loop.hbs`:
 
 ### Social Icons
 
-#### For Facebook and Twitter
-
-You need to go to the Ghost console in `Settings > General > Social accounts`, insert the links to your profiles.
-
-#### For other Networks
-
 Inside the `partials/footer.hbs` file replace `[your-user]` with your user names for each social network:
 
 ```html
