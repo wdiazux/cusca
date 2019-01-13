@@ -1,6 +1,53 @@
 {{!< default}}
 {{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
 
+{{#tag}}
+    {{#contentFor "styles"}}
+        <style type="text/css">
+         .cover-image {
+           {{#if feature_image}}
+             background-image: url({{img_url feature_image size='xl'}});
+           {{else}}
+             background-image: url({{asset "img/sven-scheuermeier-178631-unsplash.jpg"}});
+           {{/if}}
+           background-repeat: no-repeat;
+           background-position: center center;
+           background-size: cover;
+         }
+         @media(max-width: 1024px) {
+           .cover-image {
+             {{#if feature_image}}
+               background-image: url({{img_url feature_image size='l'}});
+               background-image: -webkit-image-set(
+                 url({{img_url feature_image size='l'}}) 1x,
+                 url({{img_url feature_image size='xl'}}) 2x
+               );
+               background-image: image-set(
+                 url({{img_url feature_image size='l'}}) 1x,
+                 url({{img_url feature_image size='xl'}}) 2x
+               );
+             {{/if}}
+           }
+         }
+         @media(max-width: 640px) {
+           .cover-image {
+             {{#if feature_image}}
+               background-image: url({{img_url feature_image size='m'}});
+               background-image: -webkit-image-set(
+                 url({{img_url feature_image size='m'}}) 1x,
+                 url({{img_url feature_image size='l'}}) 2x
+               );
+               background-image: image-set(
+                 url({{img_url feature_image size='m'}}) 1x,
+                 url({{img_url feature_image size='l'}}) 2x
+               );
+             {{/if}}
+           }
+         }
+        </style>
+    {{/contentFor}}
+{{/tag}}
+
 {{!-- The main content area --}}
 <main id="site-main" class="site-main outer">
     <div class="grid-container">

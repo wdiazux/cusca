@@ -1,9 +1,10 @@
 {{!-- The big featured header, it uses blog cover image as a BG if available --}}
+
 <header class="site-header" id="site-header">
     {{!--  Featured image --}}
     {{#is "index, tag, author"}}
         <div class="site-header-bg" id="site-header-bg">
-            <div class="cover-image" style="background: url({{#if @site.cover_image}} {{@site.cover_image}} {{else}}{{asset "img/sven-scheuermeier-178631-unsplash.jpg" }}{{/if}}) no-repeat center center; background-size: cover;"></div>
+            <div class="cover-image"></div>
             <div class="header-overlay"></div>
         </div>
     {{/is}}
