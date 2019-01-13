@@ -57,8 +57,25 @@ $header-font-color: #91a2bd;
 }
 .search-wrapper {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column norap;
+  align-items: center;
+  justify-content: center;
   max-height: 100%;
+}
+.search-input-ct {
+  position: relative;
+  width: 100%;
+
+  &:before {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.8rem;
+    font-size: 1.5rem;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f002";
+    color: $header-font-color;
+  }
 }
 .search-input {
   height: 4rem;
@@ -76,20 +93,9 @@ $header-font-color: #91a2bd;
     color: $header-font-color;
   }
 }
-.search-input-ct {
-  &:before {
-    position: absolute;
-    top: 0.9rem;
-    left: 0.8rem;
-    font-size: 1.5rem;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f002";
-    color: $header-font-color;
-  }
-}
 .search-results {
   display: flex;
+  width: 100%;
   overflow-y: auto;
 }
 .results-list {

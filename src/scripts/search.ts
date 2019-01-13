@@ -179,7 +179,10 @@ export default class GhostSearch {
         });
         
         document.body.addEventListener('keydown', (e) => {
-            if(e.key === 'Escape') {
+            if(e.defaultPrevented) { return; }
+
+            let key = e.key || e.keyCode;
+            if(key === 'Escape' || key === 'Esc' || key === 27) {
                 this.closeSearch();
             }
         });
