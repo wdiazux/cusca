@@ -84,10 +84,29 @@
     "last 2 versions"
   ],
   "config": {
-    "posts_per_page": 12
+    "posts_per_page": 12,
+    "image_sizes": {
+      "xxs": {
+        "width": 30
+      },
+      "xs": {
+        "width": 100
+      },
+      "s": {
+        "width": 300
+      },
+      "m": {
+        "width": 600
+      },
+      "l": {
+        "width": 1000
+      },
+      "xl": {
+        "width": 2000
+      }
+    }
   },
   "homepage": "https://github.com/wdiazux/cusca#readme",
-  "main": "gulpfile.js",
   "dependencies": {
     "@fancyapps/fancybox": "github:fancyapps/fancybox",
     "@fortawesome/fontawesome-free": "^5.6.3",
