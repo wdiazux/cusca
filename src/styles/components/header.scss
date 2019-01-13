@@ -4,7 +4,10 @@ $header-background: #1a2940;
 $header-font-color: #91a2bd;
 
 .site-header {
+  display: flex;
   position: relative;
+  flex-flow: column nowrap;
+  min-height: 400px;
 }
 
 .site-header-content {
