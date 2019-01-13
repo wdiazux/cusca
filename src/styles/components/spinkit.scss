@@ -44,7 +44,12 @@
   }
 }
 .post-feed .sk-cube-grid {
+  position: relative;
+  text-align: center;
   top: 4rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 .post-full-image .sk-cube-grid {
   top: 50%;

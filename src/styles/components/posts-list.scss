@@ -105,23 +105,28 @@
 // Animation
 // ---------
 
-.post-feed .post-card {
-  opacity: 0;
-  visibility: hidden;
+.post-feed {
+  position: relative;
+  min-height: 200px;
 
-  &.in {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .post-card-inner {
+  .post-card {
     opacity: 0;
-    transform: matrix(0.65,0,0,0.65,0,0);
-    transition: transform 0.6s ease-in-out;
-  }
-  &.in .post-card-inner {
-    opacity: 1;
-    transform: matrix(1,0,0,1,0,0);
-    transform: translateY(0);
+    visibility: hidden;
+
+    &.in {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .post-card-inner {
+      opacity: 0;
+      transform: matrix(0.65,0,0,0.65,0,0);
+      transition: transform 0.6s ease-in-out;
+    }
+    &.in .post-card-inner {
+      opacity: 1;
+      transform: matrix(1,0,0,1,0,0);
+      transform: translateY(0);
+    }
   }
 }

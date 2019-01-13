@@ -12,7 +12,8 @@ $header-font-color: #91a2bd;
   z-index: 100;
 
   a,
-  .bar-icon {
+  .bar-icon,
+  .search-icon {
     color: $header-font-color;
 
     &:focus,
@@ -31,7 +32,16 @@ $header-font-color: #91a2bd;
     height: 35px;
   }
 
-  .bar-icon {
+  .mobile-buttons {
+    display: block;
+
+    @include breakpoint(large up) {
+      display: none;
+    }
+  }
+
+  .bar-icon,
+  .mobile-buttons .search-icon {
     font-size: rem-calc(25);
     cursor: pointer;
   }
@@ -46,6 +56,9 @@ $header-font-color: #91a2bd;
     &:focus {
       color: #fff;
     }
+  }
+  .mobile-buttons .search-hot {
+    margin-right: rem-calc(0);
   }
   .search-icon {
     padding: .7rem 1rem;
@@ -98,6 +111,9 @@ $header-font-color: #91a2bd;
       font-weight: bold;
     }
     @include breakpoint(medium down) {
+      &.nav-search {
+        display: none;
+      }
       a {
         text-align: center;
         border-bottom: 1px solid $header-font-color;
@@ -109,7 +125,7 @@ $header-font-color: #91a2bd;
       &:first-child a {
         padding-top: 0;
       }
-      &:last-child a {
+      &:nth-last-child(2) a {
         border-bottom: none;
       }
     }
