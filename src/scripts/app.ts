@@ -297,6 +297,6 @@ $(document).ready(() => {
         openSearchElm[i].addEventListener('click', ghostSearch.openSearch);
     }
     for(let i=0; i < closeSearchElm.length; i++) {
-        closeSearchElm[i].addEventListener('click', ghostSearch.openSearch);
+        closeSearchElm[i].addEventListener('click', ghostSearch.closeSearch);
     }
 });
