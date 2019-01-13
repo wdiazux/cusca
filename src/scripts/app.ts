@@ -36,7 +36,15 @@ $(document).ready(() => {
             sizer: '.post-card-ex',
             buffer: 1
         });
+        
+        shuffleInstance.on(Shuffle.EventType.LAYOUT, function () {
+            var items = document.querySelectorAll('.post-card');
+            items.forEach((elm) => {
+                elm.classList.add('in');
+            });
+        });
     }
+    
 });
 
 

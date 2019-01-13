@@ -101,3 +101,19 @@
   overflow: hidden;
   background: $primary-color;
 }
+
+// Animation
+// ---------
+
+.post-feed .post-card {
+  .post-card-inner {
+    opacity: 0;
+    transform: matrix(0.65,0,0,0.65,0,0);
+    transition: transform 0.6s ease-in-out;
+  }
+  &.in .post-card-inner {
+    opacity: 1;
+    transform: matrix(1,0,0,1,0,0);
+    transform: translateY(0);
+  }
+}
