@@ -1,0 +1,128 @@
+// Pagination
+// ---------
+
+.pagination-ct {
+   align-items: center;
+   justify-content: center;
+}
+
+%arrow-prev {
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -22px;
+    width: 0;
+    height: 0;
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-right: 22px solid #fff;
+    transition: all 0.2s linear;
+  }
+}
+
+%arrow-next {
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -22px;
+    width: 0;
+    height: 0;
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-left: 22px solid #fff;
+    transition: all 0.2s linear;
+  }
+}
+.pagination {
+  display: inline-flex;
+  margin: 2rem 0 2rem 0;
+
+  a,
+  button,
+  .current,
+  .disabled {
+      padding: rem-calc(9 15);
+  }
+
+  li {
+    position: relative;
+    margin-right: - rem-calc(2);
+    font-size: rem-calc(16);
+
+    a {
+      display: inline-block;
+      position: relative;
+      border: 1px solid #ddd;
+      background: $white;
+      transition: all 0.2s linear;
+    }
+
+    &:not(:last-child) {
+      border-right: 1px solid $medium-gray;
+    }
+    &:not(:first-child) {
+      a {
+        margin-left: -1px;
+      }
+    }
+    &.pagination-previous {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+    &.pagination-next {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+    &.current {
+      z-index: 2;
+    }
+    &.ellipsis {
+      padding: rem-calc(9 5);
+      background: $white;
+      border: 1px solid #ddd;
+    }
+  }
+
+  // Previous arrow
+  .pagination-previous {
+    a,
+    &.disabled {
+      &:before {
+        content: "";
+      }
+      margin-left: 22px;
+      @extend %arrow-prev;
+    }
+    a:hover {
+      &:after {
+        border-right: 22px solid $pagination-item-background-hover;
+      }
+    }
+    &.disabled {
+      background: $white;
+    }
+  }
+
+  // Next arrow
+  .pagination-next {
+    a,
+    &.disabled {
+      &:before {
+        content: "";
+      }
+      margin-right: 22px;
+      @extend %arrow-next;
+    }
+
+    a:hover {
+      &:after {
+        border-left: 22px solid $pagination-item-background-hover;
+      }
+    }
+    &.disabled {
+      background: $white;
+    }
+  }
+}

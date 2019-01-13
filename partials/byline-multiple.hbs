@@ -1,0 +1,19 @@
+<section class="post-full-authors">
+
+    <ul class="author-list">
+        {{#foreach authors}}
+            <li class="author-list-item">
+                <div class="author-card">
+                    <a href="{{url}}" class="author" data-tooltip tabindex="1" title="{{name}}" data-position="top" data-alignment="center">
+                        {{#if profile_image}}
+                            <span class="author-profile-image" style="background: url({{profile_image}}) no-repeat center center; background-size: cover;"></span>
+                        {{else}}
+                            <span class="author-profile-image avatar-wrapper">{{> "icons/avatar"}}</span>
+                        {{/if}}
+                    </a>
+                </div>
+            </li>
+        {{/foreach}}
+    </ul>
+
+</section>

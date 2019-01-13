@@ -1,0 +1,86 @@
+.tags {
+  display: block;
+  position: relative;
+  margin: 0 0 10px 0;
+  list-style: none;
+  font-weight: 700;
+  z-index: 2;
+
+  li {
+    display: inline-block;
+    margin: 0 4px 2px 0;
+    transition: all 0.3s ease-in-out;
+
+    &:last-child {
+      margin: 0;
+    }
+
+    a {
+      display: inline-block;
+      padding: 2px 5px;
+      border: 1px solid rgba($body-font-color, .8);
+      border-radius: 2px;
+      font-size: rem-calc(11);
+      text-transform: uppercase;
+      color: rgba($body-font-color, .8);
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+
+      &:hover,
+      &:focus {
+        color: $white;
+        background: rgba($body-font-color, .8);
+      }
+    }
+  }
+}
+
+.post-card-tags-ct {
+  display: flex;
+  width: 100%;
+}
+
+.post-card-featured-image .tags {
+  display: inline-block;
+  position: absolute;
+  margin: 0;
+  top: 10px;
+  left: 10px;
+  overflow: hidden;
+  max-width: calc(100% - 50px);
+  max-height: calc(100% - 50px);
+
+  &:hover {
+    overflow-y: auto;
+  }
+
+  li {
+    display: list-item;
+    opacity: 0;
+    visibility: hidden;
+
+    &:first-child {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    a {
+      border: 1px solid $white;
+      color: $white;
+      text-decoration: none;
+      background: rgba(0,0,0,0.2);
+
+      &:hover,
+      &:focus {
+        color: $black;
+        background: $white;
+      }
+    }
+  }
+}
+
+.post-card-featured-image:hover .tags li,
+.post-card-featured-image:focus .tags li {
+  opacity: 1;
+  visibility: visible;
+}

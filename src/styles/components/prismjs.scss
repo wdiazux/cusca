@@ -1,0 +1,43 @@
+// PrismJS
+// -------
+
+@import "~prismjs/plugins/line-highlight/prism-line-highlight";
+@import "~prismjs/themes/prism-tomorrow";
+
+// Variables
+// ---------
+
+$code-color: #e83e8c;
+$code-font-size: 90%;
+
+
+// pre code
+// --------
+
+pre:not([class*=language-]),
+pre[class*=language-] {
+  margin-top: 0;
+  padding: rem-calc(12 16);
+}
+
+pre:not([class*=language-]) {
+  @extend pre[class*="language-"];
+  font-family: inherit;
+
+  code {
+    background-color: transparent;
+    color: inherit;
+  }
+}
+
+pre > code {
+  font-size: $code-font-size;
+}
+
+
+// Code
+// ----
+:not(pre) > code {
+  word-break: break-word;
+  font-size: $code-font-size;
+}

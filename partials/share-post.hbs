@@ -1,0 +1,44 @@
+<section class="share-post">
+    <div class="share-icon">
+        <i class="fas fa-share-alt"></i>
+        <div class="open-share"></div>
+    </div>
+
+    <ul class="share-icons horizontal-list">
+        <li>
+            <a class="social-icon icon-twitter"
+               href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
+               onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+
+            <a class="social-icon icon-facebook"
+               href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+               onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
+               onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                <i class="fab fa-google-plus-g"></i>
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-reddit" href="https://www.reddit.com/submit?url={{url absolute="true"}}"
+               onclick="window.open(this.href, 'reddit-share', 'width=850,height=530');return false;">
+                <i class="fab fa-reddit-alien"></i>
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-flipboard"
+               href="https://share.flipboard.com/bookmarklet/popout?v=2&url={{url absolute="true"}}"
+               onclick="window.open(this.href, 'reddit-share', 'width=850,height=530');return false;">
+                <i class="fab fa-flipboard"></i>
+            </a>
+        </li>
+    </ul>
+
+</section>

@@ -1,0 +1,53 @@
+body .hidden {
+  display: none;
+}
+body .no-margin {
+  margin: 0;
+}
+
+// Links
+// -----
+a {
+  transition: color 0.25s ease-in-out;
+
+  &:focus {
+    outline: 0;
+  }
+}
+.post-card-excerpt,
+.post-content {
+  a {
+    @include word-wrap;
+  }
+}
+
+// Buttons
+// -------
+button:focus {
+  outline:0;
+}
+
+
+// List
+// ----
+.horizontal-list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  flex-wrap: wrap;
+  flex-direction: row;
+  box-orient: horizontal;
+  box-direction: normal;
+  list-style: none;
+}
+
+// Classes
+// -------
+.align-center {
+  text-align: center;
+}
+.noscroll {
+  overflow: hidden;
+}

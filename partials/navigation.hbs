@@ -1,5 +1,10 @@
-{{#foreach navigation}}
-    <li class="nav-item nav-{{slug}}" role="presentation">
-        <a class="nav-link" href="{{url absolute="true"}}">{{label}}</a>
+<ul class="vertical large-horizontal menu top-menu" role="menu">
+    {{#foreach navigation}}
+        <li class="menu-item nav-{{slug}}{{#if current}} nav-current{{/if}}" role="menuitem">
+            <a href="{{url absolute="true"}}">{{label}}</a>
+        </li>
+    {{/foreach}}
+    <li class="menu-item nav-search" role="menuitem">
+        <div class="search-hot" data-open-search><i class="fas fa-search search-icon" id="search-icon"></i><span class="search-menu-text">Search</span></search>
     </li>
-{{/foreach}}
+</ul>

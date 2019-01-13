@@ -1,44 +1,68 @@
-<header id="header">
-    <div class="primary-header">
-        <div class="row">
-            <div class="columns">
-                <a id="blog-logo" href="{{@blog.url}}">
-                    {{#if @blog.logo}}
-                        <img src="{{@blog.logo}}" alt="{{@blog.title}}" height="100" />
-                    {{else}}
-                        <h1>{{@blog.title}}</h1>
-                    {{/if}}
-                </a>
-                <ul class="no-bullet social-media clearfix">
-                    <li class="nd-social-facebook">
-                        <a target="_blank" href="{{facebook_url}}"><i class="fa fa-facebook fa-lg"></i></a>
-                    </li>
-                    <li class="nd-social-twitter">
-                        <a target="_blank" href="{{twitter_url}}"><i class="fa fa-twitter fa-lg"></i></a>
-                    </li>
-                    <li class="nd-social-youtube">
-                        <a target="_blank" href="https://www.youtube.com/user/[your-user]"><i class="fa fa-youtube fa-lg"></i></a>
-                    </li>
-                    <li class="nd-social-instagram">
-                        <a target="_blank" href="https://www.instagram.com/[your-user]"><i class="fa fa-instagram fa-lg"></i></a>
-                    </li>
-                    <li class="nd-social-github">
-                        <a target="_blank" href="https://github.com/[your-user]"><i class="fa fa-github fa-lg"></i></a>
-                    </li>
-                </ul>
-                <div class="header-search">
-                    <form method="get" class="search-form form-inline" action="#">
-                        <div class="input-group">
-                            <input id="search-field" type="search" class="search-field input-group-field" placeholder="Search" value="" name="s" title="Search for:">
-                            <div class="input-group-button">
-                                <button class="button transparent search-submit-icon">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+{{!-- The big featured header, it uses blog cover image as a BG if available --}}
+
+<header class="site-header" id="site-header">
+    {{!--  Featured image --}}
+    {{#is "index, tag, author"}}
+        <div class="site-header-bg" id="site-header-bg">
+            <div class="cover-image"></div>
+            <div class="header-overlay"></div>
+        </div>
+    {{/is}}
+
+    {{!-- Top bar  --}}
+    <nav class="top-bar" data-sticky data-options="marginTop:0;" data-sticky-on="small">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell small-12 large-3 top-bar-left">
+                    <a href="{{@site.url}}" class="top-bar-title">
+                        {{#if @site.logo}}
+                            <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}"/>
+                        {{else}}
+                            {{@site.title}}
+                        {{/if}}
+                    </a>
+                    <div class="mobile-buttons">
+                        <span class="search-hot" data-open-search>
+                            <button type="button">
+                                <i class="fas fa-search search-icon" id="search-icon"></i>
+                            </button>
+                        </span>
+                        <span class="toggle-responsive-btn" data-responsive-toggle="main-menu" data-hide-for="large">
+                            <button type="button" data-toggle>
+                                <i class="fas fa-bars bar-icon"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="cell small-12 large-9 top-bar-right" id="main-menu">
+                    {{> "site-nav"}}
                 </div>
             </div>
         </div>
-    </div>
+    </nav>
+
+    {{!-- Header title --}}
+    {{#is "home, paged, tag, author"}}
+        <div class="header-title">
+            <div class="site-header-content grid-container">
+                <div class="header-title-inner grid-x">
+
+                    {{#is "index"}}
+                        {{#if @site.logo}}
+                            <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
+                        {{else}}
+                            <h1 class="site-title">{{@site.title}}</h1>
+                        {{/if}}
+                    {{else}}
+                        {{#is "tag"}}
+                            {{#tag}}
+                                <h1 class="site-title">#{{name}}</h1>
+                            {{/tag}}
+                        {{/is}}
+                        {{{block "author_header"}}}
+                    {{/is}}
+                </div>
+            </div>
+        </div>
+    {{/is}}
 </header>

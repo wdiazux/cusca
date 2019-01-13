@@ -1,67 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    {{!-- Document Settings --}}
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<html lang="{{lang}}">
+    <head>
 
-    {{!-- Base Meta --}}
-    <title>{{meta_title}}</title>
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {{!-- Document Settings --}}
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
-    {{!-- Styles'n'Scripts --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "css/styles.min.css"}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset "css/vendors.min.css"}}" />
+        {{!-- Base Meta --}}
+        <title>{{meta_title}}</title>
+        <meta name="HandheldFriendly" content="True"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    {{!-- Early script --}}
-    {{{block "head-js"}}}
+        {{!-- Styles'n'Scripts --}}
+        <link rel="stylesheet" type="text/css" href="{{asset "styles/main.css"}}"/>
+        {{{block "styles"}}}
 
-    {{!-- Block for css files --}}
-    {{{block "css"}}}
+        {{!-- This tag outputs SEO meta+structured data and other important settings --}}
+        {{ghost_head}}
 
-    {{!-- Open Sans --}}
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,700,700i" rel="stylesheet">
+    </head>
+    <body class="{{body_class}}">
 
-    {{!-- Ghost outputs important style and meta data with this tag --}}
-    {{ghost_head}}
-</head>
-<body class="{{body_class}} nav-closed">
+        <div class="site-wrapper" data-sticky-container>
 
-    {{!-- Off Canvas --}}
-    {{> "off_canvas"}}
+            {{> header}}
 
-    <div class="off-canvas-content" data-off-canvas-content>
-        {{!-- The blog navigation links --}}
-        {{> "header"}}
-        <div class="main-container" id="main-container">
-            {{> "header_navigation"}}
-
-            <div class="container">
-                {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+            {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+            <div class="main-content">
                 {{{body}}}
             </div>
 
-            {{!-- footer --}}
-            {{> "footer"}}
+            {{!-- The footer at the very bottom of the screen --}}
+            {{> footer}}
+
         </div>
 
-        {{!-- Ghost outputs important scripts and data with this tag --}}
+        {{> search}}
+
+        {{!-- jQuery + Fitvids, which makes all video embeds responsive --}}
+        <script type="text/javascript" defer src="{{asset "/scripts/main-vendors.js"}}"></script>
+        <script type="text/javascript" defer src="{{asset "/scripts/main.js"}}"></script>
+
+        {{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
+        {{{block "scripts"}}}
+
+        {{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
         {{ghost_foot}}
-    </div>
 
-    {{!-- Reveal --}}
-    {{> "search_results"}}
-
-    {{!-- Vendors scripts --}}
-    <script src="{{asset "js/vendors.min.js"}}"></script>
-    {{!-- The main JavaScript file for Cusca --}}
-    <script src="{{asset "js/main.min.js"}}"></script>
-
-    {{!-- Block for javascript --}}
-    {{{block "js"}}}
-
-    {{!-- Google Analytics --}}
-    {{> "google_analytics"}}
-</body>
+        {{!-- Google Analytics --}}
+        {{> "google_analytics"}}
+    </body>
 </html>

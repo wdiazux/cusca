@@ -1,0 +1,124 @@
+.read-next {
+  .post-card {
+    display: flex;
+    position: relative;
+    margin: 0 0 2rem 0;
+    flex: 1 1 250px;
+    flex-direction: column;
+
+    @include breakpoint(medium) {
+      &:first-child {
+        margin: 0 2rem 2rem 0;
+      }
+      &:last-child {
+        margin: 0 0 2rem 0;
+      }
+    }
+    @include breakpoint(large) {
+      margin: 0 2rem 2rem 0;
+
+      &:last-child {
+        margin: 0 0 2rem 0;
+      }
+    }
+  }
+  .post-card-content,
+  .post-card-inner {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+
+  .post-card-featured-image {
+    &:hover,
+    &:focus {
+      .post-card-image {
+        img {
+          transform: matrix(1.2,0,0,1.2,0,0) translateY(-50%);
+        }
+      }
+    }
+    .tags {
+      max-height: calc(100% - 10px);
+    }
+  }
+  .post-card-image {
+    height: 135px;
+    img {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.read-next-card {
+  color: $white;
+  border-radius: 5px;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background: linear-gradient(135deg, rgba(26,41,64,.95), rgba(26,41,64,.85));
+  }
+  .post-card-inner {
+    background: none;
+  }
+  a {
+    color: $white;
+
+    &:hover,
+    &:focus {
+      color: $white;
+    }
+  }
+}
+
+.related-articles {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.read-next-card-header-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+
+  i {
+    font-size: 70%;
+  }
+}
+.read-next-card-content {
+  ul {
+    margin: 0;
+    list-style: none;
+     > li {
+       a {
+         display: block;
+         max-width: 86%;
+         margin-left: 7%;
+         padding: rem-calc(15 0);
+         text-align: center;
+         font-weight: 500;
+         border-bottom: 1px solid hsla(0,0%,100%,.3);
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+       }
+     }
+  }
+}
+
+.read-next-card-footer {
+  position: relative;
+  margin: rem-calc(15 0 3);
+  text-align: center;
+}

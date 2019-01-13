@@ -1,0 +1,22 @@
+<nav class="top-bar">
+    <div class="top-bar-left">
+        <div class="site-title">{{@site.title}}</div>
+    </div>
+    <div class="top-bar-right">
+
+    </div>
+    <div class="floating-header-logo">
+        <a href="{{@site.url}}">
+            {{#if @site.icon}}
+                <img src="{{@site.icon}}" alt="{{@site.title}} icon" />
+            {{/if}}
+            <span>{{@site.title}}</span>
+        </a>
+    </div>
+
+    <progress id="reading-progress" class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</nav>

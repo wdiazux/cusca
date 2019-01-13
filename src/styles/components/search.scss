@@ -1,0 +1,127 @@
+$header-background: #1a2940;
+$header-font-color: #91a2bd;
+
+.search {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba($header-background, 0.96);
+  z-index: 500;
+}
+
+.close-search {
+  position: absolute;
+  padding: 5px;
+  width: 55px;
+  height: 60px;
+  top: 0;
+  right: 0;
+  font-size: 30px;
+  color: $white;
+  text-align: center;
+}
+.close-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0);
+}
+
+.search-container {
+  position: absolute;
+  width: 100%;
+  max-width: 90%;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform: translateY(-50%);
+  transition: all 0.8s ease;
+
+  @include breakpoint(medium) {
+    max-width: 35rem;
+  }
+  @include breakpoint(large) {
+    max-width: 50rem;
+  }
+}
+.search-container.dirty {
+  height: 65%;
+}
+.search-wrapper {
+  display: flex;
+  flex-flow: column norap;
+  align-items: center;
+  justify-content: center;
+  max-height: 100%;
+}
+.search-input-ct {
+  position: relative;
+  width: 100%;
+
+  &:before {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.8rem;
+    font-size: 1.5rem;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f002";
+    color: $header-font-color;
+  }
+}
+.search-input {
+  height: 4rem;
+  padding: 1rem 1rem 1rem 3rem;
+  color: $white;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid $header-font-color;
+
+  &:hover,
+  &:focus {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid $header-font-color;
+  }
+  &::placeholder {
+    color: $header-font-color;
+  }
+}
+.search-results {
+  display: flex;
+  width: 100%;
+  overflow-y: auto;
+}
+.results-list {
+  width: 100%;
+  margin: 0;
+  list-style: none;
+
+  li {
+    &:last-child > a {
+      border-bottom: none;
+    }
+  }
+
+  a {
+    display: block;
+    padding: rem-calc(15);
+    text-align: center;
+    color: $header-font-color;
+    border-bottom: 1px solid $header-font-color;
+    background-color: rgba(255, 255, 255, 0);
+    transition: background-color 0.5s ease;
+
+    &:hover,
+    &:focus {
+      color: $white;
+      background-color: rgba(255, 255, 255, 0.14);
+    }
+  }
+}

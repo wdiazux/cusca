@@ -1,113 +1,176 @@
 {{!< default}}
 
-{{!-- The comment above "< default" means - insert everything in this file into
-    the {{{body}}} of the default.hbs template, containing the blog header/footer. --}}
+{{!-- The tag above means: insert everything in this file
+   into the {body} of the default.hbs template --}}
+
+{{#contentFor "styles"}}
+    <link rel="stylesheet" type="text/css" href="{{asset "styles/post.css"}}"/>
+{{/contentFor}}
+
 
 {{!-- Everything inside the #post tags pulls data from the post --}}
 {{#post}}
-    <div class="row medium-unstack">
-        <main id="content" class="content medium-8 large-9 columns" role="main">
-            <article class="{{post_class}}">
 
-                <header class="post-header">
+    <main id="site-main" class="site-main">
+        <div class="grid-container post-container">
+
+            <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
+                <header class="post-full-header">
                     {{#if feature_image}}
-                        <figure class="image-feature"><img src="{{feature_image}}" /></figure>
+                        <figure class="post-full-image">
+                            <div class="post-full-image-background"></div>
+                            <img src="{{feature_image}}" />
+
+                            {{> "spinkit"}}
+
+                            <section class="post-full-meta-feature">
+                                <div class="post-date">
+                                    <i class="far fa-calendar-alt"></i> <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                                </div>
+                                {{#primary_tag}}
+                                    <div class="primary-tag">
+                                        <i class="fas fa-tag"></i> <a href="{{url}}" class="meta-tag">{{name}}</a>
+                                    </div>
+                                {{/primary_tag}}
+                            </section>
+                        </figure>
                     {{/if}}
 
-                    <div class="post-heading">
-                        <h1 class="post-title">{{title}}</h1>
-                        <section class="post-meta">
-                            <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date
-                                    format="DD MMMM YYYY"}}</time> {{tags prefix=" on "}}
-                        </section>
+                    <div class="title-wrapper">
+                        <h1 class="post-full-title">{{title}}</h1>
                     </div>
+
+                    {{#unless feature_image}}
+                        <section class="post-full-meta">
+                            <div class="post-date">
+                                <i class="far fa-calendar-alt"></i> <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                            </div>
+                            {{#primary_tag}}
+                                <div class="primary-tag">
+                                    <div class="meta-divider"></div> <i class="fas fa-tag"></i> <a href="{{url}}" class="meta-tag">{{name}}</a>
+                                </div>
+                            {{/primary_tag}}
+                        </section>
+                    {{/unless}}
                 </header>
 
-                <section class="post-content">
-                    {{content}}
+
+                <section class="post-full-content">
+                    <div class="post-content">
+                        {{content}}
+                    </div>
                 </section>
 
-                <footer class="post-footer">
-                    <section class="share">
-                        <p>Share this post: <br/>
-                            <a class="share-icon icon-twitter" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
-                               onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                            <a class="share-icon icon-facebook"
-                               href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
-                               onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                            <a class="share-icon icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
-                               onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
-                            <a class="share-icon icon-reddit" href="https://www.reddit.com/submit?url={{url absolute="true"}}"
-                               onclick="window.open(this.href, 'reddit-share', 'width=850,height=530');return false;">
-                                <i class="fa fa-reddit-alien"></i>
-                            </a>
-                        </p>
-                    </section>
+                <footer class="post-full-footer">
+
+                    {{!-- There are two options for how we display the byline/author-info.
+                           If the post has more than one author, we load a specific template
+                           from includes/byline-multiple.hbs, otherwise, we just use the
+                           default byline. --}}
+                    <div class="post-full-container">
+                        {{#has author="count:>1"}}
+                            {{> "byline-multiple"}}
+                        {{else}}
+                            {{> "byline-single"}}
+                        {{/has}}
+
+                        {{> "share-post"}}
+                    </div>
 
                 </footer>
-
             </article>
 
+        </div>
+    </main>
 
-            {{!-- If there are a next post use different classes in <aside> --}}
-            {{^next_post}}
-            <aside class="read-next row">
-            {{else}}
-            <aside class="read-next row medium-unstack align-right">
-            {{/next_post}}
+    {{!-- Links to Previous/Next posts --}}
+    <section id="read-next" class="read-next">
+        <div class="grid-container">
+            <div class="related-articles">
+                {{#if primary_tag}}
+                    {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
+                        {{#if related_posts}}
+                            <article class="read-next-card post-card no-image"
+                                         style="background: url(
+                                            {{#if ../primary_tag.feature_image}}
+                                                {{../primary_tag.feature_image}}
+                                            {{else}}
+                                                {{#if @site.cover_image}}
+                                                    {{@site.cover_image}}
+                                                {{else}}
+                                                    {{asset "img/photo-1523980669340-3d154e47d5fd.jpg"}}
+                                                {{/if}}
+                                            {{/if}}
+                                            ) no-repeat center center; background-size: cover;"
+                            >
+                                <div class="post-card-inner">
+                                    <div class="post-card-content">
+                                        <header class="read-next-card-header">
+                                            {{#../primary_tag}}
+                                                <h3 class="read-next-card-header-title">
+                                                    <a href="{{url}}"><i class="fas fa-bookmark"></i> {{name}}</a>
+                                                </h3>
+                                            {{/../primary_tag}}
+                                        </header>
+                                        <div class="read-next-card-content">
+                                            <ul>
+                                                {{#foreach related_posts}}
+                                                    <li><a href="{{url}}">{{title}}</a></li>
+                                                {{/foreach}}
+                                            </ul>
+                                        </div>
+                                        <footer class="read-next-card-footer">
+                                            <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='No posts' singular='% post' plural='See all % posts'}} →</a>
+                                        </footer>
+                                    </div>
+                                </div>
+                            </article>
+                        {{/if}}
+                    {{/get}}
+                {{/if}}
 
-            {{!-- Links to Previous/Next posts --}}
-            {{#prev_post}}
-                <div class="medium-6 columns text-left">
-                    <a class="read-prev-story" href="{{url}}">{{title}}</a>
-                    <a href="{{url}}"><span class="arrow arrow-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></span></a>
-                </div>
-            {{/prev_post}}
-            {{#next_post}}
-                <div class="medium-6 columns text-right">
-                    <a class="read-next-story" href="{{url}}">{{title}}</a>
-                    <a href="{{url}}"><span class="arrow arrow-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
-                </div>
-            {{/next_post}}
+                {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs --}}
+                {{#next_post}}
+                    {{> "feed-card"}}
+                {{/next_post}}
 
-            {{!-- Close <aside> --}}
-             </aside>
+                {{!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs --}}
+                {{#prev_post}}
+                    {{> "feed-card"}}
+                {{/prev_post}}
+            </div>
+        </div>
+    </section>
 
-            {{!-- Comments --}}
-            <h3>Comments:</h3>
+    {{!-- Comments --}}
+    <section id="comments" class="comments">
+        <div class="grid-container">
+            <div class="comments-container">
+                <h3>Comments:</h3>
 
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
-                    this.page.url = '{{url absolute="true"}}';  // Replace PAGE_URL with your page's canonical URL variable
-                    this.page.identifier = '{{comment_id}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                };
+                <div id="disqus_thread"></div>
+                <script>
+                 var disqus_config = function () {
+                     this.page.url = '{{url absolute="true"}}';  // Replace PAGE_URL with your page's canonical URL variable
+                     this.page.identifier = '{{comment_id}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 (function() { // DON'T EDIT BELOW THIS LINE
+                     var d = document, s = d.createElement('script');
+                     s.async = true;
+                     s.src = 'https://wdiaz.disqus.com/embed.js';
+                     s.setAttribute('data-timestamp', +new Date());
+                     (d.head || d.body).appendChild(s);
+                 })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
 
-                (function() { // DON'T EDIT BELOW THIS LINE
-                    var d = document, s = d.createElement('script');
-                    s.async = true;
-                    s.src = 'https://[your-disqus-name].disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </section>
 
-        </main>
-
-        {{!-- Sidebar --}}
-        <aside class="sidebar medium-4 large-3 columns show-for-medium">
-            {{> "sidebar"}}
-        </aside>
-    </div>
 {{/post}}
 
-{{#contentFor "js"}}
-    <script src="{{asset "js/prism.min.js"}}"></script>
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+{{#contentFor "scripts"}}
+    <script type="text/javascript" defer src="{{asset "/scripts/post.js"}}"></script>
 {{/contentFor}}

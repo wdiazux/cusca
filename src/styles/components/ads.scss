@@ -1,0 +1,20 @@
+.ad-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.horizontal-ad {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+
+  @include breakpoint(medium) {
+    width: 468px;
+    height: 60px;
+  }
+  @include breakpoint(large) {
+   width: 728px;
+   height: 90px;
+  }
+}

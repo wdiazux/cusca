@@ -3,9 +3,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/wdiazux)
 
-A theme for [Ghost 1.0](https://ghost.org).
+A theme for [Ghost 2.x](https://ghost.org).
 
-**What that mean cusca?**
+**What that mean CUSCA?**
 
 Is the abbreviation for Cuscatlán, it was the name of El Salvador before the conquest and means "the land of precious things" in Nahuatl.
 
@@ -15,14 +15,13 @@ Is the abbreviation for Cuscatlán, it was the name of El Salvador before the co
 
 Cusca was development using [Foundation](http://foundation.zurb.com), and other libraries:
 
+- [Shuffle](https://vestride.github.io/Shuffle/)
 - [Fancybox](http://fancyapps.com/fancybox/3/)
-- [FluidVids](https://github.com/toddmotto/fluidvids)
 - [FontAwesome](http://fontawesome.io)
-- [ImagesLoaded](https://imagesloaded.desandro.com)
-- [Isotope](https://isotope.metafizzy.co)
 - [Prism.js](http://prismjs.com)
-- [Wow.js](http://mynameismatthieu.com/WOW/)
-- [Skeletor Syntax](https://github.com/ramonmcros/skeletor-syntax)
+- [Node Vibrant](https://github.com/akfish/node-vibrant)
+- [Particles.js](https://vincentgarreau.com/particles.js/)
+- [Ghost Search](https://github.com/HauntedThemes/ghost-search)
   
 ## Installation
 
@@ -68,17 +67,26 @@ You need to go to the Ghost console in `Settings > General > Social accounts`, i
 
 #### For other Networks
 
-Inside the `partials/header.hbs` file replace `[your-user]` with your user names for each social network:
+Inside the `partials/footer.hbs` file replace `[your-user]` with your user names for each social network:
 
 ```html
-<li class="nd-social-youtube">
-    <a target="_blank" href="https://www.youtube.com/user/[your-user]"><i class="fa fa-youtube fa-lg"></i></a>
+<li>
+    <a href="https://www.youtube.com/[your-user]" target="_blank" rel="noopener" title="Youtube"><i class="fab fa-youtube"></i></a>
 </li>
-<li class="nd-social-instagram">
-    <a target="_blank" href="https://www.instagram.com/[your-user]"><i class="fa fa-instagram fa-lg"></i></a>
+<li>
+    <a href="https://www.facebook.com/[your-user]" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
 </li>
-<li class="nd-social-github">
-    <a target="_blank" href="https://github.com/[your-user]"><i class="fa fa-github fa-lg"></i></a>
+<li>
+    <a href="https://twitter.com/[your-user]" target="_blank" rel="noopener" title="Twitter"><i class="fab fa-twitter"></i></a>
+</li>
+<li>
+    <a href="https://www.instagram.com/[your-user]" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+</li>
+<li>
+    <a href="https://github.com/[your-user]" target="_blank" rel="noopener" title="Github"><i class="fab fa-github-alt"></i></a>
+</li>
+<li>
+    <a href="https://www.linkedin.com/in/[your-user]" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
 </li>
 ```
 
@@ -92,7 +100,28 @@ ga('create', '[your-ga-id]', 'auto');
 ga('send', 'pageview');
 ```
 
+## Modify the theme
 
-## License
+You need to run a ghost instance in the port 2368 it is the default ghost port,
+the theme was development using Webpack, so first you need to install it and
+their dependencies with this command:
 
-The theme is under the MIT License, but if you are going to use the for commercial purposes, please note the libraries are not all free.
+``` bash
+npm install
+```
+
+Then you have four commands provided by the Webpack configuration file:
+* `npm run dev` to compile files in development.
+* `npm run start` for live development.
+* `npm run build:prod` to build a production environment.
+* `npm run test` to test the theme with gscan.
+
+If you are looking to modify the style or something in the scripts, the source
+files are in the `src` directory `assets` is the destination directory and it
+shouldn't be modified.
+This version use Typescript for javascript and SASS to generate CSS.
+
+## Copyright & License
+
+- Copyright (c) 2017-2019 William Diaz - Released under the [MIT license](LICENSE).
+This version is using the MIT license and the libraries are also MIT or compatibles with it.

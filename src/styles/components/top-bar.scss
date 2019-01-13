@@ -1,0 +1,140 @@
+// Variables
+// ---------
+$header-background: #1a2940;
+$header-font-color: #91a2bd;
+
+.sticky.is-stuck {
+  z-index: 100;
+}
+
+.top-bar {
+  color: $header-font-color;
+  z-index: 100;
+
+  a,
+  .bar-icon,
+  .search-icon {
+    color: $header-font-color;
+
+    &:focus,
+    &:hover {
+      color: $white;
+    }
+  }
+
+  .top-bar-title {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .site-logo {
+    height: 35px;
+  }
+
+  .mobile-buttons {
+    display: block;
+
+    @include breakpoint(large up) {
+      display: none;
+    }
+  }
+
+  .bar-icon,
+  .mobile-buttons .search-icon {
+    font-size: rem-calc(25);
+    cursor: pointer;
+  }
+  .search-hot {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+    }
+  }
+  .mobile-buttons .search-hot {
+    margin-right: rem-calc(0);
+  }
+  .search-icon {
+    padding: .7rem 1rem;
+    cursor: pointer;
+  }
+  @include breakpoint(large) {
+    .search-menu-text {
+      display: none;
+    }
+  }
+}
+
+
+.bg .top-bar {
+  background: rgba($header-background, 0.95);
+
+  .top-bar-title {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.top-bar-left,
+.top-bar-right {
+  padding: rem-calc(10 0);
+}
+
+.top-bar-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar-right {
+  max-height: 200px;
+  overflow-y: auto;
+
+  @include breakpoint(medium down) {
+    display: none;
+    padding-top: 0;
+  }
+}
+
+.top-menu {
+  justify-content: flex-end;
+
+  .menu-item {
+    a {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    @include breakpoint(medium down) {
+      &.nav-search {
+        display: none;
+      }
+      a {
+        text-align: center;
+        border-bottom: 1px solid $header-font-color;
+        &:hover,
+        &:focus {
+          border-color: $white;
+        }
+      }
+      &:first-child a {
+        padding-top: 0;
+      }
+      &:nth-last-child(2) a {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.top-bar .top-bar-title {
+  color: $white;
+  font-size: rem-calc(24);
+  font-weight: bold;
+}
+
