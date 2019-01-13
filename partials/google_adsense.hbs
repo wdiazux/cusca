@@ -2,9 +2,10 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         (adsbygoogle = window.adsbygoogle || []).onload = function () {
-            document.querySelectorAll('.adsbygoogle').forEach(function () {
+            let ads = document.querySelectorAll('.adsbygoogle');
+            for(let i=0; i < ads.length; i++) {
                 adsbygoogle.push({});
-            });
+            }
         }
     });
 </script>

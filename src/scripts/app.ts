@@ -41,10 +41,12 @@ $(document).ready(() => {
             let items = document.querySelectorAll('.post-card');
             const spinKit = document.getElementById('spinkit');
             
-            items.forEach((elm) => {
-                elm.classList.add('in');
-                postFeed.classList.add('loaded');
-            });
+            //for (let elm of items) {
+            //}
+            for(let i=0; i < items.length; i++) {
+                items[i].classList.add('in');
+            }
+            postFeed.classList.add('loaded');
             setTimeout(() => {
                 if(document.body.contains(spinKit)) {
                     spinKit.parentNode.removeChild(spinKit);
@@ -292,10 +294,11 @@ $(document).ready(() => {
     const closeSearchElm = document.querySelectorAll('[data-close-search]');
     let ghostSearch = new GhostSearch();
 
-    openSearchElm.forEach((elm) => {
-        elm.addEventListener('click', ghostSearch.openSearch);
-    });
-    closeSearchElm.forEach((elm) => {
-        elm.addEventListener('click', ghostSearch.closeSearch);
-    });
+    
+    for(let i=0; i < openSearchElm.length; i++) {
+        openSearchElm[i].addEventListener('click', ghostSearch.openSearch);
+    }
+    for(let i=0; i < closeSearchElm.length; i++) {
+        closeSearchElm[i].addEventListener('click', ghostSearch.openSearch);
+    }
 });
