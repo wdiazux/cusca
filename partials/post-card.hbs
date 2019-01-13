@@ -4,7 +4,11 @@
             <div class="post-card-featured-image">
                 <a class="post-card-image-link" href="{{url}}">
                     <figure class="post-card-image">
-                        <img src="{{feature_image}}">
+                        <img srcset="{{img_url feature_image size="s"}} 300w,
+                                     {{img_url feature_image size="m"}} 600w,
+                                     {{img_url feature_image size="l"}} 1000w,
+                                     {{img_url feature_image size="xl"}} 2000w"
+                             src="{{img_url feature_image size="m"}}" />
                     </figure>
                 </a>
                 {{#if tags}}
@@ -46,7 +50,7 @@
                         <li class="author-list-item">
                             <a href="{{url}}">
                                 {{#if profile_image}}
-                                    <span class="static-avatar" style="background: url({{profile_image}}) no-repeat center center; background-size: cover;"></span>
+                                    <span class="static-avatar" style="background: url({{img_url profile_image size="xs"}}) no-repeat center center; background-size: cover;"></span>
                                 {{else}}
                                     <span class="static-avatar author-profile-image">
                                         {{> "icons/avatar"}}
