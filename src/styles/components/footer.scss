@@ -63,7 +63,7 @@ $footer-font-color: #91a2bd;
   }
 }
 .recent-post-title {
-  margin-bottom: 0.6rem;
+  font-weight: 500;
 }
 .recent-post-date {
   font-size: rem-calc(13);
@@ -71,6 +71,13 @@ $footer-font-color: #91a2bd;
     margin-right: rem-calc(5);
   }
 }
+
+.site-footer .media-object-section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 
 // Social networks
 // ---------------
