@@ -53,11 +53,13 @@
             </div>
 
             <div class="cell medium-6 medium-offset-3 large-offset-0 large-4">
-                <div class="widget">
-                    <h6 class="widget-title">Subscribe</h5>
-                        <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox.</p>
-                        {{subscribe_form placeholder="youremail@example.com"}}
-                </div>
+                {{#if @labs.subscribers}}
+                    <div class="widget">
+                        <h6 class="widget-title">Subscribe</h5>
+                            <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox.</p>
+                            {{subscribe_form placeholder="youremail@example.com"}}
+                    </div>
+                 {{/if}}
                 <div class="widget">
                     <h6 class="widget-title">Social networks</h5>
                     <ul class="horizontal-list social-networks">

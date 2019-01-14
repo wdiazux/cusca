@@ -23,6 +23,9 @@ const config = {
         'post' : [
             './scripts/post.ts',
             './styles/post.scss'
+        ],
+        'grid': [
+            './scripts/grid.ts'
         ]
     },
     resolve: {
@@ -131,7 +134,7 @@ const config = {
             name: true,
             cacheGroups: {
                 vendors: {
-                    test: /[\\/]node_modules[\\/](jquery|foundation-sites|shufflejs|particles.js)[\\/]/,
+                    test: /[\\/]node_modules[\\/](jquery|foundation-sites|particles.js)[\\/]/,
                     chunks: 'all',
                     name: 'main-vendors',
                     priority: 1
