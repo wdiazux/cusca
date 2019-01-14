@@ -2,7 +2,7 @@
 // ----
 const Shuffle = require('shufflejs').default;
 
-$(document).ready(() => {
+document.addEventListener('DOMContentLoaded', () => {
     const postFeed:HTMLElement = document.querySelector('.post-feed');
     if(document.body.contains(postFeed)) {
         const shuffleInstance = new Shuffle(postFeed, {
