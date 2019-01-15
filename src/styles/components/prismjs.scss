@@ -17,11 +17,11 @@ $code-font-size: 90%;
 pre:not([class*=language-]),
 pre[class*=language-] {
   margin-top: 0;
-  padding: rem-calc(12 16);
 }
 
 pre:not([class*=language-]) {
   @extend pre[class*="language-"];
+  padding: rem-calc(12 16);
   font-family: inherit;
 
   code {
@@ -32,6 +32,7 @@ pre:not([class*=language-]) {
 
 pre > code {
   font-size: $code-font-size;
+  padding: 0;
 }
 
 

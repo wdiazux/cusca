@@ -13,11 +13,16 @@ if(document.body.contains(postFeed)) {
     shuffleInstance.on(Shuffle.EventType.LAYOUT, function () {
         let items = document.querySelectorAll('.post-card');
         const spinKit = document.getElementById('spinkit');
-            
+        
+        // Add class "loaded" to feed post container
+        postFeed.classList.add('loaded');
+        
+        // Add animation class "in" to post-card
         for(let i=0; i < items.length; i++) {
             items[i].classList.add('in');
         }
-        postFeed.classList.add('loaded');
+        
+        // Wait 6 milliseconds to remove spinkKit
         setTimeout(() => {
             if(document.body.contains(spinKit)) {
                 spinKit.parentNode.removeChild(spinKit);
