@@ -131,22 +131,13 @@ $(function () {
 });
 
 if(siteHeaderBg.length) {
-    document.addEventListener('scroll', () => {
+    window.addEventListener('scroll', () => {
         onScroll();
     }, {
         capture: true,
         passive: true
     });
-    document.addEventListener('resize', onResize, false);
-    
-    $('.top-bar').on('sticky.zf.stuckto:top', function(e){
-        console.log(e);
-        console.log('top');
-    }).on('sticky.zf.unstuckfrom:top', function(e){
-        console.log(e);
-        console.log('no top');
-    });
-    
+    window.addEventListener('resize', onResize, false);
 
     particlesJS('site-header-bg', {
         "particles": {
