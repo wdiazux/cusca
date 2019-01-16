@@ -33,97 +33,94 @@ import 'prismjs/components/prism-typescript';
 import Vibrant = require('node-vibrant');
 
 
-$(document).ready(() => {    
-    // Feature Image Background
-    // ------------------------
-    const featureImageCt = <HTMLElement>document.querySelector('.post-full-image');
-    if(featureImageCt) {
-        const featureImage = featureImageCt.querySelector('img');
-        const postFullImageBg = <HTMLElement>document.querySelector('.post-full-image-background'); 
-        let paletteReady:boolean = false;
+// Feature Image Background
+// ------------------------
+const featureImageCt:HTMLElement = document.querySelector('.post-full-image');
+if(featureImageCt) {
+    const featureImage:HTMLImageElement = featureImageCt.querySelector('img');
+    const postFullImageBg:HTMLElement = document.querySelector('.post-full-image-background'); 
+    let paletteReady:boolean = false;
+    let featureImageElm:HTMLImageElement = new Image();
+    
+    featureImageElm.addEventListener('load', () => {
+        if(!paletteReady) getPalette();
+    }, false);
+    featureImageElm.crossOrigin = 'Anonymous';
+    featureImageElm.src = featureImage.src;
+    
+    const getPalette = () => {
+        paletteReady = true;
         
-        let featureImageElm = new Image();
-        featureImageElm.src = featureImage.src;
-        
-        featureImageElm.addEventListener('load', () => {
-            if(!paletteReady) getPalette();
-        });
-        
-        const getPalette = () => {
-            paletteReady = true;
+        let v = new Vibrant(featureImageElm);
+        v.getPalette().then((palette) => {
+            let paletteColor:string;
+            let bgColor:string; 
             
-            Vibrant.from(featureImage.src).getPalette((err, palette) => {
-                let paletteColor:string;
-                let bgColor:string; 
-                
-                if(palette['DarkVibrant']) { paletteColor = 'DarkVibrant'; }
-                else if(palette['DarkMuted']) { paletteColor = 'DarkMuted'; }
-                else if(palette['Vibrant']) { paletteColor = 'Vibrant'; }
-                else { paletteColor = 'Nothing'; }
-                
-                if(paletteColor !== 'Nothing') {
-                    bgColor = palette[paletteColor].getRgb().join();
-                } else {
-                    bgColor = '255, 255, 255';
-                } 
-                
-                featureImageCt.classList.add('loaded');
-                //featureImageCt.style.background = 'url(' + featureImage.src + ') no-repeat center center';
-                //featureImageCt.style.backgroundSize = 'cover';
-                postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
-               
-                setTimeout(() => {
-                    const spinKit = document.getElementById('spinkit');
-                    if(document.body.contains(spinKit)) {
-                        spinKit.parentNode.removeChild(spinKit);
-                    }
-                }, 600);
-            });
-        }
-    }
-    
-    // Fancybox
-    // ---------
-    const wrapImages = (elem:string, elemClass:string, exclude:string) => {
-        let imgs = $(elem);
-        if (imgs.length > 0) {
-            imgs.each(function () {
-                let $this = $(this);
-                let imgLink = $this.attr('src'),
-                caption = $this.attr('alt');
-
-                if (!$this.hasClass(exclude)) {
-                    let imgWrap = '<a href=\"' + imgLink + '\" class=\"' + elemClass + '\"' +
-                        'data-fancybox=\"group\" data-caption=\"' + caption + '\"></a>';
-                    $this.wrap(imgWrap);
+            if(palette['DarkVibrant']) { paletteColor = 'DarkVibrant'; }
+            else if(palette['DarkMuted']) { paletteColor = 'DarkMuted'; }
+            else if(palette['Vibrant']) { paletteColor = 'Vibrant'; }
+            else { paletteColor = 'Nothing'; }
+            
+            if(paletteColor !== 'Nothing') {
+                bgColor = palette[paletteColor].getRgb().join();
+            } else {
+                bgColor = '255, 255, 255';
+            } 
+            
+            featureImageCt.classList.add('loaded');
+            postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
+            
+            setTimeout(() => {
+                const spinKit = document.getElementById('spinkit');
+                if(document.body.contains(spinKit)) {
+                    spinKit.parentNode.removeChild(spinKit);
                 }
-            });
-        }
-    };
+            }, 600);
+        });
+    }
+}
 
-    wrapImages('.post-content img','fancy-box','no-fancy-box');
-  
-	$('.fancy-box').fancybox();
-    
-    
-    // Responsive Videos
-    // -----------------
-    const videoSelectors = [
-        'iframe[src*="player.vimeo.com"]',
-        'iframe[src*="youtube.com"]',
-        'iframe[src*="youtube-nocookie.com"]',
-        'iframe[src*="kickstarter.com"][src*="video.html"]',
-        'object',
-        'embed'
-    ];
-    let $allVideos = $('.post-content').find(videoSelectors.join(','));
-    $allVideos = $allVideos.not('object object'); // SwfObj conflict patch}
+// Fancybox
+// ---------
+const wrapImages = (elem:string, elemClass:string, exclude:string) => {
+    let imgs = $(elem);
+    if (imgs.length > 0) {
+        imgs.each(function () {
+            let $this = $(this);
+            let imgLink = $this.attr('src'),
+            caption = $this.attr('alt');
 
-    $allVideos.each(function(){
-        var $this = $(this);
-        if (this.tagName.toLowerCase() !== 'embed' && $this.parent('object').length === 0 || $this.parent('.responsive-embed').length  < 0) {
-            const videoWrap = '<div class="responsive-embed"></div>';
-            $this.wrap(videoWrap);
-        }
-    });
+            if (!$this.hasClass(exclude)) {
+                let imgWrap = '<a href=\"' + imgLink + '\" class=\"' + elemClass + '\"' +
+                    'data-fancybox=\"group\" data-caption=\"' + caption + '\"></a>';
+                $this.wrap(imgWrap);
+            }
+        });
+    }
+};
+
+wrapImages('.post-content img','fancy-box','no-fancy-box');
+
+$('.fancy-box').fancybox();
+
+
+// Responsive Videos
+// -----------------
+const videoSelectors = [
+    'iframe[src*="player.vimeo.com"]',
+    'iframe[src*="youtube.com"]',
+    'iframe[src*="youtube-nocookie.com"]',
+    'iframe[src*="kickstarter.com"][src*="video.html"]',
+    'object',
+    'embed'
+];
+let $allVideos = $('.post-content').find(videoSelectors.join(','));
+$allVideos = $allVideos.not('object object'); // SwfObj conflict patch}
+
+$allVideos.each(function(){
+    var $this = $(this);
+    if (this.tagName.toLowerCase() !== 'embed' && $this.parent('object').length === 0 || $this.parent('.responsive-embed').length  < 0) {
+        const videoWrap = '<div class="responsive-embed"></div>';
+        $this.wrap(videoWrap);
+    }
 });

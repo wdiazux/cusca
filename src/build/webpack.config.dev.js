@@ -8,7 +8,16 @@ const config = {
             {
                 host: 'localhost',
                 port: 3000,
-                proxy: 'http://localhost:2368',
+                cors: true,
+                //proxy: 'http://localhost:2368',
+                proxy: {
+                    target: 'http://localhost:2368',
+                    proxyReq: {
+                        function (proxyReq) {
+                            proxyReq.setHeader('Access-Control-Allow-Origin', '*');
+                        }
+                    }
+                },
                 files: [
                     {
                         match: [

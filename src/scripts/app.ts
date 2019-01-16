@@ -19,10 +19,7 @@ const images = importAll(require.context('../img/', false, /\.(png|gif|jpe?g|svg
 // -----------
 
 import 'foundation-sites';
-$(document).ready(() => {
-    $(document).foundation();
-});
-
+$(document).foundation();
 
 
 
@@ -141,6 +138,15 @@ if(siteHeaderBg.length) {
         passive: true
     });
     document.addEventListener('resize', onResize, false);
+    
+    $('.top-bar').on('sticky.zf.stuckto:top', function(e){
+        console.log(e);
+        console.log('top');
+    }).on('sticky.zf.unstuckfrom:top', function(e){
+        console.log(e);
+        console.log('no top');
+    });
+    
 
     particlesJS('site-header-bg', {
         "particles": {
