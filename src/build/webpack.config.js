@@ -125,6 +125,11 @@ const config = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.worker.js$/,
+                loader: 'worker-loader',
+                options: { publicPath: '/assets/' }
             }
         ]
     },
