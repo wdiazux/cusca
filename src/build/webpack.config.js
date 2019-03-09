@@ -148,10 +148,7 @@ const config = {
         }
     }, 
     plugins: [
-        new CleanPlugin(['assets'], {
-            root: path.resolve(__dirname, '../../'),
-            allowExternal: true
-        }),
+        new CleanPlugin(),
         new MiniCssExtractPlugin({
             filename: 'styles/[name].css',
             chunkFilename: 'styles/[id].css',
