@@ -68,9 +68,9 @@ The new release of the Ghost API v2, require extra steps:
 - Get the `Content API Key` and replace the demo key with this one
 - Do the same with the `API URL`
 
-The file to modify with this credentials is typescript `src/scripts/app.ts` in
-the end of the document is the Search section, and the parameter you need to
-chnge are the url and key from the GhostSearch class.
+The file to modify with this credentials in typescript is `src/scripts/app.ts`
+and at the end of the document is the Search section, and the parameter you
+need to change are the URL and Key from the GhostSearch class.
 
 The file to modify with this credentials is typescript `src/scripts/app.ts` and
 the Search section is at the end of the document. The parameters that you need
