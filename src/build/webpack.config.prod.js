@@ -1,31 +1,18 @@
-const UglifyJsPlugin= require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 // Webpack Development Configuration
 const config = {
     optimization: {
         minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
+            new TerserPlugin({
                 parallel: true,
                 sourceMap: true,
-                extractComments: true,
-                uglifyOptions: {
-                    screw_ie8: true,
-                    sequences: true,
-                    dead_code: true,
-                    drop_debugger : true,
-                    conditionals: true,
-                    comparisons: true,
-                    booleans: true,
-                    loop: true,
-                    unused: true,
-                    if_return: true,
-                    join_vars: true,
-                    drop_console: true,
-                    output: {
-                        comments: /@license/i
-                    }
+                terserOptions: {
+                    ecma: 6,
+                    ie8: false,
+                    safari10: false,
+                    comments: false
                 }
             }),
             new OptimizeCSSAssetsPlugin({

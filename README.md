@@ -59,6 +59,26 @@ Do the same for `partials/loop.hbs`:
 <script id="dsq-count-scr" src="//[your-disqus-name].disqus.com/count.js" async></script>
 ```
 
+### Search
+
+The new release of the Ghost API v2, require extra steps:
+
+- Go in your Ghost's dashboard -> Integrations -> Add custom integration
+- Set a name: Themes Search
+- Get the `Content API Key` and replace the demo key with this one
+- Do the same with the `API URL`
+
+The file to modify with this credentials is typescript `src/scripts/app.ts` in
+the end of the document is the Search section, and the parameter you need to
+chnge are the url and key from the GhostSearch class.
+
+The file to modify with this credentials is typescript `src/scripts/app.ts` and
+the Search section is at the end of the document. The parameters that you need
+to change are the URL and Key from the GhostSearch class.
+
+You will need to rebuild the theme to make it work after modifying the parameters. In
+the end of this document you will find the commands that you need.
+
 ### Social Icons
 
 Inside the `partials/footer.hbs` file replace `[your-user]` with your user names for each social network:

@@ -257,7 +257,11 @@ import GhostSearch from './search';
 $(document).ready(() => {
     const openSearchElm = document.querySelectorAll('[data-open-search]');
     const closeSearchElm = document.querySelectorAll('[data-close-search]');
-    let ghostSearch = new GhostSearch();
+
+    let ghostSearch = new GhostSearch({
+        url: 'http://localhost:2368',
+        key: '0562dec064b8fd1fe86b3a35c3'
+    });
 
     
     for(let i=0; i < openSearchElm.length; i++) {
