@@ -31,48 +31,59 @@ function autoImplement<T>(defaults?: Partial<T>) {
 
 export default class GhostSearch extends autoImplement<IProps>() {
     check:boolean = false;
+    url: string;
+    key: string;
+    version?: string;
+    input?: string;
+    results?: string;
+    button?: string;
+    defaultValue?: string;
+    template?: any;
+    trigger?: string;
+    options?: any;
+    api?: any;
+    on?: any;
 
-    constructor(props: any) {
+    constructor(kwArgs: IProps) {
         super();
-        this.url = props.url;
-        this.key = props.key;
-        this.version = props.version || 'v2';
-        this.input = props.input || '#ghost-search-field';
-        this.results = props.results || '#ghost-search-results';
-        this.button = '';
-        this.defaultValue = '';
-        this.template = (result) => {
+        this.url = kwArgs.url;
+        this.key = kwArgs.key;
+        this.version = kwArgs.version || 'v2';
+        this.input = kwArgs.input || '#ghost-search-field';
+        this.results = kwArgs.results || '#ghost-search-results';
+        this.button = kwArgs.button || '';
+        this.defaultValue = kwArgs.defaultValue || '';
+        this.template = kwArgs.template || function(result) {
             let url = [location.protocol, '//', location.host].join('');
             return '<li><a href="' + url + '/' + result.slug + '/">' + result.title + '</a></li>';
         };
-        this.trigger = 'focus';
-        this.options = {
+        this.trigger = kwArgs.trigger || 'focus';
+        this.options = kwArgs.options || {
             keys: [
                 'title'
             ],
-            limit: 10,
-            threshold: -3500,
-            allowTypo: false
+                limit: 10,
+                threshold: -3500,
+                allowTypo: false
         };
-        this.api = {
+        this.api= kwArgs.api || {
             resource: 'posts',
-            parameters: { 
+                parameters: {
                 limit: 'all',
-                fields: ['title', 'slug', 'created_at'],
-                filter: '',
-                include: 'authors',
-                order: '',
-                formats: '',
-                page: ''
+                    fields: ['title', 'slug', 'created_at'],
+                    filter: '',
+                    include: 'authors',
+                    order: '',
+                    formats: '',
+                    page: ''
             }
         };
-        this.on = {
-            beforeDisplay: function(){},
-            afterDisplay: function(results){},
-            beforeFetch: function(){},
-            afterFetch: function(results){}
+        this.on = kwArgs.on || {
+            beforeDisplay: () => {},
+                afterDisplay: (results) => {},
+                beforeFetch: () => {},
+                afterFetch: (results) => {}
         };
-        
         this.init();
     }
     
@@ -85,7 +96,7 @@ export default class GhostSearch extends autoImplement<IProps>() {
             version: this.version
         });
 
-        let browse = {}
+        let browse = {};
         let parameters = this.api.parameters;
 
         for (var key in parameters) {
@@ -105,7 +116,7 @@ export default class GhostSearch extends autoImplement<IProps>() {
             });
     }
     
-    createElementFromHTML(htmlString:string) {
+    static createElementFromHTML(htmlString:string) {
         let div = document.createElement('div');
         div.innerHTML = htmlString.trim();
         return div.firstChild; 
@@ -119,8 +130,7 @@ export default class GhostSearch extends autoImplement<IProps>() {
             while (resultsElm.firstChild) {
                 resultsElm.removeChild(resultsElm.firstChild);
             }
-        };
-        
+        }
         let inputElm = <HTMLInputElement>document.querySelector(this.input);
         let inputValue = inputElm.value;
         if(this.defaultValue != ''){
@@ -137,11 +147,11 @@ export default class GhostSearch extends autoImplement<IProps>() {
         });
         for (let key in results){
             if (key < results.length) {
-                resultsElm.appendChild(this.createElementFromHTML(this.template(results[key].obj)));
-            };
+                resultsElm.appendChild(GhostSearch.createElementFromHTML(this.template(results[key].obj)));
+            }
         }
         
-        this.on.afterDisplay(results)
+        this.on.afterDisplay(results);
         this.defaultValue = '';
     }
 
@@ -153,7 +163,7 @@ export default class GhostSearch extends autoImplement<IProps>() {
         this.check = true;
 
         if(this.defaultValue != '') {
-            this.on.beforeDisplay()
+            this.on.beforeDisplay();
             this.displayResults(data)
         }
         
@@ -163,46 +173,24 @@ export default class GhostSearch extends autoImplement<IProps>() {
                 button.closest('form').addEventListener('submit', e => {
                     e.preventDefault()
                 });
-            };
+            }
             button.addEventListener('click', e => {
-                e.preventDefault()
-                this.on.beforeDisplay()
+                e.preventDefault();
+                this.on.beforeDisplay();
                 this.displayResults(data)
             })
         } else {
-            inputElm.addEventListener('keyup', e => {
-                this.on.beforeDisplay()
+            inputElm.addEventListener('keyup', () => {
+                this.on.beforeDisplay();
                 this.displayResults(data)
             })
         }
-    }
-    
-    checkGhostAPI(){
-        if (typeof ghost === 'undefined') {
-            console.log(ghost);
-            console.log('Ghost API is not enabled');
-            return false;
-        };
-        return true;
-    }
-
-    checkElements(){
-
-        if(!document.querySelectorAll(this.input).length){
-            console.log('Input not found.');
-            return false;
-        }
-        if(!document.querySelectorAll(this.results).length){
-            console.log('Results not found.');
-            return false;
-        };
-        return true;
     }
 
     checkArgs(){
         let inputElm = <HTMLInputElement>document.querySelector(this.input);
         let resultsElm = <HTMLInputElement>document.querySelector(this.results);
-        
+
         if(!document.body.contains(inputElm)) {
             console.log('Input not found.');
             return false;
@@ -210,35 +198,31 @@ export default class GhostSearch extends autoImplement<IProps>() {
         if(!document.body.contains(resultsElm)) {
             console.log('Results not found.');
             return false;
-        };
+        }
         if(this.button != ''){
             if (!document.querySelectorAll(this.button).length) {
                 console.log('Button not found.');
                 return false;
-            };
+            }
         }
         if(this.url == ''){
             console.log(this.url);
             console.log('Content API Client Library url missing. Please set the url. Must not end in a trailing slash.');
             return false;
-        };
+        }
         if(this.key == ''){
             console.log('Content API Client Library key missing. Please set the key. Hex string copied from the "Integrations" screen in Ghost Admin.');
             return false;
-        };
+        }
         return true;
     }
 
     validate(){
-        if (!this.checkArgs()) {
-            return false;
-        };
-
-        return true;
+        return this.checkArgs();
     }
 
     // TODO reformat these functions
-    openSearch() {
+    static openSearch() {
         const search = <HTMLElement>document.querySelector('#search');
         let inputElm = <HTMLInputElement>document.querySelector('#ghost-search-field');
         search.style.display = 'block';
@@ -247,7 +231,7 @@ export default class GhostSearch extends autoImplement<IProps>() {
         inputElm.focus();
     }
     
-    closeSearch() {
+    static closeSearch() {
         const search = <HTMLElement>document.querySelector('#search');
         let inputElm = <HTMLInputElement>document.querySelector('#ghost-search-field');
         let resultsElm = <HTMLElement>document.querySelector('#ghost-search-results');
@@ -264,7 +248,7 @@ export default class GhostSearch extends autoImplement<IProps>() {
             while (resultsElm.firstChild) {
                 resultsElm.removeChild(resultsElm.firstChild);
             }
-        };
+        }
     }
     
     init() {
@@ -279,7 +263,7 @@ export default class GhostSearch extends autoImplement<IProps>() {
             window.onload = () => {
                 if (!this.check) {
                     this.fetch()
-                };
+                }
             }
         }
 
@@ -287,13 +271,13 @@ export default class GhostSearch extends autoImplement<IProps>() {
             inputElm.addEventListener('focus', e => {
                 if (!this.check) {
                     this.fetch()
-                };
+                }
             })
         } else if(this.trigger == 'load'){
             window.onload = () => {
                 if (!this.check) {
                     this.fetch()
-                };
+                }
             }
         }
         
@@ -302,7 +286,7 @@ export default class GhostSearch extends autoImplement<IProps>() {
 
             let key = e.key || e.keyCode;
             if(key === 'Escape' || key === 'Esc' || key === 27) {
-                this.closeSearch();
+                GhostSearch.closeSearch();
             }
         });
     }
