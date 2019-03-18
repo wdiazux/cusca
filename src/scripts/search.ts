@@ -250,7 +250,7 @@ export default class GhostSearch extends autoImplement<IProps>() {
             }
         }
     }
-    
+
     init() {
         let inputElm = <HTMLInputElement>document.querySelector(this.input);
         

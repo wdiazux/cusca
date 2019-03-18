@@ -1,8 +1,3 @@
-// jQuery
-// ------
-
-import jQuery = require('jquery');
-
 // Images
 // -------
 
@@ -20,7 +15,6 @@ const images = importAll(require.context('../img/', false, /\.(png|gif|jpe?g|svg
 
 import 'foundation-sites';
 $(document).foundation();
-
 
 
 // Pagination
@@ -46,7 +40,7 @@ $(document).ready(() => {
         range.push(pageCount);
 
         return range;
-    }
+    };
 
     const createPagination = () => {
         let currentPage = parseInt($('.curr-page').text()),
@@ -79,7 +73,7 @@ $(document).ready(() => {
         } else {
             $('.pagination').css('display', 'none');
         }
-    }
+    };
     createPagination();
 });
 
@@ -98,19 +92,19 @@ let ticking = false;
 const onScroll = () => {
     lastScrollY = window.scrollY;
     requestTick();
-}
+};
 
 const onResize = () => {
     lastHeaderHeight = siteHeader.height();
     requestTick();
-}
+};
 
 const requestTick = () => {
     if (!ticking) {
         requestAnimationFrame(setHeaderBg);
     }
     ticking = true;
-}
+};
 
 const setHeaderBg = () => {
     if(lastScrollY - siteHeaderBg.scrollTop() - lastHeaderHeight >= -240) {
@@ -122,7 +116,7 @@ const setHeaderBg = () => {
     }
 
     ticking = false;
-}
+};
 
 $(function () {
     if(siteHeaderBg.length) {
@@ -139,6 +133,7 @@ if(siteHeaderBg.length) {
     });
     window.addEventListener('resize', onResize, false);
 
+    // @ts-ignore
     particlesJS('site-header-bg', {
         "particles": {
             "number": {
