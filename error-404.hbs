@@ -20,7 +20,7 @@ It's a good idea to keep this template as minimal as possible in terms of both f
             <div class="inner">
                 <nav class="site-nav-center">
                     {{#if @site.logo}}
-                        <a class="site-nav-logo" href="{{@site.url}}"><img src="{{@site.logo}}" alt="{{@site.title}}" /></a>
+                        <a class="site-nav-logo" href="{{@site.url}}"><img src="{{img_url @site.logo size="xs"}}" alt="{{@site.title}}" /></a>
                     {{else}}
                         <a class="site-nav-logo" href="{{@site.url}}">{{@site.title}}</a>
                     {{/if}}

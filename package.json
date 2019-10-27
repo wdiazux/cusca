@@ -1,11 +1,11 @@
 {
   "name": "cusca",
-  "description": "A clean theme for Ghost.",
+  "description": "A clean theme for Ghost publishing platform.",
   "demo": "https://wdiaz.org",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "engines": {
-    "ghost": ">=2.0.0",
-    "ghost-api": "v2"
+    "ghost": ">=3.0.0",
+    "ghost-api": "v3"
   },
   "license": "MIT",
   "screenshots": {
@@ -14,9 +14,9 @@
   },
   "scripts": {
     "dev": "./node_modules/.bin/webpack --progress --colors -d --config src/build/webpack.config.js",
-    "build:prod": "./node_modules/.bin/webpack --progress --colors -p --config src/build/webpack.config.js",
+    "build": "./node_modules/.bin/webpack --progress --colors -p --config src/build/webpack.config.js",
     "start": "./node_modules/.bin/webpack --hide-modules --colors -d --watch --config src/build/webpack.config.js",
-    "test": "gscan ."
+    "test": "gscan --v3 ."
   },
   "author": {
     "name": "William Diaz",

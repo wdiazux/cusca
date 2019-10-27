@@ -118,9 +118,9 @@ let $allVideos = $('.post-content').find(videoSelectors.join(','));
 $allVideos = $allVideos.not('object object'); // SwfObj conflict patch}
 
 $allVideos.each(function(){
-    var $this = $(this);
+    let $this = $(this);
     if (this.tagName.toLowerCase() !== 'embed' && $this.parent('object').length === 0 || $this.parent('.responsive-embed').length  < 0) {
-        const videoWrap = '<div class="responsive-embed"></div>';
+        const videoWrap = '<div class="responsive-embed widescreen"></div>';
         $this.wrap(videoWrap);
     }
 });

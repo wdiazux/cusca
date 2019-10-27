@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/wdiazux)
 
-A theme for [Ghost 2.x](https://ghost.org).
+A theme for [Ghost 3.x](https://ghost.org).
 
 **What that mean CUSCA?**
 
@@ -61,23 +61,27 @@ Do the same for `partials/loop.hbs`:
 
 ### Search
 
-The new release of the Ghost API v2, require extra steps:
+The new release of the Ghost API v3, require extra steps that are **NECESSARY** for the
+search functionality:
 
 - Go in your Ghost's dashboard -> Integrations -> Add custom integration
 - Set a name: Themes Search
 - Get the `Content API Key` and replace the demo key with this one
 - Do the same with the `API URL`
 
-The file to modify with this credentials in typescript is `src/scripts/app.ts`
+The file to modify with this credentials is `src/scripts/app.ts`
 and at the end of the document is the Search section, and the parameter you
 need to change are the URL and Key from the GhostSearch class.
 
-The file to modify with this credentials is typescript `src/scripts/app.ts` and
-the Search section is at the end of the document. The parameters that you need
-to change are the URL and Key from the GhostSearch class.
+```javascript
+let ghostSearch = new GhostSearch({
+    url: 'http://localhost:2368',
+    key: '4f1476d8df3a9cd277b2273b6e'
+});
+```
 
 You will need to rebuild the theme to make it work after modifying the parameters. In
-the end of this document you will find the commands that you need.
+the end of this page you will find the commands that you need to do it.
 
 ### Social Icons
 
@@ -124,11 +128,22 @@ their dependencies with this command:
 npm install
 ```
 
+You also can use yarn instead of npm:
+``` bash
+yarn install
+```
+
 Then you have four commands provided by the Webpack configuration file:
 * `npm run dev` to compile files in development.
 * `npm run start` for live development.
-* `npm run build:prod` to build a production environment.
+* `npm run build` to build a production environment.
 * `npm run test` to test the theme with gscan.
+
+If you are using yarn:
+* `yarn dev` to compile files in development.
+* `yarn start` for live development.
+* `yarn build` to build a production environment.
+* `yarn test` to test the theme with gscan.
 
 If you are looking to modify the style or something in the scripts, the source
 files are in the `src` directory `assets` is the destination directory and it

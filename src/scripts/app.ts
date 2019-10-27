@@ -255,7 +255,7 @@ $(document).ready(() => {
 
     let ghostSearch = new GhostSearch({
         url: 'http://localhost:2368',
-        key: '0562dec064b8fd1fe86b3a35c3'
+        key: '4f1476d8df3a9cd277b2273b6e'
     });
 
     
