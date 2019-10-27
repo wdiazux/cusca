@@ -1,8 +1,50 @@
+# Cruft
+*~
+*#
+.#*
 .DS_Store
-.idea
-.sass-cache
-.vscode
-.eslintcache
-node_modules/
-package-lock.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+.firebase
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+tests/__coverage__/
+tests/**/*.jsx
+
+# production
+/dist
+/build
+/scenarios
+src/**/*.jsx
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 yarn.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Editor
+.idea/

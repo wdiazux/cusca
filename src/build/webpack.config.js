@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
-const CleanPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CheckerPlugin } = require('awesome-typescript-loader')
+const { CheckerPlugin } = require('awesome-typescript-loader');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Detect Node Environment Variable and load corresponing webpack config-extras
@@ -76,12 +76,14 @@ const config = {
                         loader: 'sass-loader',
                         options: {
                             sourceMap: true,
-                            includePaths: [
-                                './node_modules/foundation-sites/scss/',
-                                './node_modules/@fortawesome/fontawesome-free/scss/',
-                                './node_modules/roboto-fontface/css/roboto/sass/'
-                            ]
-                        }
+                            sassOptions: {
+                                includePaths: [
+                                    './node_modules/foundation-sites/scss/',
+                                    './node_modules/@fortawesome/fontawesome-free/scss/',
+                                    './node_modules/roboto-fontface/css/roboto/sass/'
+                                ]
+                            }
+                        },
                     }
                 ]
             },
@@ -148,7 +150,7 @@ const config = {
         }
     }, 
     plugins: [
-        new CleanPlugin(),
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'styles/[name].css',
             chunkFilename: 'styles/[id].css',
