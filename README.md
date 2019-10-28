@@ -33,10 +33,6 @@ Inside the Ghost themes folder (content/themes) you have to clone the repository
 git clone https://github.com/wdiazux/cusca.git
 ```
 
-:warning: **Important:**
-
-You will need to enable the Ghost Public API and Subscribers, both option are in the Labs in the Admin panel. You also can [Read how to do it on my blog](https://www.wdiaz.org/how-to-enable-the-public-api-on-ghost/).
-
 ## Setup
 
 ### Disqus
