@@ -9,7 +9,6 @@ const config = {
                 host: 'localhost',
                 port: 3000,
                 cors: true,
-                //proxy: 'http://localhost:2368',
                 proxy: {
                     target: 'http://localhost:2368',
                     proxyReq: {

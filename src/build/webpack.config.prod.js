@@ -7,12 +7,13 @@ const config = {
         minimizer: [
             new TerserPlugin({
                 parallel: true,
+                cache: true,
                 sourceMap: true,
                 terserOptions: {
-                    ecma: 6,
-                    ie8: false,
-                    safari10: false,
-                    comments: false
+                    warnings: false,
+                    output: {
+                        comments: false,
+                    },
                 }
             }),
             new OptimizeCSSAssetsPlugin({

@@ -1,5 +1,12 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "node": {
+    "supportPolicy": ["lts"]
+  },
+  "separateMinorPatch": true,
+  "patch": {
+    "automerge": true
+  }
 }
