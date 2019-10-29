@@ -35,13 +35,13 @@ import Vibrant = require('node-vibrant');
 
 // Feature Image Background
 // ------------------------
-const featureImageCt:HTMLElement = document.querySelector('.post-full-image');
+const featureImageCt: HTMLElement = document.querySelector('.post-full-image');
 if(featureImageCt) {
-    const featureImage:HTMLImageElement = featureImageCt.querySelector('img');
-    const postFullImageBg:HTMLElement = document.querySelector('.post-full-image-background'); 
-    let paletteReady:boolean = false;
-    let featureImageElm:HTMLImageElement = new Image();
-    
+    const featureImage: HTMLImageElement = featureImageCt.querySelector('img');
+    const postFullImageBg: HTMLElement = document.querySelector('.post-full-image-background');
+    let featureImageElm: HTMLImageElement = new Image();
+    let paletteReady: boolean = false;
+
     featureImageElm.addEventListener('load', () => {
         if(!paletteReady) getPalette();
     }, false);
@@ -53,8 +53,8 @@ if(featureImageCt) {
         
         let v = new Vibrant(featureImageElm);
         v.getPalette().then((palette) => {
-            let paletteColor:string;
-            let bgColor:string; 
+            let paletteColor: string;
+            let bgColor: string;
             
             if(palette['DarkVibrant']) { paletteColor = 'DarkVibrant'; }
             else if(palette['DarkMuted']) { paletteColor = 'DarkMuted'; }
@@ -71,7 +71,7 @@ if(featureImageCt) {
             postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
             
             setTimeout(() => {
-                const spinKit = document.getElementById('spinkit');
+                const spinKit: HTMLElement = document.getElementById('spinkit');
                 if(document.body.contains(spinKit)) {
                     spinKit.parentNode.removeChild(spinKit);
                 }
@@ -87,12 +87,12 @@ const wrapImages = (elem:string, elemClass:string, exclude:string) => {
     if (imgs.length > 0) {
         imgs.each(function () {
             let $this = $(this);
-            let imgLink = $this.attr('src'),
-            caption = $this.attr('alt');
+            let imgLink: string = $this.attr('src'),
+            caption: string = $this.attr('alt');
 
             if (!$this.hasClass(exclude)) {
-                let imgWrap = '<a href=\"' + imgLink + '\" class=\"' + elemClass + '\"' +
-                    'data-fancybox=\"group\" data-caption=\"' + caption + '\"></a>';
+                let imgWrap = `<a href="${imgLink}" class="${elemClass}"
+                    data-fancybox="group" data-caption="${caption}"></a>`;
                 $this.wrap(imgWrap);
             }
         });

@@ -50,6 +50,8 @@ $header-font-color: #91a2bd;
   position: relative;
   width: 100%;
   min-height: 100px;
+  user-select: none;
+  pointer-events: none;
 
   .site-logo {
     min-height: 50px;

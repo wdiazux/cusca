@@ -395,7 +395,7 @@
     border-color: #0a0a0a transparent transparent;
   }
 
-  > li {
+  > li:not(:last-child) {
     margin-right: rem-calc(7);
   }
 }
