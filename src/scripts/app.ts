@@ -4,7 +4,7 @@
 // Here, we're requiring all images inside JS in order to use the webpack
 // fileloader even on images that are not otherwise required in js
 
-const importAll = r => {
+const importAll = (r): string[] => {
     return r.keys().map(r);
 };
 const images = importAll(require.context('../img/', false, /\.(png|gif|jpe?g|svg)$/));
@@ -89,17 +89,17 @@ let lastScrollY = window.scrollY;
 let lastHeaderHeight = siteHeader.height();
 let ticking = false;
 
-const onScroll = () => {
+const onScroll = (): void => {
     lastScrollY = window.scrollY;
     requestTick();
 };
 
-const onResize = () => {
+const onResize = (): void => {
     lastHeaderHeight = siteHeader.height();
     requestTick();
 };
 
-const requestTick = () => {
+const requestTick = (): void => {
     if (!ticking) {
         requestAnimationFrame(setHeaderBg);
     }
@@ -258,7 +258,6 @@ $(document).ready(() => {
         key: '4f1476d8df3a9cd277b2273b6e'
     });
 
-    
     for(let i=0; i < openSearchElm.length; i++) {
         openSearchElm[i].addEventListener('click', GhostSearch.openSearch);
     }

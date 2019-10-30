@@ -31,31 +31,19 @@ function autoImplement<T>(defaults?: Partial<T>) {
 
 export default class GhostSearch extends autoImplement<IProps>() {
     check:boolean = false;
-    url: string;
-    key: string;
-    version?: string;
-    input?: string;
-    results?: string;
-    button?: string;
-    defaultValue?: string;
-    template?: any;
-    trigger?: string;
-    options?: any;
-    api?: any;
-    on?: any;
 
     constructor(kwArgs: IProps) {
         super();
         this.url = kwArgs.url;
         this.key = kwArgs.key;
-        this.version = kwArgs.version || 'v2';
+        this.version = kwArgs.version || 'v3';
         this.input = kwArgs.input || '#ghost-search-field';
         this.results = kwArgs.results || '#ghost-search-results';
         this.button = kwArgs.button || '';
         this.defaultValue = kwArgs.defaultValue || '';
         this.template = kwArgs.template || function(result) {
             let url = [location.protocol, '//', location.host].join('');
-            return '<li><a href="' + url + '/' + result.slug + '/">' + result.title + '</a></li>';
+            return `<li><a href="${url}/${result.slug}">${result.title}</a></li>`;
         };
         this.trigger = kwArgs.trigger || 'focus';
         this.options = kwArgs.options || {
@@ -99,10 +87,8 @@ export default class GhostSearch extends autoImplement<IProps>() {
         let browse = {};
         let parameters = this.api.parameters;
 
-        for (var key in parameters) {
-            if(parameters[key] != ''){
-                browse[key] = parameters[key]
-            }
+        for (let key in parameters) {
+            if (parameters[key] != '') browse[key] = parameters[key]
         }
         
         ghostAPI[this.api.resource]
@@ -199,11 +185,9 @@ export default class GhostSearch extends autoImplement<IProps>() {
             console.log('Results not found.');
             return false;
         }
-        if(this.button != ''){
-            if (!document.querySelectorAll(this.button).length) {
-                console.log('Button not found.');
-                return false;
-            }
+        if(this.button != '' && !document.querySelectorAll(this.button).length) {
+            console.log('Button not found.');
+            return false;
         }
         if(this.url == ''){
             console.log(this.url);
@@ -261,23 +245,17 @@ export default class GhostSearch extends autoImplement<IProps>() {
         if(this.defaultValue != ''){
             inputElm.value = this.defaultValue;
             window.onload = () => {
-                if (!this.check) {
-                    this.fetch()
-                }
+                if (!this.check) this.fetch()
             }
         }
 
         if (this.trigger == 'focus') {
             inputElm.addEventListener('focus', e => {
-                if (!this.check) {
-                    this.fetch()
-                }
+                if (!this.check) this.fetch()
             })
         } else if(this.trigger == 'load'){
             window.onload = () => {
-                if (!this.check) {
-                    this.fetch()
-                }
+                if (!this.check) this.fetch()
             }
         }
         
