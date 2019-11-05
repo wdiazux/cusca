@@ -48,9 +48,9 @@
     "https://github.com/wdiazux/cusca/graphs/contributors"
   ],
   "devDependencies": {
-    "@babel/core": "7.6.4",
-    "@babel/preset-env": "7.6.3",
-    "@babel/preset-typescript": "7.6.0",
+    "@babel/core": "7.7.0",
+    "@babel/preset-env": "7.7.1",
+    "@babel/preset-typescript": "7.7.0",
     "@types/webpack-env": "1.14.1",
     "autoprefixer": "9.7.0",
     "awesome-typescript-loader": "5.2.1",
