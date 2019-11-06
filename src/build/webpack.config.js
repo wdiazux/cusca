@@ -29,10 +29,6 @@ const config = {
             './scripts/grid.ts'
         ]
     },
-    resolve: {
-        extensions: ['.js', '.ts', '.json'],
-        modules: [path.resolve(__dirname, 'src/scripts'), 'node_modules']
-    },
     // This next line generates source maps to help with debugging.
     // Don't want source maps? Get rid of it.
     devtool: prod ? false : 'source-map',
@@ -125,20 +121,6 @@ const config = {
                 ]
             },
             {
-                type: 'javascript/auto',
-                test: /\.json$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            outputPath: 'scripts/',
-                            publicPath: '../../scripts/'
-                        }
-                    }
-                ]
-            },
-            {
                 test: /\.worker.js$/,
                 loader: 'worker-loader',
                 options: { publicPath: '/assets/' }
@@ -158,7 +140,11 @@ const config = {
                 }
             }
         }
-    }, 
+    },
+    resolve: {
+        modules: ['src/scripts', 'node_modules'],
+        extensions: ['*', '.js', '.ts'],
+    },
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({

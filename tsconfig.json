@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "es6",
     "moduleResolution": "node",
     "target": "es5",
     "baseUrl": "./",
@@ -12,21 +12,29 @@
     "esModuleInterop": true,
     "allowJs": true,
     "outDir": "assets",
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
     "types": [
       "jquery",
       "webpack-env"
     ],
     "typeRoots": [
       "./node_modules/@types",
-      "./typings"
+      "./src/typings"
     ]
   },
-  "exclude": [
-    "node_modules",
-    "src/build"
-  ],
   "include": [
     "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "assets",
+    "src/build",
+    "src/img",
+    "src/styles"
   ],
   "awesomeTypescriptLoaderOptions": {
     "reportFiles": [

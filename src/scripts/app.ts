@@ -3,13 +3,12 @@
 
 import 'foundation-sites';
 import 'particles.js';
+import particlesJSON from './particles.json';
 
 // Search
 // ------
 
 import GhostSearch from './search';
-
-const particlesJSON = require('./particles.json');
 
 // Here, we're requiring all images inside JS in order to use the webpack
 // fileloader even on images that are not otherwise required in js
@@ -143,7 +142,6 @@ if (siteHeaderBg.length) {
     window.addEventListener('resize', onResize, false);
 
     particlesJS('site-header-bg', particlesJSON);
-    console.log(particlesJSON);
 } else {
     siteHeader.addClass('bg');
 }

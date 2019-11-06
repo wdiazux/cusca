@@ -40,19 +40,6 @@
     "lines-between-class-members": 0,
     "prefer-template": 0,
     "import/prefer-default-export": 0,
-    "import/no-unresolved": 0,
-    "import/no-extraneous-dependencies": 0,
-    "import/extensions": 0,
-    /**
-     * @bug https://github.com/benmosher/eslint-plugin-import/issues/1282
-     * "import/named" temporary disable.
-     */
-    "import/named": "off",
-    /**
-     * @bug?
-     * "import/export" temporary disable.
-     */
-    "import/export": "off",
     "no-unused-expressions": ["warn", {
       "allowShortCircuit": true,
       "allowTernary": true
