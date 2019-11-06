@@ -16,7 +16,7 @@
     "dev": "./node_modules/.bin/webpack --progress --colors -d --config src/build/webpack.config.js",
     "build": "./node_modules/.bin/webpack --progress --colors -p --config src/build/webpack.config.js",
     "start": "./node_modules/.bin/webpack --hide-modules --colors -d --watch --config src/build/webpack.config.js",
-    "lint": "eslint src/** --ext .ts",
+    "lint": "eslint src/scripts/ --ext .ts --ignore-path src/scripts/particles.json",
     "test": "gscan --v3 ."
   },
   "author": {
