@@ -3,10 +3,14 @@
 // A modification of Ghost-Search
 // https://github.com/HauntedThemes/ghost-search
 
-import GhostContentAPI from '@tryghost/content-api'
+// eslint-disable-next-line max-classes-per-file
+import GhostContentAPI from '@tryghost/content-api';
+
 const fuzzysort = require('fuzzysort');
 
-interface IProps {
+// TODO: Create custom type for any types
+/* eslint-disable @typescript-eslint/no-explicit-any */
+interface Props {
     url: string;
     key: string;
     version?: string;
@@ -16,257 +20,317 @@ interface IProps {
     defaultValue?: string;
     template?: any;
     trigger?: string;
-    options?: any; 
-    api?: any; 
+    options?: any;
+    api?: any;
     on?: any;
 }
-
-function autoImplement<T>(defaults?: Partial<T>) {
-    return class {
-        constructor() {
-            Object.assign(this, defaults || {});
-        }
-    } as new () => T
+interface ObjectOfStrings {
+    [propName: string]: string;
 }
 
-export default class GhostSearch extends autoImplement<IProps>() {
-    check:boolean = false;
+export default class GhostSearch implements Props {
+    public url: string;
+    public key: string;
+    public version?: string;
+    public input?: string;
+    public results?: string;
+    public button?: string;
+    public defaultValue?: string;
+    public template?: any;
+    public trigger?: string;
+    public options?: any;
+    public api?: any;
+    public on?: any;
+    private check = false;
 
-    constructor(kwArgs: IProps) {
-        super();
-        this.url = kwArgs.url;
-        this.key = kwArgs.key;
-        this.version = kwArgs.version || 'v3';
-        this.input = kwArgs.input || '#ghost-search-field';
-        this.results = kwArgs.results || '#ghost-search-results';
-        this.button = kwArgs.button || '';
-        this.defaultValue = kwArgs.defaultValue || '';
-        this.template = kwArgs.template || function(result) {
-            let url = [location.protocol, '//', location.host].join('');
-            return `<li><a href="${url}/${result.slug}">${result.title}</a></li>`;
+    constructor(props?: Props) {
+        this.url = (props && props.url) || '';
+        this.key = (props && props.key) || '';
+        this.version = (props && props.version) || 'v3';
+        this.input = (props && props.input) || '#ghost-search-field';
+        this.results = (props && props.results) || '#ghost-search-results';
+        this.button = (props && props.button) || '';
+        this.defaultValue = (props && props.defaultValue) || '';
+        this.template =
+            (props && props.template) ||
+            ((result: { slug: string; title: string }): string => {
+                const url = [
+                    window.location.protocol,
+                    '//',
+                    window.location.host,
+                ].join('');
+                return `<li><a href="${url}/${result.slug}">${result.title}</a></li>`;
+            });
+        this.trigger = (props && props.trigger) || 'focus';
+        this.options = (props && props.options) || {
+            keys: ['title'],
+            limit: 10,
+            threshold: -3500,
+            allowTypo: false,
         };
-        this.trigger = kwArgs.trigger || 'focus';
-        this.options = kwArgs.options || {
-            keys: [
-                'title'
-            ],
-                limit: 10,
-                threshold: -3500,
-                allowTypo: false
-        };
-        this.api= kwArgs.api || {
+        this.api = (props && props.api) || {
             resource: 'posts',
-                parameters: {
+            parameters: {
                 limit: 'all',
-                    fields: ['title', 'slug', 'created_at'],
-                    filter: '',
-                    include: 'authors',
-                    order: '',
-                    formats: '',
-                    page: ''
-            }
+                fields: ['title', 'slug', 'created_at'],
+                filter: '',
+                include: 'authors',
+                order: '',
+                formats: '',
+                page: '',
+            },
         };
-        this.on = kwArgs.on || {
+        this.on = (props && props.on) || {
             beforeDisplay: () => {},
-                afterDisplay: (results) => {},
-                beforeFetch: () => {},
-                afterFetch: (results) => {}
+            afterDisplay: () => {},
+            beforeFetch: () => {},
+            afterFetch: () => {},
         };
         this.init();
     }
-    
-    fetch(){
+
+    fetch() {
         this.on.beforeFetch();
-        
-        let ghostAPI = new GhostContentAPI({
+
+        const ghostAPI = new GhostContentAPI({
             url: this.url,
             key: this.key,
-            version: this.version
+            version: this.version,
         });
 
-        let browse = {};
-        let parameters = this.api.parameters;
+        const browse: ObjectOfStrings = {};
+        const { parameters } = this.api;
 
-        for (let key in parameters) {
-            if (parameters[key] != '') browse[key] = parameters[key]
-        }
-        
+        Object.keys(parameters).forEach((key: string) => {
+            if (parameters[key] !== '') browse[key] = parameters[key];
+        });
+
         ghostAPI[this.api.resource]
             .browse(browse)
-            .then((data) => {
+            .then((data: any) => {
                 this.search(data);
             })
-            .catch((err) => {
-                console.log(err);
+            .catch((err: string) => {
                 console.error(err);
             });
     }
-    
-    static createElementFromHTML(htmlString:string) {
-        let div = document.createElement('div');
+
+    // eslint-disable-next-line class-methods-use-this
+    createElementFromHTML(htmlString: string) {
+        const div: HTMLDivElement = document.createElement('div');
         div.innerHTML = htmlString.trim();
-        return div.firstChild; 
+        return div.firstChild;
     }
-    
+
     // TODO: create an interface
-    displayResults(data:any){
-        let resultsElm = <HTMLElement>document.querySelector(this.results);
-    
-        if (resultsElm.firstChild !== null) {
+    displayResults(data: any) {
+        if (!this.results) return;
+        const inputElm: HTMLInputElement | null = document.querySelector(
+            this.input!
+        );
+
+        const resultsElm: Element | null = document.querySelector(this.results);
+
+        if (resultsElm) {
             while (resultsElm.firstChild) {
                 resultsElm.removeChild(resultsElm.firstChild);
             }
         }
-        let inputElm = <HTMLInputElement>document.querySelector(this.input);
-        let inputValue = inputElm.value;
-        if(this.defaultValue != ''){
+
+        let inputValue: string | null;
+        if (this.defaultValue) {
             inputValue = this.defaultValue;
+        } else if (inputElm) {
+            inputValue = inputElm.value;
+        } else {
+            inputValue = null;
         }
-       
-        document.querySelector('.search-container').classList.add('dirty');
+
+        const searchContainer: HTMLDivElement | null = document.querySelector(
+            '.search-container'
+        );
+        if (searchContainer) searchContainer.classList.add('dirty');
 
         const results = fuzzysort.go(inputValue, data, {
             keys: this.options.keys,
             limit: this.options.limit,
             allowTypo: this.options.allowTypo,
-            threshold: this.options.threshold
+            threshold: this.options.threshold,
         });
-        for (let key in results){
-            if (key < results.length) {
-                resultsElm.appendChild(GhostSearch.createElementFromHTML(this.template(results[key].obj)));
-            }
+
+        if (resultsElm) {
+            Object.keys(results).forEach(key => {
+                if (key < results.length) {
+                    resultsElm.appendChild(
+                        this.createElementFromHTML(
+                            this.template(results[key].obj)
+                        )!
+                    );
+                }
+            });
         }
-        
+
         this.on.afterDisplay(results);
         this.defaultValue = '';
     }
 
-
-    // TODO: create an interface
-    search(data) {
-        let inputElm = <HTMLInputElement>document.querySelector(this.input);
+    // TODO: create an interface for data
+    search(data: any) {
         this.on.afterFetch(data);
         this.check = true;
 
-        if(this.defaultValue != '') {
+        const inputElm: HTMLInputElement | null = document.querySelector(
+            this.input!
+        );
+
+        if (this.defaultValue !== '') {
             this.on.beforeDisplay();
-            this.displayResults(data)
+            this.displayResults(data);
         }
-        
-        if (this.button != '') {
-            let button = <HTMLInputElement>document.querySelector(this.button);
-            if (button.tagName == 'INPUT' && button.type == 'submit') {
-                button.closest('form').addEventListener('submit', e => {
-                    e.preventDefault()
+
+        if (this.button) {
+            const button: HTMLInputElement | null = document.querySelector(
+                this.button
+            );
+            if (
+                button &&
+                (button.tagName === 'INPUT' && button.type === 'submit')
+            ) {
+                button.closest('form')!.addEventListener('submit', e => {
+                    e.preventDefault();
+                });
+
+                button.addEventListener('click', e => {
+                    e.preventDefault();
+                    this.on.beforeDisplay();
+                    this.displayResults(data);
                 });
             }
-            button.addEventListener('click', e => {
-                e.preventDefault();
-                this.on.beforeDisplay();
-                this.displayResults(data)
-            })
-        } else {
+        } else if (inputElm) {
             inputElm.addEventListener('keyup', () => {
                 this.on.beforeDisplay();
-                this.displayResults(data)
-            })
+                this.displayResults(data);
+            });
         }
     }
 
-    checkArgs(){
-        let inputElm = <HTMLInputElement>document.querySelector(this.input);
-        let resultsElm = <HTMLInputElement>document.querySelector(this.results);
+    checkArgs() {
+        const resultsElm: HTMLInputElement | null = document.querySelector(
+            this.results!
+        );
 
-        if(!document.body.contains(inputElm)) {
+        const inputElm: HTMLInputElement | null = document.querySelector(
+            this.input!
+        );
+
+        if (!document.body.contains(inputElm)) {
             console.log('Input not found.');
             return false;
         }
-        if(!document.body.contains(resultsElm)) {
+        if (!document.body.contains(resultsElm)) {
             console.log('Results not found.');
             return false;
         }
-        if(this.button != '' && !document.querySelectorAll(this.button).length) {
+        if (this.button && !document.querySelectorAll(this.button).length) {
             console.log('Button not found.');
             return false;
         }
-        if(this.url == ''){
+        if (this.url === '') {
             console.log(this.url);
-            console.log('Content API Client Library url missing. Please set the url. Must not end in a trailing slash.');
+            console.log(
+                'Content API Client Library url missing. Please set the url. Must not end in a trailing slash.'
+            );
             return false;
         }
-        if(this.key == ''){
-            console.log('Content API Client Library key missing. Please set the key. Hex string copied from the "Integrations" screen in Ghost Admin.');
+        if (this.key === '') {
+            console.log(
+                'Content API Client Library key missing. Please set the key. Hex string copied from the "Integrations" screen in Ghost Admin.'
+            );
             return false;
         }
         return true;
     }
 
-    validate(){
+    validate() {
         return this.checkArgs();
     }
 
     // TODO reformat these functions
-    static openSearch() {
-        const search = <HTMLElement>document.querySelector('#search');
-        let inputElm = <HTMLInputElement>document.querySelector('#ghost-search-field');
-        search.style.display = 'block';
-        document.querySelector('body').classList.add('noscroll');
+    public openSearch = () => {
+        const search: HTMLDivElement | null = document.querySelector('#search');
+        const bodyElm: HTMLBodyElement | null = document.querySelector('body');
+        const inputElm: HTMLInputElement | null = document.querySelector(
+            this.input!
+        );
 
-        inputElm.focus();
-    }
-    
-    static closeSearch() {
-        const search = <HTMLElement>document.querySelector('#search');
-        let inputElm = <HTMLInputElement>document.querySelector('#ghost-search-field');
-        let resultsElm = <HTMLElement>document.querySelector('#ghost-search-results');
-  
-        if(search.style.display === 'none' || search.style.display === '') { return;  }
-        
+        if (search) search.style.display = 'block';
+        bodyElm!.classList.add('noscroll');
+        inputElm!.focus();
+    };
+
+    public closeSearch = () => {
+        const search: HTMLElement | null = document.querySelector('#search');
+        const resultsElm: HTMLElement | null = document.querySelector(
+            '#ghost-search-results'
+        );
+
+        if (
+            !search ||
+            (search.style.display === 'none' || search.style.display === '')
+        ) {
+            return;
+        }
+
         search.style.display = 'none';
-        document.querySelector('body').classList.remove('noscroll');
-        
-        document.querySelector('.search-container').classList.remove('dirty');
-        inputElm.value = '';
+        document!.querySelector('body')!.classList.remove('noscroll');
+        document!.querySelector('.search-container')!.classList.remove('dirty');
+        const inputElm: HTMLInputElement | null = document.querySelector(
+            this.input!
+        );
 
-        if (resultsElm.nodeType) {
+        inputElm!.value = '';
+
+        if (resultsElm) {
             while (resultsElm.firstChild) {
                 resultsElm.removeChild(resultsElm.firstChild);
             }
         }
-    }
+    };
 
     init() {
-        let inputElm = <HTMLInputElement>document.querySelector(this.input);
-        
+        const inputElm: HTMLInputElement | null = document.querySelector(
+            this.input!
+        );
         if (!this.validate()) {
             return;
         }
-        
-        if(this.defaultValue != ''){
+
+        if (this.defaultValue && inputElm) {
             inputElm.value = this.defaultValue;
             window.onload = () => {
-                if (!this.check) this.fetch()
-            }
+                if (!this.check) this.fetch();
+            };
         }
 
-        if (this.trigger == 'focus') {
-            inputElm.addEventListener('focus', e => {
-                if (!this.check) this.fetch()
-            })
-        } else if(this.trigger == 'load'){
+        if (inputElm && this.trigger === 'focus') {
+            inputElm.addEventListener('focus', () => {
+                if (!this.check) this.fetch();
+            });
+        } else if (this.trigger === 'load') {
             window.onload = () => {
-                if (!this.check) this.fetch()
-            }
+                if (!this.check) this.fetch();
+            };
         }
-        
-        document.body.addEventListener('keydown', (e) => {
-            if(e.defaultPrevented) { return; }
 
-            let key = e.key || e.keyCode;
-            if(key === 'Escape' || key === 'Esc' || key === 27) {
-                GhostSearch.closeSearch();
+        document.body.addEventListener('keydown', e => {
+            if (e.defaultPrevented) {
+                return;
+            }
+
+            const key = e.key || e.keyCode;
+            if (key === 'Escape' || key === 'Esc' || key === 27) {
+                this.closeSearch();
             }
         });
     }
 }
-

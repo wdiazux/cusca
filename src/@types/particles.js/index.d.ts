@@ -1,1 +1,0 @@
-declare function particlesJS(tag_id: any, params: any): void;

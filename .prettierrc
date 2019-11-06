@@ -1,0 +1,15 @@
+{
+  "trailingComma": "es5",
+  "tabWidth": 4,
+  "singleQuote": true,
+  "htmlWhitespaceSensitivity": "css",
+  "jsxBracketSameLine": true,
+  "overrides": [
+    {
+      "files": "*.css",
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}

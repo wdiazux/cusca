@@ -1,13 +1,10 @@
 // jQuery
 // ------
 
-import jQuery = require('jquery');
-
 // Fancybox
 // --------
 
 import '@fancyapps/fancybox';
-
 
 // PrismJS
 // -------
@@ -26,72 +23,90 @@ import 'prismjs/components/prism-handlebars';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-typescript';
 
-
 // Feature Image Background
 // ------------------------
 
-import Vibrant = require('node-vibrant');
-
+import Vibrant from 'node-vibrant';
 
 // Feature Image Background
 // ------------------------
-const featureImageCt: HTMLElement = document.querySelector('.post-full-image');
-if(featureImageCt) {
-    const featureImage: HTMLImageElement = featureImageCt.querySelector('img');
-    const postFullImageBg: HTMLElement = document.querySelector('.post-full-image-background');
-    let featureImageElm: HTMLImageElement = new Image();
-    let paletteReady: boolean = false;
+const featureImageCt: HTMLElement | null = document.querySelector(
+    '.post-full-image'
+);
+if (featureImageCt) {
+    const featureImage: HTMLImageElement | null = featureImageCt.querySelector(
+        'img'
+    );
+    const postFullImageBg: HTMLElement | null = document.querySelector(
+        '.post-full-image-background'
+    );
+    const featureImageElm: HTMLImageElement = new Image();
+    let paletteReady = false;
 
-    featureImageElm.addEventListener('load', () => {
-        if(!paletteReady) getPalette();
-    }, false);
     featureImageElm.crossOrigin = 'Anonymous';
-    featureImageElm.src = featureImage.src;
-    
+    if (featureImage) featureImageElm.src = featureImage.src;
+
     const getPalette = () => {
         paletteReady = true;
-        
-        let v = new Vibrant(featureImageElm);
-        v.getPalette().then((palette) => {
+
+        const v = new Vibrant(featureImageElm);
+        v.getPalette().then(palette => {
             let paletteColor: string;
             let bgColor: string;
-            
-            if(palette['DarkVibrant']) { paletteColor = 'DarkVibrant'; }
-            else if(palette['DarkMuted']) { paletteColor = 'DarkMuted'; }
-            else if(palette['Vibrant']) { paletteColor = 'Vibrant'; }
-            else { paletteColor = 'Nothing'; }
-            
-            if(paletteColor !== 'Nothing') {
+
+            if (palette.DarkVibrant) {
+                paletteColor = 'DarkVibrant';
+            } else if (palette.DarkMuted) {
+                paletteColor = 'DarkMuted';
+            } else if (palette.Vibrant) {
+                paletteColor = 'Vibrant';
+            } else {
+                paletteColor = 'Nothing';
+            }
+
+            if (paletteColor !== 'Nothing') {
+                // @ts-ignore
                 bgColor = palette[paletteColor].getRgb().join();
             } else {
                 bgColor = '255, 255, 255';
-            } 
-            
+            }
+
             featureImageCt.classList.add('loaded');
-            postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
-            
+            if (postFullImageBg)
+                postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
+
             setTimeout(() => {
-                const spinKit: HTMLElement = document.getElementById('spinkit');
-                if(document.body.contains(spinKit)) {
+                const spinKit: HTMLElement | null = document.getElementById(
+                    'spinkit'
+                );
+                if (spinKit && spinKit.parentNode) {
                     spinKit.parentNode.removeChild(spinKit);
                 }
             }, 600);
         });
-    }
+    };
+
+    featureImageElm.addEventListener(
+        'load',
+        () => {
+            if (!paletteReady) getPalette();
+        },
+        false
+    );
 }
 
 // Fancybox
 // ---------
-const wrapImages = (elem:string, elemClass:string, exclude:string) => {
-    let imgs = $(elem);
+const wrapImages = (elem: string, elemClass: string, exclude: string) => {
+    const imgs = $(elem);
     if (imgs.length > 0) {
-        imgs.each(function () {
-            let $this = $(this);
-            let imgLink: string = $this.attr('src'),
-            caption: string = $this.attr('alt');
+        imgs.each((index, element) => {
+            const $this = $(element);
+            const imgLink: string | undefined = $this.attr('src');
+            const caption: string | undefined = $this.attr('alt');
 
             if (!$this.hasClass(exclude)) {
-                let imgWrap = `<a href="${imgLink}" class="${elemClass}"
+                const imgWrap = `<a href="${imgLink}" class="${elemClass}"
                     data-fancybox="group" data-caption="${caption}"></a>`;
                 $this.wrap(imgWrap);
             }
@@ -99,10 +114,9 @@ const wrapImages = (elem:string, elemClass:string, exclude:string) => {
     }
 };
 
-wrapImages('.post-content img','fancy-box','no-fancy-box');
+wrapImages('.post-content img', 'fancy-box', 'no-fancy-box');
 
 $('.fancy-box').fancybox();
-
 
 // Responsive Videos
 // -----------------
@@ -112,14 +126,19 @@ const videoSelectors = [
     'iframe[src*="youtube-nocookie.com"]',
     'iframe[src*="kickstarter.com"][src*="video.html"]',
     'object',
-    'embed'
+    'embed',
 ];
 let $allVideos = $('.post-content').find(videoSelectors.join(','));
 $allVideos = $allVideos.not('object object'); // SwfObj conflict patch}
 
-$allVideos.each(function(){
-    let $this = $(this);
-    if (this.tagName.toLowerCase() !== 'embed' && $this.parent('object').length === 0 || $this.parent('.responsive-embed').length  < 0) {
+console.log($allVideos);
+$allVideos.each((index, element) => {
+    const $this = $(element);
+    if (
+        (element.tagName.toLowerCase() !== 'embed' &&
+            $this.parent('object').length === 0) ||
+        $this.parent('.responsive-embed').length < 0
+    ) {
         const videoWrap = '<div class="responsive-embed widescreen"></div>';
         $this.wrap(videoWrap);
     }

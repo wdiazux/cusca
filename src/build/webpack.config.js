@@ -1,3 +1,4 @@
+const eslint = require('eslint');
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
@@ -6,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-// Detect Node Environment Variable and load corresponing webpack config-extras
+// Detect Node Environment Variable and load corresponding webpack config-extras
 const prod = process.argv.indexOf('-p') !== -1 || process.env.NODE_ENV === 'production';
 const ENV_CONF = prod ? require('./webpack.config.prod') : require('./webpack.config.dev');
 
@@ -29,11 +30,12 @@ const config = {
         ]
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx']
+        extensions: ['.js', '.ts', '.json'],
+        modules: [path.resolve(__dirname, 'src/scripts'), 'node_modules']
     },
     // This next line generates source maps to help with debugging.
     // Don't want source maps? Get rid of it.
-    devtool: 'source-map',
+    devtool: prod ? false : 'source-map',
     // Here we're defining the output of our bundled JS.
     output: {
         filename: 'scripts/[name].js',
@@ -45,11 +47,19 @@ const config = {
     module: {
         rules: [
             {
+                enforce: 'pre',
+                test: /\.ts$/,
+                loader: 'eslint-loader',
+                exclude: /(node_modules)/,
+                options: {
+                    formatter: eslint.CLIEngine.getFormatter('stylish'),
+                    emitWarning: process.env.NODE_ENV !== 'production',
+                },
+            },
+            {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader'
-                }
+                exclude: /(node_modules)/,
+                loader: 'babel-loader',
             },
             {
                 test: /\.ts$/,

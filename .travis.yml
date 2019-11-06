@@ -1,0 +1,15 @@
+language: node_js
+sudo: false
+branches:
+  only:
+    - master
+node_js:
+  - "stable"
+cache: yarn
+install:
+  - npm install
+before_script:
+  # Building sources
+  - npm run build
+script:
+  - npm run lint
