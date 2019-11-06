@@ -52,7 +52,7 @@
     "@babel/preset-env": "7.7.1",
     "@babel/preset-typescript": "7.7.0",
     "@types/webpack-env": "1.14.1",
-    "autoprefixer": "9.7.0",
+    "autoprefixer": "9.7.1",
     "awesome-typescript-loader": "5.2.1",
     "babel-loader": "8.0.6",
     "browser-sync": "2.26.7",
