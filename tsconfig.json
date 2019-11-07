@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "target": "es5",
     "baseUrl": "./",
@@ -12,11 +12,6 @@
     "esModuleInterop": true,
     "allowJs": true,
     "outDir": "assets",
-    "lib": [
-      "es5",
-      "es6",
-      "dom"
-    ],
     "types": [
       "jquery",
       "webpack-env"
@@ -24,6 +19,12 @@
     "typeRoots": [
       "./node_modules/@types",
       "./src/typings"
+    ],
+    "lib": [
+      "dom",
+      "es5",
+      "es2015.core",
+      "es2015.promise"
     ]
   },
   "include": [

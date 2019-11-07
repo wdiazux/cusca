@@ -1,3 +1,13 @@
+// Polyfill
+// --------
+
+import 'core-js/es/array';
+
+if (window.NodeList && !NodeList.prototype.forEach) {
+    // @ts-ignore
+    NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
 // Grid
 // ----
 const Shuffle = require('shufflejs').default;

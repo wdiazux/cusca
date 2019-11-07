@@ -5,7 +5,7 @@
                 <div class="widget">
                     {{#get "posts" limit="3" order="published_at desc"}}
                         {{#if posts}}
-                            <h6 class="widget-title">Recent post</h5>
+                            <h6 class="widget-title">Recent post</h6>
                                 {{#foreach posts}}
                                     <div class="media-object recent-post-ct">
                                         {{#if feature_image}}
@@ -37,7 +37,7 @@
                 {{#get "tags" limit="all" order="name asc" }}
                     {{#if tags }}
                         <div class="widget no-margin">
-                            <h6 class="widget-title">Blog Tags</h5>
+                            <h6 class="widget-title">Blog Tags</h6>
                             <ul class="tags horizontal-list" id="tag-list">
                                 {{#foreach tags}}
                                     <li>
@@ -53,13 +53,13 @@
             <div class="cell medium-6 medium-offset-3 large-offset-0 large-4">
                 {{#if @labs.subscribers}}
                     <div class="widget">
-                        <h6 class="widget-title">Subscribe</h5>
+                        <h6 class="widget-title">Subscribe</h6>
                             <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox.</p>
                             {{subscribe_form placeholder="youremail@example.com"}}
                     </div>
                  {{/if}}
                 <div class="widget">
-                    <h6 class="widget-title">Social networks</h5>
+                    <h6 class="widget-title">Social networks</h6>
                     <ul class="horizontal-list social-networks">
                         <li>
                             <a href="https://www.youtube.com/[your-user]" target="_blank" rel="noopener" title="Youtube"><i class="fab fa-youtube"></i></a>

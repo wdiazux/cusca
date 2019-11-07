@@ -8,6 +8,11 @@ import GhostContentAPI from '@tryghost/content-api';
 
 const fuzzysort = require('fuzzysort');
 
+if (window.NodeList && !NodeList.prototype.forEach) {
+    // @ts-ignore
+    NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
 // TODO: Create custom type for any types
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface Props {

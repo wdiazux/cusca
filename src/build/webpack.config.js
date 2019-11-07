@@ -22,6 +22,7 @@ const config = {
             './styles/main.scss'
         ],
         'post' : [
+            'core-js/features/promise',
             './scripts/post.ts',
             './styles/post.scss'
         ],
@@ -62,7 +63,12 @@ const config = {
                 use: {
                     loader: 'awesome-typescript-loader',
                     options: {
-                        configFileName: 'tsconfig.json'
+                        useBabel: true,
+                        configFileName: 'tsconfig.json',
+                        babelOptions: {
+                            babelrc: true,
+                        },
+                        babelCore: '@babel/core'
                     }
                 },
             },
@@ -155,8 +161,9 @@ const config = {
             { from: 'fonts/**/', to: 'fonts' }
         ], { copyUnmodified: true }),
         new webpack.ProvidePlugin({
-            '$': 'jquery',
-            'jQuery': 'jquery'
+            $: 'jquery',
+            jQuery: 'jquery',
+            Promise: 'core-js/features/promise'
         }),
         new CheckerPlugin()
     ]

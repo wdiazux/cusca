@@ -1,5 +1,4 @@
-// jQuery
-// ------
+import 'core-js/es/array';
 
 // Fancybox
 // --------
@@ -131,7 +130,6 @@ const videoSelectors = [
 let $allVideos = $('.post-content').find(videoSelectors.join(','));
 $allVideos = $allVideos.not('object object'); // SwfObj conflict patch}
 
-console.log($allVideos);
 $allVideos.each((index, element) => {
     const $this = $(element);
     if (
