@@ -71,9 +71,9 @@ and at the end of the document is the Search section, and the parameter you
 need to change are the URL and Key from the GhostSearch class.
 
 ```javascript
-let ghostSearch = new GhostSearch({
+const ghostSearch = new GhostSearch({
     url: 'http://localhost:2368',
-    key: '4f1476d8df3a9cd277b2273b6e'
+    key: '4f1476d8df3a9cd277b2273b6e',
 });
 ```
 
