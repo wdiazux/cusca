@@ -1,17 +1,14 @@
-<form method="post" action="{{action}}" class="{{form_class}}">
-    {{! This is required for the form to work correctly }}
-    {{hidden}}
-
-    <div class="{{#if error}}is-invalid-input{{/if}} input-group">
-        {{input_email class="subscribe-emai input-group-field" placeholder=placeholder value=email autofocus=autofocus}}
+<form data-members-form="subscribe">
+    <div class="input-group">
+        <input class="subscribe-email input-group-field" type="email" data-members-email placeholder="youremail@example.com" autocomplete="false"/>
         <div class="input-group-button">
             <button class="button subscribe-btn" type="submit">Subscribe</button>
         </div>
     </div>
-    {{! This is used to get extra info about where this subscriber came from }}
-    {{script}}
+    <div class="message-success">
+        <strong>Great!</strong> Check your inbox and click the link to confirm your subscription.
+    </div>
+    <div class="message-error">
+        Please enter a valid email address!
+    </div>
 </form>
-
-{{#if error}}
-    <p class="main-error">{{{error.message}}}</p>
-{{/if}}

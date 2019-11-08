@@ -22,7 +22,7 @@ other cool stuff that comes from different libraries:
 - [Fancybox](http://fancyapps.com/fancybox/3/)
 - [FontAwesome](http://fontawesome.io)
 - [Prism.js](http://prismjs.com)
-- [Node Vibrant](https://github.com/akfish/node-vibrant)
+- [Color Thief](https://lokeshdhakar.com/projects/color-thief/)
 - [Particles.js](https://vincentgarreau.com/particles.js/)
 - [Ghost Search](https://github.com/HauntedThemes/ghost-search)
 

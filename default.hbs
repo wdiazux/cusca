@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="{{@site.lang}}">
-    <head>
+<head>
 
-        {{!-- Document Settings --}}
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    {{!-- Document Settings --}}
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
-        {{!-- Base Meta --}}
-        <title>{{meta_title}}</title>
-        <meta name="HandheldFriendly" content="True"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {{!-- Base Meta --}}
+    <title>{{meta_title}}</title>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        {{!-- Styles'n'Scripts --}}
-        <link rel="stylesheet" type="text/css" href="{{asset "styles/main.css"}}"/>
-        {{{block "styles"}}}
+    {{!-- Styles'n'Scripts --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "styles/main.css"}}"/>
+    {{{block "styles"}}}
 
-        {{!-- This tag outputs SEO meta+structured data and other important settings --}}
-        {{ghost_head}}
+    {{!-- This tag outputs SEO meta+structured data and other important settings --}}
+    {{ghost_head}}
 
-    </head>
-    <body class="{{body_class}}">
+</head>
+<body class="{{body_class}}">
 
-        <div class="site-wrapper" data-sticky-container>
+<div class="site-wrapper" data-sticky-container>
 
-            {{> header}}
+    {{> header}}
 
-            {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
-            <div class="main-content">
-                {{{body}}}
-            </div>
+    {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+    <div class="main-content">
+        {{{body}}}
+    </div>
 
-            {{!-- The footer at the very bottom of the screen --}}
-            {{> footer}}
+    {{!-- The footer at the very bottom of the screen --}}
+    {{> footer}}
 
-        </div>
+</div>
 
-        {{> search}}
+{{> search}}
 
-        {{!-- jQuery + Fitvids, which makes all video embeds responsive --}}
-        <script type="text/javascript" src="{{asset "/scripts/main-vendors.js"}}"></script>
-        <script type="text/javascript" src="{{asset "/scripts/main.js"}}"></script>
+{{!-- jQuery + Fitvids, which makes all video embeds responsive --}}
+<script type="text/javascript" src="{{asset "/scripts/main-vendors.js"}}"></script>
+<script type="text/javascript" src="{{asset "/scripts/main.js"}}"></script>
 
-        {{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
-        {{{block "scripts"}}}
+{{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
+{{{block "scripts"}}}
 
-        {{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
-        {{ghost_foot}}
+{{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
+{{ghost_foot}}
 
-        {{!-- Google Analytics --}}
-        {{> "google_analytics"}}
-    </body>
+{{!-- Google Analytics --}}
+{{> "google_analytics"}}
+</body>
 </html>

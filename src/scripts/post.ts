@@ -25,7 +25,7 @@ import 'prismjs/components/prism-typescript';
 // Feature Image Background
 // ------------------------
 
-import Vibrant from 'node-vibrant';
+import ColorThief from 'colorthief';
 
 // Feature Image Background
 // ------------------------
@@ -41,48 +41,43 @@ if (featureImageCt) {
     );
     const featureImageElm: HTMLImageElement = new Image();
     let paletteReady = false;
+    /*
+    const googleProxyURL =
+        'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=';
+     */
 
     featureImageElm.crossOrigin = 'Anonymous';
+    /*
+    if (featureImage)
+        featureImage.src =
+            googleProxyURL + encodeURIComponent(featureImage.src);
+     */
     if (featureImage) featureImageElm.src = featureImage.src;
 
-    const getPalette = () => {
+    const getPalette = (): void => {
         paletteReady = true;
+        let bgColor: string;
+        const colorThief = new ColorThief();
 
-        const v = new Vibrant(featureImageElm);
-        v.getPalette().then(palette => {
-            let paletteColor: string;
-            let bgColor: string;
+        if (featureImage && featureImage.complete) {
+            bgColor = colorThief.getColor(featureImage);
+        } else {
+            bgColor = colorThief.getColor(featureImage);
+        }
 
-            if (palette.DarkVibrant) {
-                paletteColor = 'DarkVibrant';
-            } else if (palette.DarkMuted) {
-                paletteColor = 'DarkMuted';
-            } else if (palette.Vibrant) {
-                paletteColor = 'Vibrant';
-            } else {
-                paletteColor = 'Nothing';
+        featureImageCt.classList.add('loaded');
+
+        if (postFullImageBg)
+            postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
+
+        setTimeout(() => {
+            const spinKit: HTMLElement | null = document.getElementById(
+                'spinkit'
+            );
+            if (spinKit && spinKit.parentNode) {
+                spinKit.parentNode.removeChild(spinKit);
             }
-
-            if (paletteColor !== 'Nothing') {
-                // @ts-ignore
-                bgColor = palette[paletteColor].getRgb().join();
-            } else {
-                bgColor = '255, 255, 255';
-            }
-
-            featureImageCt.classList.add('loaded');
-            if (postFullImageBg)
-                postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
-
-            setTimeout(() => {
-                const spinKit: HTMLElement | null = document.getElementById(
-                    'spinkit'
-                );
-                if (spinKit && spinKit.parentNode) {
-                    spinKit.parentNode.removeChild(spinKit);
-                }
-            }, 600);
-        });
+        }, 600);
     };
 
     featureImageElm.addEventListener(

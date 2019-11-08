@@ -2,10 +2,6 @@ import 'core-js/stable';
 import 'foundation-sites';
 import 'particles.js';
 import particlesJSON from './particles.json';
-
-// Search
-// ------
-
 import GhostSearch from './search';
 
 // Here, we're requiring all images inside JS in order to use the webpack
@@ -145,6 +141,8 @@ if (siteHeaderBg.length) {
 }
 
 $(document).ready(() => {
+    // Search
+    // ------
     const openSearchElm = document.querySelectorAll('[data-open-search]');
     const closeSearchElm = document.querySelectorAll('[data-close-search]');
 

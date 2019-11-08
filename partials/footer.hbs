@@ -51,13 +51,15 @@
             </div>
 
             <div class="cell medium-6 medium-offset-3 large-offset-0 large-4">
+                {{!-- TODO: Move this to members
                 {{#if @labs.subscribers}}
                     <div class="widget">
                         <h6 class="widget-title">Subscribe</h6>
                             <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox.</p>
-                            {{subscribe_form placeholder="youremail@example.com"}}
+                            {{> "subscribe_form" }}
                     </div>
                  {{/if}}
+                 --}}
                 <div class="widget">
                     <h6 class="widget-title">Social networks</h6>
                     <ul class="horizontal-list social-networks">
