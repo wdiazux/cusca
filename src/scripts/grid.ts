@@ -31,7 +31,7 @@ if (postFeed) {
         postFeed.classList.add('loaded');
 
         // Add animation class "in" to post-card
-        items.forEach(item => {
+        items.forEach((item: HTMLElement): void => {
             item.classList.add('in');
         });
 
