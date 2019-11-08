@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/wdiazux/cusca.svg?branch=master)](https://travis-ci.org/wdiazux/cusca)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/wdiazux)
 
-A theme for [Ghost 3.x](https://ghost.org).
+A responsive theme for [Ghost 3.x](https://ghost.org).
 
 **What that mean CUSCA?**
 
@@ -14,7 +14,9 @@ Is the abbreviation for Cuscatlán, it was the name of El Salvador before the co
 
 ## Introduction
 
-Cusca was development using [Foundation](http://foundation.zurb.com), and other libraries:
+Cusca was development using [Foundation](http://foundation.zurb.com) as base, the style is generated with
+[Sass](https://sass-lang.com) and the javascript is generated with [Typescript](https://www.typescriptlang.org) and
+other cool stuff that comes from different libraries:
 
 - [Shuffle](https://vestride.github.io/Shuffle/)
 - [Fancybox](http://fancyapps.com/fancybox/3/)
@@ -23,6 +25,8 @@ Cusca was development using [Foundation](http://foundation.zurb.com), and other 
 - [Node Vibrant](https://github.com/akfish/node-vibrant)
 - [Particles.js](https://vincentgarreau.com/particles.js/)
 - [Ghost Search](https://github.com/HauntedThemes/ghost-search)
+
+All the help to contribute to the development or improvement of the theme is welcomed.
   
 ## Installation
 
