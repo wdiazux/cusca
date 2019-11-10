@@ -358,25 +358,30 @@
 
   &:hover,
   &:focus {
-    .share-icons {
+    .share-post-ct {
       opacity: 1;
       visibility: visible;
     }
   }
 }
-.share-icons {
+
+.share-post-ct {
   position: absolute;
   flex-flow: row nowrap;
-  padding: .75rem;
   bottom: 125%;
   left: 50%;
   opacity: 0;
   visibility: hidden;
-  border-radius: 0;
-  background-color: #0a0a0a;
   transform: translateX(-50%);
   transition: visibility 0.2s linear, opacity 0.2s linear;
   z-index: 80;
+}
+.share-icons {
+  position: relative;
+  flex-flow: row nowrap;
+  padding: .75rem;
+  border-radius: 0;
+  background-color: #0a0a0a;
 
   &::before {
     display: block;
