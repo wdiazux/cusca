@@ -194,7 +194,8 @@ export default class GhostSearch implements Props {
             );
             if (
                 button &&
-                (button.tagName === 'INPUT' && button.type === 'submit')
+                button.tagName === 'INPUT' &&
+                button.type === 'submit'
             ) {
                 button.closest('form')!.addEventListener('submit', e => {
                     e.preventDefault();
@@ -276,7 +277,8 @@ export default class GhostSearch implements Props {
 
         if (
             !search ||
-            (search.style.display === 'none' || search.style.display === '')
+            search.style.display === 'none' ||
+            search.style.display === ''
         ) {
             return;
         }
