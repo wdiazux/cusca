@@ -3,6 +3,7 @@ import 'foundation-sites';
 import 'particles.js';
 import particlesJSON from './particles.json';
 import GhostSearch from './search';
+import createScrollManager from './createScrollManager';
 
 // Here, we're requiring all images inside JS in order to use the webpack
 // fileloader even on images that are not otherwise required in js
@@ -75,46 +76,25 @@ $(document).ready(() => {
 // Top bar
 // -------
 
-const siteHeaderBg: JQuery<HTMLDivElement> = $('.site-header-bg');
-const siteHeader: JQuery<HTMLDivElement> = $('.site-header');
+const siteHeader: HTMLDivElement | null = document.querySelector(
+    '.site-header'
+);
+const siteHeaderBg: HTMLDivElement | null = document.querySelector(
+    '.site-header-bg'
+);
 
-let lastScrollY = window.scrollY;
-let lastHeaderHeight = siteHeader.height();
-let ticking = false;
+createScrollManager().add(pageScroll => {
+    if (!siteHeader) return;
+    const lastHeaderHeight = siteHeader.offsetHeight;
 
-const setHeaderBg = () => {
-    // @ts-ignore
-    if (lastScrollY - siteHeaderBg.scrollTop() - lastHeaderHeight >= -240) {
-        siteHeader.addClass('bg');
-        siteHeaderBg.css('opacity', 0.3);
-    } else {
-        siteHeader.removeClass('bg');
-        siteHeaderBg.css('opacity', 1);
-    }
-
-    ticking = false;
-};
-
-const requestTick = (): void => {
-    if (!ticking) {
-        requestAnimationFrame(setHeaderBg);
-    }
-    ticking = true;
-};
-
-const onScroll = (): void => {
-    lastScrollY = window.scrollY;
-    requestTick();
-};
-
-const onResize = (): void => {
-    lastHeaderHeight = siteHeader.height();
-    requestTick();
-};
-
-$(() => {
-    if (siteHeaderBg.length) {
-        setHeaderBg();
+    if (siteHeaderBg) {
+        if (pageScroll! - siteHeaderBg.scrollTop - lastHeaderHeight! >= -240) {
+            siteHeader.classList.add('bg');
+            siteHeaderBg.style.opacity = '0.3';
+        } else {
+            siteHeader.classList.remove('bg');
+            siteHeaderBg!.style.opacity = '1';
+        }
     }
 });
 
@@ -122,22 +102,10 @@ $(() => {
 declare const particlesJS: any;
 // declare function particlesJS(tag_id: string, params: any): void;
 
-if (siteHeaderBg.length) {
-    window.addEventListener(
-        'scroll',
-        () => {
-            onScroll();
-        },
-        {
-            capture: true,
-            passive: true,
-        }
-    );
-    window.addEventListener('resize', onResize, false);
-
+if (siteHeaderBg) {
     particlesJS('site-header-bg', particlesJSON);
-} else {
-    siteHeader.addClass('bg');
+} else if (siteHeader) {
+    siteHeader.classList.add('bg');
 }
 
 $(document).ready(() => {
