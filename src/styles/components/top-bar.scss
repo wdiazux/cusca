@@ -9,6 +9,7 @@ $header-font-color: #91a2bd;
 
 .top-bar {
   color: $header-font-color;
+  transition: transform 1ms ease-out;
   z-index: 100;
 
   a,

@@ -1,5 +1,3 @@
-import 'core-js/es/array';
-
 // Fancybox
 // --------
 
