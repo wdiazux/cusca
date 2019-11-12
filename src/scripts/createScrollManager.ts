@@ -21,23 +21,14 @@ const createScrollManager = () => {
                 passive: true,
             }
         );
-        window.addEventListener(
-            'resize',
-            () => {
-                // eslint-disable-next-line @typescript-eslint/no-use-before-define
-                onScroll();
-            },
-            {
-                capture: true,
-                passive: true,
-            }
-        );
     };
 
     const onScroll = () => {
         if (animatedKilled) return;
 
         if (scrollPosition !== window.pageYOffset) {
+            window.removeEventListener('scroll', animate);
+            eventsAdded = false;
             scrollPosition = window.pageYOffset;
             callbacks.forEach(cb => cb(scrollPosition));
             animate();

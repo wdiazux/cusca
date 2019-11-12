@@ -39,7 +39,6 @@
     "no-trailing-spaces": [2, { "skipBlankLines": true }],
     "lines-between-class-members": 0,
     "prefer-template": 0,
-    "import/prefer-default-export": 0,
     "no-unused-expressions": ["warn", {
       "allowShortCircuit": true,
       "allowTernary": true

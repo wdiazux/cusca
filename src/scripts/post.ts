@@ -54,28 +54,25 @@ if (featureImageCt) {
 
     const getPalette = (): void => {
         paletteReady = true;
-        let bgColor: string;
         const colorThief = new ColorThief();
 
-        if (featureImage && featureImage.complete) {
-            bgColor = colorThief.getColor(featureImage);
-        } else {
-            bgColor = colorThief.getColor(featureImage);
+        if (featureImage?.complete) {
+            const bgColor: string = colorThief.getColor(featureImage);
+
+            featureImageCt.classList.add('loaded');
+
+            if (postFullImageBg)
+                postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
+
+            setTimeout(() => {
+                const spinKit: HTMLElement | null = document.getElementById(
+                    'spinkit'
+                );
+                if (spinKit && spinKit.parentNode) {
+                    spinKit.parentNode.removeChild(spinKit);
+                }
+            }, 500);
         }
-
-        featureImageCt.classList.add('loaded');
-
-        if (postFullImageBg)
-            postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
-
-        setTimeout(() => {
-            const spinKit: HTMLElement | null = document.getElementById(
-                'spinkit'
-            );
-            if (spinKit && spinKit.parentNode) {
-                spinKit.parentNode.removeChild(spinKit);
-            }
-        }, 600);
     };
 
     featureImageElm.addEventListener(
@@ -112,7 +109,7 @@ $('.fancy-box').fancybox();
 
 // Responsive Videos
 // -----------------
-const videoSelectors = [
+const videoSelectors: string[] = [
     'iframe[src*="player.vimeo.com"]',
     'iframe[src*="youtube.com"]',
     'iframe[src*="youtube-nocookie.com"]',
