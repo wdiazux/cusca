@@ -25,6 +25,13 @@ import 'prismjs/components/prism-typescript';
 
 import ColorThief from 'colorthief';
 
+// Helper function
+function wrap(el: Element, wrapper: HTMLElement) {
+    if (!el.parentNode) return;
+    el.parentNode.insertBefore(wrapper, el);
+    wrapper.appendChild(el);
+}
+
 // Feature Image Background
 // ------------------------
 const featureImageCt: HTMLElement | null = document.querySelector(
@@ -62,7 +69,7 @@ if (featureImageCt) {
             featureImageCt.classList.add('loaded');
 
             if (postFullImageBg)
-                postFullImageBg.style.background = 'rgba(' + bgColor + ', 0.9)';
+                postFullImageBg.style.background = `rgba(${bgColor}, 0.9)`;
 
             setTimeout(() => {
                 const spinKit: HTMLElement | null = document.getElementById(
@@ -86,21 +93,25 @@ if (featureImageCt) {
 
 // Fancybox
 // ---------
-const wrapImages = (elem: string, elemClass: string, exclude: string) => {
-    const imgs = $(elem);
-    if (imgs.length > 0) {
-        imgs.each((index, element) => {
-            const $this = $(element);
-            const imgLink: string | undefined = $this.attr('src');
-            const caption: string | undefined = $this.attr('alt');
 
-            if (!$this.hasClass(exclude)) {
-                const imgWrap = `<a href="${imgLink}" class="${elemClass}"
-                    data-fancybox="group" data-caption="${caption}"></a>`;
-                $this.wrap(imgWrap);
-            }
-        });
-    }
+const wrapImages = (elem: string, elemClass: string, exclude: string) => {
+    const imgs = document.querySelectorAll(elem);
+
+    imgs.forEach((image: Element) => {
+        const imgLink: string | null = image.getAttribute('src');
+        const caption: string | null = image.getAttribute('alt');
+
+        if (!image.classList.contains(exclude)) {
+            const imgWrap = document.createElement('a');
+
+            imgWrap.className = elemClass;
+            imgWrap.dataset.fancybox = 'group';
+            if (imgLink != null) imgWrap.href = imgLink;
+            if (caption != null) imgWrap.dataset.caption = caption;
+
+            wrap(image, imgWrap);
+        }
+    });
 };
 
 wrapImages('.post-content img', 'fancy-box', 'no-fancy-box');
@@ -114,20 +125,22 @@ const videoSelectors: string[] = [
     'iframe[src*="youtube.com"]',
     'iframe[src*="youtube-nocookie.com"]',
     'iframe[src*="kickstarter.com"][src*="video.html"]',
-    'object',
+    'object:not(object)',
     'embed',
 ];
-let $allVideos = $('.post-content').find(videoSelectors.join(','));
-$allVideos = $allVideos.not('object object'); // SwfObj conflict patch}
 
-$allVideos.each((index, element) => {
-    const $this = $(element);
+const allVideos = document
+    .querySelector('.post-content')!
+    .querySelectorAll(videoSelectors.join(','));
+
+allVideos.forEach(element => {
     if (
         (element.tagName.toLowerCase() !== 'embed' &&
-            $this.parent('object').length === 0) ||
-        $this.parent('.responsive-embed').length < 0
+            !element.closest('object')) ||
+        !element.closest('.responsive-embed')
     ) {
-        const videoWrap = '<div class="responsive-embed widescreen"></div>';
-        $this.wrap(videoWrap);
+        const videoWrap = document.createElement('div');
+        videoWrap.className = 'responsive-embed widescreen';
+        wrap(element, videoWrap);
     }
 });

@@ -89,7 +89,7 @@ export default class GhostSearch implements Props {
         this.init();
     }
 
-    fetch() {
+    fetch = () => {
         this.on.beforeFetch();
 
         const ghostAPI = new GhostContentAPI({
@@ -113,17 +113,17 @@ export default class GhostSearch implements Props {
             .catch((err: string) => {
                 console.error(err);
             });
-    }
+    };
 
     // eslint-disable-next-line class-methods-use-this
-    createElementFromHTML(htmlString: string) {
+    createElementFromHTML = (htmlString: string) => {
         const div: HTMLDivElement = document.createElement('div');
         div.innerHTML = htmlString.trim();
         return div.firstChild;
-    }
+    };
 
     // TODO: create an interface
-    displayResults(data: any) {
+    displayResults = (data: any) => {
         if (!this.results) return;
         const inputElm: HTMLInputElement | null = document.querySelector(
             this.input!
@@ -172,10 +172,10 @@ export default class GhostSearch implements Props {
 
         this.on.afterDisplay(results);
         this.defaultValue = '';
-    }
+    };
 
     // TODO: create an interface for data
-    search(data: any) {
+    search = (data: any) => {
         this.on.afterFetch(data);
         this.check = true;
 
@@ -213,9 +213,9 @@ export default class GhostSearch implements Props {
                 this.displayResults(data);
             });
         }
-    }
+    };
 
-    checkArgs() {
+    checkArgs = () => {
         const resultsElm: HTMLInputElement | null = document.querySelector(
             this.results!
         );
@@ -237,7 +237,6 @@ export default class GhostSearch implements Props {
             return false;
         }
         if (this.url === '') {
-            console.log(this.url);
             console.log(
                 'Content API Client Library url missing. Please set the url. Must not end in a trailing slash.'
             );
@@ -250,11 +249,11 @@ export default class GhostSearch implements Props {
             return false;
         }
         return true;
-    }
+    };
 
-    validate() {
+    validate = () => {
         return this.checkArgs();
-    }
+    };
 
     // TODO reformat these functions
     public openSearch = () => {
@@ -299,7 +298,7 @@ export default class GhostSearch implements Props {
         }
     };
 
-    init() {
+    init = () => {
         const inputElm: HTMLInputElement | null = document.querySelector(
             this.input!
         );
@@ -334,5 +333,5 @@ export default class GhostSearch implements Props {
                 this.closeSearch();
             }
         });
-    }
+    };
 }
