@@ -107,17 +107,15 @@ const siteHeaderBg: HTMLDivElement | null = document.querySelector(
 );
 
 createScrollManager().add(pageScroll => {
-    if (!siteHeader) return;
+    if (!siteHeader || !siteHeaderBg) return;
     const lastHeaderHeight = siteHeader.offsetHeight;
 
-    if (siteHeaderBg) {
-        if (pageScroll! - siteHeaderBg.scrollTop - lastHeaderHeight! >= -240) {
-            siteHeader.classList.add('bg');
-            siteHeaderBg.style.opacity = '0.3';
-        } else {
-            siteHeader.classList.remove('bg');
-            siteHeaderBg!.style.opacity = '1';
-        }
+    if (pageScroll! - siteHeaderBg.scrollTop - lastHeaderHeight! >= -240) {
+        siteHeader.classList.add('bg');
+        siteHeaderBg.style.opacity = '0.3';
+    } else {
+        siteHeader.classList.remove('bg');
+        siteHeaderBg!.style.opacity = '1';
     }
 });
 

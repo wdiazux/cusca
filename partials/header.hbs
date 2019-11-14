@@ -1,6 +1,6 @@
 {{!-- The big featured header, it uses blog cover image as a BG if available --}}
 
-<header class="site-header" id="site-header">
+<header class="site-header {{^is "home, paged, tag, author"}}bg{{/is}}" id="site-header">
     {{!--  Featured image --}}
     {{#is "index, tag, author"}}
         <div class="site-header-bg" id="site-header-bg">
