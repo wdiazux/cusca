@@ -1,3 +1,0 @@
-interface JQuery {
-    fancybox(): void;
-}

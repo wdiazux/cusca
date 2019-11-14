@@ -37,6 +37,17 @@
       }
     ],
     "no-trailing-spaces": [2, { "skipBlankLines": true }],
+    "spaced-comment": ["error", "always", {
+      "line": {
+        "markers": ["/"],
+        "exceptions": ["-", "+"]
+      },
+      "block": {
+        "markers": ["!"],
+        "exceptions": ["*"],
+        "balanced": true
+      }
+    }],
     "lines-between-class-members": 0,
     "prefer-template": 0,
     "no-unused-expressions": ["warn", {

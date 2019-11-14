@@ -19,7 +19,7 @@ Cusca was development using [Foundation](http://foundation.zurb.com) as base, th
 other cool stuff that comes from different libraries:
 
 - [Shuffle](https://vestride.github.io/Shuffle/)
-- [Fancybox](http://fancyapps.com/fancybox/3/)
+- [LightGallery.js](https://sachinchoolur.github.io/lightgallery.js/)
 - [FontAwesome](http://fontawesome.io)
 - [Prism.js](http://prismjs.com)
 - [Color Thief](https://lokeshdhakar.com/projects/color-thief/)

@@ -91,7 +91,8 @@ const config = {
                                 includePaths: [
                                     './node_modules/foundation-sites/scss/',
                                     './node_modules/@fortawesome/fontawesome-free/scss/',
-                                    './node_modules/roboto-fontface/css/roboto/sass/'
+                                    './node_modules/roboto-fontface/css/roboto/sass/',
+                                    './node_modules/lightgallery.js/src/sass/'
                                 ]
                             }
                         },

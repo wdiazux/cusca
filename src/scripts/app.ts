@@ -14,7 +14,7 @@ $(document).foundation();
 // Pagination
 // ----------
 
-$(document).ready(() => {
+document.addEventListener('DOMContentLoaded', () => {
     const pagination = (currentPage: number, pageCount: number) => {
         const range: (string | number)[] = [];
         const delta = 2;
@@ -37,9 +37,28 @@ $(document).ready(() => {
     };
 
     const createPagination = () => {
-        const currentPage: number = parseInt($('.curr-page').text(), 10);
-        const totalPages: number = parseInt($('.total-pages').text(), 10);
         let url: string = window.location.href;
+        const currPageElm: HTMLDivElement | null = document.querySelector(
+            '.curr-page'
+        );
+        const totalPagesElm: HTMLDivElement | null = document.querySelector(
+            '.total-pages'
+        );
+        if (!currPageElm || !totalPagesElm) return;
+        const currentPage: number = Number.parseInt(
+            currPageElm!.textContent!,
+            10
+        );
+        const totalPages: number = Number.parseInt(
+            totalPagesElm!.textContent!,
+            10
+        );
+        const paginationElm: HTMLElement | null = document.querySelector(
+            '.pagination'
+        );
+        const paginationPrev: HTMLDivElement | null = document.querySelector(
+            '.pagination-previous'
+        );
 
         if (totalPages > 1) {
             const paginationItems: string[] = [];
@@ -64,9 +83,14 @@ $(document).ready(() => {
                     paginationItems.push('<li class="ellipsis"></li>');
                 }
             });
-            $('.pagination-previous').after(...paginationItems);
-        } else {
-            $('.pagination').css('display', 'none');
+
+            if (paginationPrev?.parentNode)
+                paginationPrev.insertAdjacentHTML(
+                    'afterend',
+                    paginationItems.join('')
+                );
+        } else if (paginationElm != null) {
+            paginationElm.style.display = 'none';
         }
     };
     createPagination();
@@ -107,7 +131,7 @@ if (siteHeaderBg) {
     siteHeader.classList.add('bg');
 }
 
-$(document).ready(() => {
+document.addEventListener('DOMContentLoaded', () => {
     // Search
     // ------
     const openSearchElm = document.querySelectorAll('[data-open-search]');

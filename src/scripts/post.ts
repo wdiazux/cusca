@@ -1,7 +1,7 @@
-// Fancybox
+// Lightbox
 // --------
 
-import '@fancyapps/fancybox';
+import 'lightgallery.js';
 
 // PrismJS
 // -------
@@ -26,6 +26,8 @@ import 'prismjs/components/prism-typescript';
 import ColorThief from 'colorthief';
 
 // Helper function
+// ---------------
+
 function wrap(el: Element, wrapper: HTMLElement) {
     if (!el.parentNode) return;
     el.parentNode.insertBefore(wrapper, el);
@@ -34,6 +36,7 @@ function wrap(el: Element, wrapper: HTMLElement) {
 
 // Feature Image Background
 // ------------------------
+
 const featureImageCt: HTMLElement | null = document.querySelector(
     '.post-full-image'
 );
@@ -91,35 +94,52 @@ if (featureImageCt) {
     );
 }
 
-// Fancybox
+// Lightbox
 // ---------
 
 const wrapImages = (elem: string, elemClass: string, exclude: string) => {
     const imgs = document.querySelectorAll(elem);
 
     imgs.forEach((image: Element) => {
+        let caption: string | null;
         const imgLink: string | null = image.getAttribute('src');
-        const caption: string | null = image.getAttribute('alt');
+        if (image.classList.contains('kg-image')) {
+            const imageCard: HTMLElement | null = image.closest(
+                '.kg-image-card'
+            );
+            const figCaption = imageCard?.querySelector('figcaption');
+            caption = figCaption!.textContent ?? '';
+        } else {
+            caption = '';
+        }
 
         if (!image.classList.contains(exclude)) {
-            const imgWrap = document.createElement('a');
+            const imgWrap = document.createElement('div');
 
             imgWrap.className = elemClass;
-            imgWrap.dataset.fancybox = 'group';
-            if (imgLink != null) imgWrap.href = imgLink;
-            if (caption != null) imgWrap.dataset.caption = caption;
+            if (imgLink != null) imgWrap.dataset.src = imgLink;
+            if (caption !== '') imgWrap.dataset.subHtml = caption;
 
             wrap(image, imgWrap);
         }
     });
 };
 
-wrapImages('.post-content img', 'fancy-box', 'no-fancy-box');
-
-$('.fancy-box').fancybox();
+wrapImages('.post-content img', 'lightbox', 'no-lightbox');
+const images = document.querySelector('.post-content');
+if (images != null) {
+    window.lightGallery(images, {
+        selector: '.lightbox',
+        escKey: true,
+        keyPress: true,
+        controls: true,
+        getCaptionFromTitleOrAlt: true,
+    });
+}
 
 // Responsive Videos
 // -----------------
+
 const videoSelectors: string[] = [
     'iframe[src*="player.vimeo.com"]',
     'iframe[src*="youtube.com"]',
