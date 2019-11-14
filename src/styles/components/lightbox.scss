@@ -8,6 +8,7 @@ $lg-path-images: '~lightgallery.js/src/img';
 
 .lightbox {
   display: inline-block;
+  max-width: 100%;
 
   img {
     cursor: pointer;
