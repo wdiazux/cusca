@@ -2,6 +2,7 @@
 // --------
 
 import 'lightgallery.js';
+import 'lg-zoom.js';
 
 // PrismJS
 // -------
