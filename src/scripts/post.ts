@@ -109,7 +109,7 @@ const wrapImages = (elem: string, elemClass: string, exclude: string) => {
                 '.kg-image-card'
             );
             const figCaption = imageCard?.querySelector('figcaption');
-            caption = figCaption!.textContent ?? '';
+            caption = figCaption?.textContent ?? '';
         } else {
             caption = '';
         }

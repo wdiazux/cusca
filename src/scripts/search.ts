@@ -3,10 +3,37 @@
 // A modification of Ghost-Search
 // https://github.com/HauntedThemes/ghost-search
 
+import 'core-js/es/number/is-integer';
+
 // eslint-disable-next-line max-classes-per-file
 import GhostContentAPI from '@tryghost/content-api';
 
 const fuzzysort = require('fuzzysort');
+
+/**
+ * Element.closest() polyfill
+ * https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
+ */
+if (!Element.prototype.matches) {
+    Element.prototype.matches =
+        // @ts-ignore
+        Element.prototype.msMatchesSelector ||
+        Element.prototype.webkitMatchesSelector;
+}
+
+if (!Element.prototype.closest) {
+    // eslint-disable-next-line func-names
+    Element.prototype.closest = function(s: string) {
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
+        let el: Element | null = this;
+
+        do {
+            if (el.matches(s)) return el;
+            el = el.parentElement;
+        } while (el !== null && el.nodeType === 1);
+        return null;
+    };
+}
 
 // TODO: Create custom type for any types
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -24,6 +51,7 @@ interface Props {
     api?: any;
     on?: any;
 }
+
 interface ObjectOfStrings {
     [propName: string]: string;
 }

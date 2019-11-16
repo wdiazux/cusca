@@ -1,3 +1,4 @@
+import 'core-js/proposals/url';
 import 'foundation-sites';
 import 'particles.js';
 import particlesJSON from './particles.json';
