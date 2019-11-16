@@ -57,7 +57,7 @@ $header-font-color: #91a2bd;
 }
 .search-wrapper {
   display: flex;
-  flex-flow: column norap;
+  flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
   max-height: 100%;
