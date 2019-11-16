@@ -120,12 +120,8 @@ createScrollManager().add(pageScroll => {
     }
 });
 
-// eslint-disable-next-line @typescript-eslint/camelcase,@typescript-eslint/no-explicit-any
-declare const particlesJS: any;
-// declare function particlesJS(tag_id: string, params: any): void;
-
 if (siteHeaderBg) {
-    particlesJS('site-header-bg', particlesJSON);
+    window.particlesJS('site-header-bg', particlesJSON);
 } else if (siteHeader) {
     siteHeader.classList.add('bg');
 }
