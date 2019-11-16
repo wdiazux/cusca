@@ -4,7 +4,7 @@
 $lg-path-fonts: '~lightgallery.js/src/fonts';
 $lg-path-images: '~lightgallery.js/src/img';
 
-@import 'lightgallery';
+@import '~lightgallery.js/src/sass/lightgallery';
 
 .lightbox {
   display: inline-block;

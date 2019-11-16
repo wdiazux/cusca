@@ -2,14 +2,14 @@
 
 /* Roboto */
 $roboto-font-path: '~roboto-fontface/fonts';
-@import "roboto-fontface-regular";
-@import "roboto-fontface-medium";
-@import "roboto-fontface-regular-italic";
+@import "~roboto-fontface/css/roboto/sass/roboto-fontface-regular";
+@import "~roboto-fontface/css/roboto/sass/roboto-fontface-medium";
+@import "~roboto-fontface/css/roboto/sass/roboto-fontface-regular-italic";
 
 /* Font awesome */
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
-@import "fontawesome";
-@import "regular";
-@import "solid";
-@import "brands";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
 
