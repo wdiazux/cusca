@@ -1,0 +1,70 @@
+.sk-cube-grid {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+
+  .sk-cube {
+    width: 33%;
+    height: 33%;
+    background-color: #1a2940;
+    float: left;
+    animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  }
+  .sk-cube1 {
+    animation-delay: 0.2s;
+  }
+  .sk-cube2 {
+    animation-delay: 0.3s;
+  }
+  .sk-cube3 {
+    animation-delay: 0.4s;
+  }
+  .sk-cube4 {
+    animation-delay: 0.1s;
+  }
+  .sk-cube5 {
+    animation-delay: 0.2s;
+  }
+  .sk-cube6 {
+    animation-delay: 0.3s;
+  }
+  .sk-cube7 {
+    animation-delay: 0s;
+  }
+  .sk-cube8 {
+    animation-delay: 0.1s;
+  }
+  .sk-cube9 {
+    animation-delay: 0.2s;
+  }
+}
+.post-feed .sk-cube-grid {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.post-full-image .sk-cube-grid {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.loaded .sk-cube-grid {
+  opacity: 0;
+}
+
+@keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    transform: scale3D(1, 1, 1);
+  }
+
+  35% {
+    transform: scale3D(0, 0, 1);
+  }
+}
