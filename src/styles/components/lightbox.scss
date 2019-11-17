@@ -11,6 +11,9 @@ $lg-path-images: '~lightgallery.js/src/img';
   max-width: 100%;
 
   img {
+    flex-shrink: 0;
+    cursor: pointer;
+    cursor: -moz-zoom-in;
     cursor: zoom-in;
   }
 }

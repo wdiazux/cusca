@@ -27,8 +27,6 @@ const createScrollManager = () => {
         if (animatedKilled) return;
 
         if (scrollPosition !== window.pageYOffset) {
-            window.removeEventListener('scroll', animate);
-            eventsAdded = false;
             scrollPosition = window.pageYOffset;
             callbacks.forEach(cb => cb(scrollPosition));
             animate();
