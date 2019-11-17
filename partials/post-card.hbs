@@ -1,4 +1,4 @@
-<article class="post-card cell {{post_class}}{{#unless feature_image}} no-image{{/unless}}">
+<article class="post-card cell loading-card {{post_class}}{{#unless feature_image}} no-image{{/unless}}">
     <div class="post-card-inner">
         {{#if feature_image}}
             <div class="post-card-featured-image">
@@ -9,7 +9,7 @@
                                      {{img_url feature_image size="l"}} 1000w,
                                      {{img_url feature_image size="xl"}} 2000w"
                              src="{{img_url feature_image size="m"}}"
-                             alt="{{title}}" />
+                             alt="{{title}}"/>
                     </figure>
                 </a>
                 {{#if tags}}
@@ -19,6 +19,8 @@
                         {{/foreach}}
                     </ul>
                 {{/if}}
+
+                <div class="placeholder placeholder-featured-image"></div>
             </div>
         {{/if}}
 
@@ -51,7 +53,8 @@
                         <li class="author-list-item">
                             <a href="{{url}}">
                                 {{#if profile_image}}
-                                    <span class="static-avatar" style="background: url({{img_url profile_image size="xs"}}) no-repeat center center; background-size: cover;"></span>
+                                    <span class="static-avatar" style="background: url({{img_url profile_image
+                                                                                                 size="xs"}}) no-repeat center center; background-size: cover;"></span>
                                 {{else}}
                                     <span class="static-avatar author-profile-image">
                                         {{> "icons/avatar"}}
@@ -69,6 +72,17 @@
                     </time>
                 </span>
             </footer>
+
+            <div class="placeholder-content-ct">
+                <div class="placeholder-content-inner">
+                    <div class="placeholder placeholder-title"></div>
+                    <div class="placeholder placeholder-text placeholder-text1"></div>
+                    <div class="placeholder placeholder-text placeholder-text2"></div>
+                    <div class="placeholder placeholder-text placeholder-text3"></div>
+                    <div class="placeholder placeholder-author"></div>
+                    <div class="placeholder placeholder-date"></div>
+                </div>
+            </div>
         </div>
     </div>
 </article>

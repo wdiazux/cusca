@@ -1,0 +1,93 @@
+%animated-background {
+  position: absolute;
+  background: #F6F6F6;
+  background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+  background-size: 800px 104px;
+  z-index: 5;
+  animation-duration: 1.25s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+}
+
+.placeholder {
+  @extend %animated-background;
+}
+
+.placeholder-featured-image {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  top: 0;
+  left: 0;
+}
+
+.placeholder-content-ct {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: .75rem;
+  min-height: 180px;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 5;
+}
+
+.placeholder-content-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.placeholder-title {
+  @extend %animated-background;
+  width: 80%;
+  height: rem-calc(25);
+}
+
+.placeholder-text {
+  @extend %animated-background;
+  width: 100%;
+  height: rem-calc(17);
+}
+
+.placeholder-text1 {
+  top: rem-calc(40);
+}
+
+.placeholder-text2 {
+  top: rem-calc(70);
+}
+
+.placeholder-text3 {
+  width: 40%;
+  top: rem-calc(100);
+}
+
+.placeholder-author {
+  @extend %animated-background;
+  width: 80px;
+  height: rem-calc(15);
+  bottom: 0;
+  left: 0;
+}
+
+.placeholder-date {
+  @extend %animated-background;
+  width: 80px;
+  height: rem-calc(15);
+  bottom: 0;
+  right: 0;
+}
+
+// Animation
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0
+  }
+  100% {
+    background-position: 468px 0
+  }
+}

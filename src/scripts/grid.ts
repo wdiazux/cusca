@@ -22,24 +22,29 @@ if (postFeed) {
     });
 
     shuffleInstance.on(Shuffle.EventType.LAYOUT, () => {
-        const items: NodeListOf<HTMLDivElement> = document.querySelectorAll(
-            '.post-card'
+        const loadingCard: HTMLDivElement | null = document.querySelector(
+            '.loading-card'
         );
-        const spinKit: HTMLElement | null = document.getElementById('spinkit');
+        if (loadingCard) loadingCard.classList.remove('.loading-card');
 
         // Add class "loaded" to feed post container
         postFeed.classList.add('loaded');
 
-        // Add animation class "in" to post-card
-        items.forEach((item: HTMLElement): void => {
-            item.classList.add('in');
+        const placeholderCt: NodeListOf<HTMLElement> = document.querySelectorAll(
+            '.placeholder-content-ct'
+        );
+        const placeholderImg: NodeListOf<HTMLElement> = document.querySelectorAll(
+            '.placeholder-featured-image'
+        );
+
+        placeholderCt.forEach((placeHolder: HTMLElement): void => {
+            if (placeHolder?.parentElement)
+                placeHolder.parentElement.removeChild(placeHolder);
         });
 
-        // Wait 6 milliseconds to remove spinkKit
-        setTimeout(() => {
-            if (spinKit && spinKit.parentNode) {
-                spinKit.parentNode.removeChild(spinKit);
-            }
-        }, 600);
+        placeholderImg.forEach((placeHolder: HTMLElement): void => {
+            if (placeHolder?.parentElement)
+                placeHolder.parentElement.removeChild(placeHolder);
+        });
     });
 }
