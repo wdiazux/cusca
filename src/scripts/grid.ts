@@ -22,10 +22,8 @@ if (postFeed) {
     });
 
     shuffleInstance.on(Shuffle.EventType.LAYOUT, () => {
-        const loadingCard: HTMLDivElement | null = document.querySelector(
-            '.loading-card'
-        );
-        if (loadingCard) loadingCard.classList.remove('.loading-card');
+        // Remove placeholder class in parent
+        postFeed.classList.remove('loading-cards');
 
         // Add class "loaded" to feed post container
         postFeed.classList.add('loaded');
@@ -46,5 +44,6 @@ if (postFeed) {
             if (placeHolder?.parentElement)
                 placeHolder.parentElement.removeChild(placeHolder);
         });
+        shuffleInstance.update();
     });
 }

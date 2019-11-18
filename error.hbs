@@ -5,40 +5,31 @@ You'll notice that we *don't* use any JavsScript, or ghost_head / ghost_foot in 
 --}}
 
 <!DOCTYPE html>
-<html>
+<html lang="{{@site.lang}}">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
     <title>{{meta_title}}</title>
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    {{!-- Styles'n'Scripts --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "styles/main.css"}}"/>
+    {{{block "styles"}}}
 </head>
 <body class="error-template">
-    <div class="site-wrapper">
 
-        <header class="site-header outer {{#if feature_image}}" style="background-image: url({{feature_image}}){{else}}no-cover{{/if}}">
-            <div class="inner">
-                <nav class="site-nav-center">
-                    {{#if @site.logo}}
-                        <a class="site-nav-logo" href="{{@site.url}}"><img src="{{img_url @site.logo size="xs"}}" alt="{{@site.title}}" /></a>
-                    {{else}}
-                        <a class="site-nav-logo" href="{{@site.url}}">{{@site.title}}</a>
-                    {{/if}}
-                </nav>
-            </div>
-        </header>
-
+<div class="site-wrapper">
+    <div class="main-content">
         <main id="site-main" class="site-main outer">
-            <div class="inner">
+            <section class="error-message">
+                <h1 class="error-code">{{statusCode}}</h1>
+                <p class="error-description">{{message}}</p>
+                <a class="error-link" href="{{@site.url}}">Go to the front page →</a>
+            </section>
 
-                <section class="error-message">
-                    <h1 class="error-code">{{statusCode}}</h1>
-                    <p class="error-description">{{message}}</p>
-                    <a class="error-link" href="{{@site.url}}">Go to the front page →</a>
-                </section>
-
-                {{#if errorDetails}}
+            {{#if errorDetails}}
                 <section class="error-stack">
                     <h3>Theme errors</h3>
                     <ul class="error-stack-list">
@@ -54,10 +45,11 @@ You'll notice that we *don't* use any JavsScript, or ghost_head / ghost_foot in 
                         {{/foreach}}
                     </ul>
                 </section>
-                {{/if}}
-
-            </div>
+            {{/if}}
         </main>
     </div>
+</div>
+
+
 </body>
 </html>

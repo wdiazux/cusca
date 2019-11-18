@@ -4,53 +4,57 @@ It's a good idea to keep this template as minimal as possible in terms of both f
 --}}
 
 <!DOCTYPE html>
-<html>
+<html lang="{{@site.lang}}">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
     <title>{{meta_title}}</title>
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    {{!-- Styles'n'Scripts --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "styles/main.css"}}"/>
+    {{{block "styles"}}}
 </head>
 <body class="error-template">
-    <div class="site-wrapper">
 
-        <header class="site-header outer {{#if feature_image}}" style="background-image: url({{feature_image}}){{else}}no-cover{{/if}}">
-            <div class="inner">
-                <nav class="site-nav-center">
-                    {{#if @site.logo}}
-                        <a class="site-nav-logo" href="{{@site.url}}"><img src="{{img_url @site.logo size="xs"}}" alt="{{@site.title}}" /></a>
-                    {{else}}
-                        <a class="site-nav-logo" href="{{@site.url}}">{{@site.title}}</a>
-                    {{/if}}
-                </nav>
-            </div>
-        </header>
+<div class="site-wrapper">
 
+    {{> header}}
+
+    <div class="main-content">
         <main id="site-main" class="site-main outer">
-            <div class="inner">
-
-                <section class="error-message">
-                    <h1 class="error-code">{{statusCode}}</h1>
-                    <p class="error-description">{{message}}</p>
-                    <a class="error-link" href="{{@site.url}}">Go to the front page →</a>
-                </section>
+            <div class="grid-container post-container text-center">
+                <h1 class="error-code">{{statusCode}}</h1>
+                <p class="error-description">{{message}}</p>
+                <a class="error-link" href="{{@site.url}}">Go to the front page →</a>
             </div>
-        </main>
 
-        {{#get "posts" limit="3"}}
-        <aside class="outer">
-            <div class="inner">
-                <div class="post-feed">
-                    {{#foreach posts}}
-                        {{> "post-card"}}
-                    {{/foreach}}
+            <div class="grid-container">
+                <div class="post-feed loading-cards grid-x grid-padding-x grid-padding-y small-up-1 medium-up-2 large-up-3">
+                    <div class="post-card-ex cell"></div>
+                    {{#get "posts" limit="3"}}
+                        {{#foreach posts}}
+                            {{> "post-card"}}
+                        {{/foreach}}
+                    {{/get}}
                 </div>
             </div>
-        </aside>
-        {{/get}}
-
+        </main>
     </div>
+
+    {{!-- The footer at the very bottom of the screen --}}
+    {{> footer}}
+
+</div>
+
+{{> search}}
+
+{{!-- jQuery + Fitvids, which makes all video embeds responsive --}}
+<script type="text/javascript" src="{{asset "/scripts/main-vendors.js"}}"></script>
+<script type="text/javascript" src="{{asset "/scripts/main.js"}}"></script>
+<script async type="text/javascript" src="{{asset "/scripts/grid.js"}}"></script>
+
 </body>
 </html>

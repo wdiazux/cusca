@@ -1,0 +1,11 @@
+.error-template {
+  .grid-container {
+    margin-bottom: 50px;
+  }
+  .error-code {
+    font-size: rem-calc(90);
+  }
+  .error-description {
+    font-size: rem-calc(40);
+  }
+}
