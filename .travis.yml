@@ -4,7 +4,9 @@ branches:
   only:
     - master
 node_js:
-  - "stable"
+  - "8"
+  - "10"
+  - "12"
 cache: yarn
 install:
   - npm install
