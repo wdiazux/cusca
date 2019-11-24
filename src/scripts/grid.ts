@@ -18,6 +18,11 @@ const onImagesLoaded = (container: string, callback?: () => void) => {
     );
     let loaded: number = images.length;
 
+    if (loaded === 0 && callback) {
+        callback();
+        return;
+    }
+
     Array.from(images).forEach(image => {
         if (image.complete) {
             // eslint-disable-next-line no-plusplus
