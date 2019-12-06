@@ -109,9 +109,13 @@ export default class GhostSearch implements Props {
             },
         };
         this.on = (props && props.on) || {
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             beforeDisplay: () => {},
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             afterDisplay: () => {},
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             beforeFetch: () => {},
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             afterFetch: () => {},
         };
         this.init();
