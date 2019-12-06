@@ -453,6 +453,13 @@
     background-color: darken(#ff4500, 20%);
   }
 }
+.icon-linkedin {
+  background-color: #0071ad;
+
+  &:hover, &:focus {
+    background-color: darken(#0071ad, 10%);
+  }
+}
 .icon-flipboard {
   background-color: #ff2a31;
 
