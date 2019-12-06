@@ -3,8 +3,16 @@
 $header-background: #1a2940;
 $header-font-color: #91a2bd;
 
-.sticky.is-stuck {
-  z-index: 100;
+.sticky {
+  width: 100%;
+  top: 0 !important;
+
+  &.is-stuck {
+    z-index: 100;
+  }
+  &.is-anchored {
+    position: fixed;
+  }
 }
 
 .top-bar {
@@ -46,6 +54,7 @@ $header-font-color: #91a2bd;
     font-size: rem-calc(25);
     cursor: pointer;
   }
+
   .search-hot {
     text-align: center;
     text-transform: uppercase;
@@ -58,13 +67,16 @@ $header-font-color: #91a2bd;
       color: #fff;
     }
   }
+
   .mobile-buttons .search-hot {
     margin-right: rem-calc(0);
   }
+
   .search-icon {
     padding: .7rem 1rem;
     cursor: pointer;
   }
+
   @include breakpoint(large) {
     .search-menu-text {
       display: none;
@@ -111,6 +123,7 @@ $header-font-color: #91a2bd;
       text-transform: uppercase;
       font-weight: bold;
     }
+
     @include breakpoint(medium down) {
       &.nav-search {
         display: none;
@@ -118,6 +131,7 @@ $header-font-color: #91a2bd;
       a {
         text-align: center;
         border-bottom: 1px solid $header-font-color;
+
         &:hover,
         &:focus {
           border-color: $white;
@@ -138,4 +152,3 @@ $header-font-color: #91a2bd;
   font-size: rem-calc(24);
   font-weight: bold;
 }
-
