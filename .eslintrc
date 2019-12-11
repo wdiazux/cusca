@@ -36,7 +36,7 @@
         "allowForLoopAfterthoughts": true
       }
     ],
-    "import/extensions": "never",
+    "import/extensions": 0,
     "no-trailing-spaces": [2, { "skipBlankLines": true }],
     "spaced-comment": ["error", "always", {
       "line": {
