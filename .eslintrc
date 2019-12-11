@@ -36,6 +36,7 @@
         "allowForLoopAfterthoughts": true
       }
     ],
+    "import/extensions": "never",
     "no-trailing-spaces": [2, { "skipBlankLines": true }],
     "spaced-comment": ["error", "always", {
       "line": {
