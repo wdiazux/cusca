@@ -120,7 +120,7 @@
   "homepage": "https://github.com/wdiazux/cusca#readme",
   "dependencies": {
     "@babel/runtime": "7.7.6",
-    "@fortawesome/fontawesome-free": "5.11.2",
+    "@fortawesome/fontawesome-free": "5.12.0",
     "@tryghost/content-api": "1.3.4",
     "@types/jquery": "3.3.31",
     "@types/prismjs": "1.16.0",
