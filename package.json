@@ -49,11 +49,11 @@
     "https://github.com/wdiazux/cusca/graphs/contributors"
   ],
   "devDependencies": {
-    "@babel/cli": "7.7.5",
-    "@babel/core": "7.7.5",
+    "@babel/cli": "7.7.7",
+    "@babel/core": "7.7.7",
     "@babel/plugin-transform-runtime": "7.7.6",
-    "@babel/preset-env": "7.7.6",
-    "@babel/preset-typescript": "7.7.4",
+    "@babel/preset-env": "7.7.7",
+    "@babel/preset-typescript": "7.7.7",
     "@types/webpack-env": "1.14.1",
     "@typescript-eslint/eslint-plugin": "2.12.0",
     "@typescript-eslint/parser": "2.12.0",
@@ -119,7 +119,7 @@
   },
   "homepage": "https://github.com/wdiazux/cusca#readme",
   "dependencies": {
-    "@babel/runtime": "7.7.6",
+    "@babel/runtime": "7.7.7",
     "@fortawesome/fontawesome-free": "5.12.0",
     "@tryghost/content-api": "1.3.5",
     "@types/jquery": "3.3.31",
