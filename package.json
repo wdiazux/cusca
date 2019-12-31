@@ -78,7 +78,7 @@
     "mini-css-extract-plugin": "0.8.2",
     "node-sass": "4.13.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
-    "postcss": "7.0.25",
+    "postcss": "7.0.26",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.7.0",
