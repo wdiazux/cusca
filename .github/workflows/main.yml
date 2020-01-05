@@ -22,10 +22,10 @@ jobs:
             ${{ runner.OS }}-build-${{ env.cache-name }}-
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
-        - name: Setup node
-          uses: actions/setup-node@v1
-          with:
-            node-version: ${{ matrix.node }}
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
       - run: npm install yarn
       - run: yarn install
       - run: yarn lint
