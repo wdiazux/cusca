@@ -1,7 +1,7 @@
 # CUSCA
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.org/wdiazux/cusca.svg?branch=master)](https://travis-ci.org/wdiazux/cusca)
+[![Build Status](https://github.com/wdiazux/cusca/workflows/Test/badge.svg)](https://github.com/wdiazux/cusca/actions?query=workflow%3ATest)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/wdiazux)
 
 A responsive theme for [Ghost 3.x](https://ghost.org).
