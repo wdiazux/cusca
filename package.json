@@ -85,7 +85,7 @@
     "precss": "4.0.0",
     "prettier": "1.19.1",
     "promise-polyfill": "8.1.3",
-    "sass-loader": "8.0.0",
+    "sass-loader": "8.0.1",
     "style-loader": "1.1.2",
     "terser-webpack-plugin": "2.3.2",
     "typescript": "3.7.4",
