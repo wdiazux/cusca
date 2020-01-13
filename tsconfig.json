@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es5",
     "baseUrl": "./",
+    "outDir": "assets",
     "strict": true,
     "sourceMap": true,
     "removeComments": true,
@@ -11,7 +12,6 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowJs": true,
-    "outDir": "assets",
     "types": [
       "jquery",
       "webpack-env"

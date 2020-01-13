@@ -36,8 +36,6 @@
         "allowForLoopAfterthoughts": true
       }
     ],
-    "import/extensions": 0,
-    "no-trailing-spaces": [2, { "skipBlankLines": true }],
     "spaced-comment": ["error", "always", {
       "line": {
         "markers": ["/"],
@@ -49,12 +47,14 @@
         "balanced": true
       }
     }],
-    "lines-between-class-members": 0,
-    "prefer-template": 0,
     "no-unused-expressions": ["warn", {
       "allowShortCircuit": true,
       "allowTernary": true
     }], // https://eslint.org/docs/rules/no-unused-expressions
+    "no-trailing-spaces": [2, { "skipBlankLines": true }],
+    "prefer-template": 0,
+    "import/extensions": 0,
+    "lines-between-class-members": 0,
     "@typescript-eslint/prefer-interface": "off", // also want to use "type"
     "@typescript-eslint/explicit-function-return-type": "off", // annoying to force return type
     "@typescript-eslint/explicit-member-accessibility": "off",
