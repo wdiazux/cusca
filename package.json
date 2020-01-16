@@ -88,7 +88,7 @@
     "sass-loader": "8.0.2",
     "style-loader": "1.1.2",
     "terser-webpack-plugin": "2.3.2",
-    "typescript": "3.7.4",
+    "typescript": "3.7.5",
     "webpack": "4.41.5",
     "webpack-cli": "3.3.10",
     "webpack-merge": "4.2.2",
