@@ -57,18 +57,18 @@ interface ObjectOfStrings {
 }
 
 export default class GhostSearch implements Props {
-    public url: string;
-    public key: string;
-    public version?: string;
-    public input?: string;
-    public results?: string;
-    public button?: string;
-    public defaultValue?: string;
-    public template?: any;
-    public trigger?: string;
-    public options?: any;
-    public api?: any;
-    public on?: any;
+    url: string;
+    key: string;
+    version?: string;
+    input?: string;
+    results?: string;
+    button?: string;
+    defaultValue?: string;
+    template?: any;
+    trigger?: string;
+    options?: any;
+    api?: any;
+    on?: any;
     private check = false;
 
     constructor(props?: Props) {
