@@ -3789,10 +3789,10 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-foundation-sites@6.6.1:
-  version "6.6.1"
-  resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.6.1.tgz#79dce2f897cc08fafa7e8d56f5b0e88b51c45d38"
-  integrity sha512-4GrCL8L3osFJM6WCNRIQs5kGX5BCKNuO2zzQN68lUTblgpH7FUE28ctkbNFqoTnkUmWARj5VtiS3oQob3H0eZA==
+foundation-sites@6.6.2:
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.6.2.tgz#02cd6c9dcac741a4d50edda8a51a48211d089ddc"
+  integrity sha512-fGdJVYodUxUCbdNDuNTXFIpEWAD+9yl0uLkkX8/rRHmK8/EYqQnRAGnmPADDhMKLZ+fJuSGheEcnSM2imgk3Wg==
 
 fragment-cache@^0.2.1:
   version "0.2.1"
