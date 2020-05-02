@@ -51,12 +51,19 @@ if (featureImageCt) {
     const featureImageElm: HTMLImageElement = new Image();
     let paletteReady = false;
 
-    featureImageElm.crossOrigin = 'Anonymous';
-    if (featureImage)
+    if (featureImage) {
+        featureImageElm.crossOrigin = 'Anonymous';
+
+        const { host } = window.location;
+        const hostSubdomain = host.split('.')[0];
+        if (hostSubdomain !== 'www') featureImage.src.replace('www.', '');
+
+        featureImageElm.src = featureImage.src;
         featureImageElm.src =
             window.location.protocol +
             '//' +
             featureImage!.src.replace(/^https?:\/\//, '');
+    }
 
     const getPalette = (): void => {
         paletteReady = true;
