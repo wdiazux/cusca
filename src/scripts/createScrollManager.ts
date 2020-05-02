@@ -28,7 +28,7 @@ const createScrollManager = () => {
 
         if (scrollPosition !== window.pageYOffset) {
             scrollPosition = window.pageYOffset;
-            callbacks.forEach(cb => cb(scrollPosition));
+            callbacks.forEach((cb) => cb(scrollPosition));
             animate();
         } else if (!eventsAdded) {
             addEvents();
@@ -43,7 +43,7 @@ const createScrollManager = () => {
             callbacks = [...callbacks, cb];
         },
         remove: (cb: () => {}): void => {
-            callbacks = callbacks.filter(value => value !== cb);
+            callbacks = callbacks.filter((value) => value !== cb);
         },
         destroy: (): void => {
             animatedKilled = true;

@@ -154,7 +154,7 @@ const allVideos = document
     .querySelector('.post-content')!
     .querySelectorAll(videoSelectors.join(','));
 
-allVideos.forEach(element => {
+allVideos.forEach((element) => {
     if (
         (element.tagName.toLowerCase() !== 'embed' &&
             !element.closest('object')) ||

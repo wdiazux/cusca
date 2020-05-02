@@ -23,7 +23,7 @@ const onImagesLoaded = (container: string, callback?: () => void) => {
         return;
     }
 
-    Array.from(images).forEach(image => {
+    Array.from(images).forEach((image) => {
         if (image.complete) {
             // eslint-disable-next-line no-plusplus
             loaded -= 1;
