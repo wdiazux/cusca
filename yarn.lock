@@ -3406,10 +3406,10 @@ eslint-config-airbnb@18.1.0:
     object.assign "^4.1.0"
     object.entries "^1.1.1"
 
-eslint-config-jquery@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-jquery/-/eslint-config-jquery-2.0.0.tgz#dd0368bed48700c293ee917081b1a0693181f0a0"
-  integrity sha512-HrUTma5Ty6A91M3dTWz3Ot7YnpbsDQGIQDI8JyLKiuUltVXuKCs3yC7uHugp5/0RfYAPLisxHv7giNGvaqM4CA==
+eslint-config-jquery@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-jquery/-/eslint-config-jquery-3.0.0.tgz#3f6bd0a8cbc1636790a55513d7dbb39783d2be10"
+  integrity sha512-VDdRAIlNq1EM5P7J4JGQSCnZEIvIlNGGTUTCPT2wQNZ2GT69rsAwSIqZVcoiyZbwY7TaaMwLOxwSjqm+DEUjbA==
 
 eslint-config-prettier@6.11.0:
   version "6.11.0"
