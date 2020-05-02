@@ -58,43 +58,42 @@ if (featureImageCt) {
         const hostSubdomain = host.split('.')[0];
         if (hostSubdomain !== 'www') featureImage.src.replace('www.', '');
 
-        featureImageElm.src = featureImage.src;
         featureImageElm.src =
             window.location.protocol +
             '//' +
-            featureImage!.src.replace(/^https?:\/\//, '');
+            featureImage.src.replace(/^https?:\/\//, '');
+
+        const getPalette = (): void => {
+            paletteReady = true;
+            const colorThief = new ColorThief();
+
+            if (featureImageElm.complete) {
+                const bgColor: string = colorThief.getColor(featureImageElm);
+
+                featureImageCt.classList.add('loaded');
+
+                if (postFullImageBg)
+                    postFullImageBg.style.background = `rgba(${bgColor}, 0.9)`;
+
+                setTimeout(() => {
+                    const spinKit: HTMLElement | null = document.getElementById(
+                        'spinkit'
+                    );
+                    if (spinKit && spinKit.parentNode) {
+                        spinKit.parentNode.removeChild(spinKit);
+                    }
+                }, 500);
+            }
+        };
+
+        featureImageElm.addEventListener(
+            'load',
+            () => {
+                if (!paletteReady) getPalette();
+            },
+            false
+        );
     }
-
-    const getPalette = (): void => {
-        paletteReady = true;
-        const colorThief = new ColorThief();
-
-        if (featureImage?.complete) {
-            const bgColor: string = colorThief.getColor(featureImage);
-
-            featureImageCt.classList.add('loaded');
-
-            if (postFullImageBg)
-                postFullImageBg.style.background = `rgba(${bgColor}, 0.9)`;
-
-            setTimeout(() => {
-                const spinKit: HTMLElement | null = document.getElementById(
-                    'spinkit'
-                );
-                if (spinKit && spinKit.parentNode) {
-                    spinKit.parentNode.removeChild(spinKit);
-                }
-            }, 500);
-        }
-    };
-
-    featureImageElm.addEventListener(
-        'load',
-        () => {
-            if (!paletteReady) getPalette();
-        },
-        false
-    );
 }
 
 // Lightbox
