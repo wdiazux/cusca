@@ -50,18 +50,13 @@ if (featureImageCt) {
     );
     const featureImageElm: HTMLImageElement = new Image();
     let paletteReady = false;
-    /*
-    const googleProxyURL =
-        'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=';
-     */
 
     featureImageElm.crossOrigin = 'Anonymous';
-    /*
     if (featureImage)
-        featureImage.src =
-            googleProxyURL + encodeURIComponent(featureImage.src);
-     */
-    if (featureImage) featureImageElm.src = featureImage.src;
+        featureImageElm.src =
+            window.location.protocol +
+            '//' +
+            featureImage!.src.replace(/^https?:\/\//, '');
 
     const getPalette = (): void => {
         paletteReady = true;
