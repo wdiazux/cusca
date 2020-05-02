@@ -23,7 +23,7 @@ if (!Element.prototype.matches) {
 
 if (!Element.prototype.closest) {
     // eslint-disable-next-line func-names
-    Element.prototype.closest = function(s: string) {
+    Element.prototype.closest = function (s: string) {
         // eslint-disable-next-line @typescript-eslint/no-this-alias
         let el: Element | null = this;
 
@@ -191,7 +191,7 @@ export default class GhostSearch implements Props {
         });
 
         if (resultsElm) {
-            Object.keys(results).forEach(key => {
+            Object.keys(results).forEach((key) => {
                 if (key < results.length) {
                     resultsElm.appendChild(
                         this.createElementFromHTML(
@@ -229,11 +229,11 @@ export default class GhostSearch implements Props {
                 button.tagName === 'INPUT' &&
                 button.type === 'submit'
             ) {
-                button.closest('form')!.addEventListener('submit', e => {
+                button.closest('form')!.addEventListener('submit', (e) => {
                     e.preventDefault();
                 });
 
-                button.addEventListener('click', e => {
+                button.addEventListener('click', (e) => {
                     e.preventDefault();
                     this.on.beforeDisplay();
                     this.displayResults(data);
@@ -355,7 +355,7 @@ export default class GhostSearch implements Props {
             };
         }
 
-        document.body.addEventListener('keydown', e => {
+        document.body.addEventListener('keydown', (e) => {
             if (e.defaultPrevented) {
                 return;
             }

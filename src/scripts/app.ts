@@ -107,7 +107,7 @@ const siteHeaderBg: HTMLDivElement | null = document.querySelector(
     '.site-header-bg'
 );
 
-createScrollManager().add(pageScroll => {
+createScrollManager().add((pageScroll) => {
     if (!siteHeader || !siteHeaderBg) return;
     const lastHeaderHeight = siteHeader.offsetHeight;
 
