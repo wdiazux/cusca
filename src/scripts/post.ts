@@ -54,10 +54,9 @@ if (featureImageCt) {
     if (featureImage) {
         featureImageElm.crossOrigin = 'Anonymous';
 
-        const ghostHost = window.location.host;
         const featureImageUrl = new URL(featureImage.src);
 
-        if (ghostHost === featureImageUrl.host) {
+        if (featureImageUrl.host.includes(window.location.host)) {
             featureImageElm.src = featureImageUrl.pathname;
         } else {
             featureImageElm.src = featureImageUrl.href;
