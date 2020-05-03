@@ -147,7 +147,6 @@ export default class GhostSearch implements Props {
             });
     };
 
-    // eslint-disable-next-line class-methods-use-this
     createElementFromHTML = (htmlString: string) => {
         const div: HTMLDivElement = document.createElement('div');
         div.innerHTML = htmlString.trim();

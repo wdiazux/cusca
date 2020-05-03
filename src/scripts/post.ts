@@ -54,14 +54,14 @@ if (featureImageCt) {
     if (featureImage) {
         featureImageElm.crossOrigin = 'Anonymous';
 
-        const { host } = window.location;
-        const hostSubdomain = host.split('.')[0];
-        if (hostSubdomain !== 'www') featureImage.src.replace('www.', '');
+        const ghostHost = window.location.host;
+        const featureImageUrl = new URL(featureImage.src);
 
-        featureImageElm.src =
-            window.location.protocol +
-            '//' +
-            featureImage.src.replace(/^https?:\/\//, '');
+        if (ghostHost === featureImageUrl.host) {
+            featureImageElm.src = featureImageUrl.pathname;
+        } else {
+            featureImageElm.src = featureImageUrl.href;
+        }
 
         const getPalette = (): void => {
             paletteReady = true;
