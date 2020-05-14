@@ -9475,10 +9475,10 @@ webpack@4.43.0:
     watchpack "^1.6.1"
     webpack-sources "^1.4.1"
 
-what-input@5.2.7:
-  version "5.2.7"
-  resolved "https://registry.yarnpkg.com/what-input/-/what-input-5.2.7.tgz#81afbb6b82882cff8c43fa7ff1054aa46f288ffa"
-  integrity sha512-ruCP2skyygi0ZHnMicHuZP7vXnJh8uJXs9R7RX488HlWigSdzngdmKo5Ti11Iatp1dnYp55VfioP/WevPaK+xQ==
+what-input@5.2.8:
+  version "5.2.8"
+  resolved "https://registry.yarnpkg.com/what-input/-/what-input-5.2.8.tgz#70fd248d5b1826d2819e146011f7729701975fd7"
+  integrity sha512-8PqQW/V/+abPdvSnY/qbK7agIBEsmkRYeDW/4G8/LVC/zu1sB5mQjH8jhVGVrOGzsO+XqFcDnfnvKWsOFVcSxg==
 
 which-module@^1.0.0:
   version "1.0.0"
