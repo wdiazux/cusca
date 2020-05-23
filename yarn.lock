@@ -5317,10 +5317,10 @@ lg-zoom.js@1.0.1:
   resolved "https://registry.yarnpkg.com/lg-zoom.js/-/lg-zoom.js-1.0.1.tgz#5e1cdc57409f5e331b573d0fd93dc26479c80cde"
   integrity sha1-XhzcV0CfXjMbVz0P2T3CZHnIDN4=
 
-lightgallery.js@1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/lightgallery.js/-/lightgallery.js-1.1.3.tgz#05d47fa2e09546208a430b97fdf5d32f156515c5"
-  integrity sha512-eo96ApfhSyb+Gv421ntAKxkw3CvJ9UBF9/XjiUfwz0rNWYszSsauG3se+FL606+wrMpsp/wFweqSMPTzoiLbnQ==
+lightgallery.js@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/lightgallery.js/-/lightgallery.js-1.2.0.tgz#060e1f6298022111d5786a27a7ad6cf6b5e70154"
+  integrity sha512-Zc3zytzCOb7das1Ru8JxE/McfCBPvoVnjuAGlXFaVks4FfyS4xTphzTunQU4Goc6LaPdf0hD5hQfWGyDwSsPKw==
 
 limiter@^1.0.5:
   version "1.1.5"
