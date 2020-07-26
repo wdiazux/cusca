@@ -60,7 +60,7 @@
     "autoprefixer": "9.8.5",
     "awesome-typescript-loader": "5.2.1",
     "babel-loader": "8.1.0",
-    "browser-sync": "2.26.10",
+    "browser-sync": "2.26.12",
     "browser-sync-webpack-plugin": "2.2.2",
     "clean-webpack-plugin": "3.0.0",
     "copy-webpack-plugin": "5.1.1",
