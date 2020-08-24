@@ -906,10 +906,10 @@
     "@sentry/types" "5.20.1"
     tslib "^1.9.3"
 
-"@tryghost/content-api@1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@tryghost/content-api/-/content-api-1.4.2.tgz#9424040d626d23549d2ce19e7841756991d4e134"
-  integrity sha512-8Cc+1WC9+R7v7e9XoJxbnCQSBjKcLYt3L2+oPO7/1uXPB6q1+LDOi3eZzoKekwz90Y57c2ReIfFbCQKiS2ienA==
+"@tryghost/content-api@1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@tryghost/content-api/-/content-api-1.4.4.tgz#ae52a86e694edbe50a7460693f4b7fff619d6174"
+  integrity sha512-5q/M/fcE9OwPHKM+DQUrrjQD7CaNShBxtI/3/aBrcbQPX/aIL2FjbFA5pi3KJ/oe2f0IFlUPGeM1IGuXWsIV4Q==
   dependencies:
     axios "0.19.2"
 
