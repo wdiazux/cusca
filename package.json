@@ -54,7 +54,7 @@
     "@babel/plugin-transform-runtime": "7.9.6",
     "@babel/preset-env": "7.9.6",
     "@babel/preset-typescript": "7.9.0",
-    "@types/webpack-env": "1.15.2",
+    "@types/webpack-env": "1.15.3",
     "@typescript-eslint/eslint-plugin": "2.31.0",
     "@typescript-eslint/parser": "2.31.0",
     "autoprefixer": "9.8.6",
