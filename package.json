@@ -121,7 +121,7 @@
   "dependencies": {
     "@babel/runtime": "7.9.6",
     "@fortawesome/fontawesome-free": "5.13.1",
-    "@tryghost/content-api": "1.4.5",
+    "@tryghost/content-api": "1.4.6",
     "@types/jquery": "3.3.38",
     "@types/prismjs": "1.16.1",
     "colorthief": "2.3.2",
