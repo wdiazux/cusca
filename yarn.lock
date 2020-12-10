@@ -895,12 +895,12 @@
     "@sentry/types" "5.22.3"
     tslib "^1.9.3"
 
-"@tryghost/content-api@1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@tryghost/content-api/-/content-api-1.4.6.tgz#65a8141f56988ad2ec093d121630d2f30e07e942"
-  integrity sha512-V5HgdJjG4s+R97RVgmqhGLxnOurPv3YlmwTpWRB+5L1by1GvMpIcumECTRwL4ZVxNxgITBiOQZr9B7XerA1ynQ==
+"@tryghost/content-api@1.4.11":
+  version "1.4.11"
+  resolved "https://registry.yarnpkg.com/@tryghost/content-api/-/content-api-1.4.11.tgz#1b04d586a7cdad6dbcf273414478f0011fab776f"
+  integrity sha512-TpJ0LJPfHCC8nOzcGq8vEgzL2/YDT4KBEUCb6+KmkX+LEdxbFb7TZDFtMUt32U9Hd3JGasjNwlmlBfxYqgkvmQ==
   dependencies:
-    axios "0.20.0"
+    axios "0.21.0"
 
 "@tryghost/pretty-cli@1.2.9":
   version "1.2.9"
@@ -1659,10 +1659,10 @@ axios@0.19.0:
     follow-redirects "1.5.10"
     is-buffer "^2.0.2"
 
-axios@0.20.0:
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.20.0.tgz#057ba30f04884694993a8cd07fa394cff11c50bd"
-  integrity sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
+axios@0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.0.tgz#26df088803a2350dff2c27f96fef99fe49442aca"
+  integrity sha512-fmkJBknJKoZwem3/IKSSLpkdNXZeBu5Q7GA/aRsr2btgrptmSCxi2oFjZHqGdK9DoTil9PIHlPIZw2EcRJXRvw==
   dependencies:
     follow-redirects "^1.10.0"
 
