@@ -123,7 +123,7 @@
     "@fortawesome/fontawesome-free": "5.13.1",
     "@tryghost/content-api": "1.4.11",
     "@types/jquery": "3.3.38",
-    "@types/prismjs": "1.16.1",
+    "@types/prismjs": "1.16.2",
     "colorthief": "2.3.2",
     "core-js": "3.6.5",
     "foundation-sites": "6.6.3",
