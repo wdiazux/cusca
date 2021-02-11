@@ -92,7 +92,7 @@
     "webpack": "4.43.0",
     "webpack-cli": "3.3.12",
     "webpack-merge": "4.2.2",
-    "worker-loader": "2.0.0"
+    "worker-loader": "3.0.8"
   },
   "config": {
     "posts_per_page": 12,
