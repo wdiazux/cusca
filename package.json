@@ -91,7 +91,7 @@
     "typescript": "3.8.3",
     "webpack": "4.43.0",
     "webpack-cli": "3.3.12",
-    "webpack-merge": "4.2.2",
+    "webpack-merge": "5.8.0",
     "worker-loader": "2.0.0"
   },
   "config": {
