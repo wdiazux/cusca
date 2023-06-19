@@ -71,7 +71,7 @@
     "eslint-config-jquery": "3.0.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-loader": "4.0.2",
-    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-import": "2.27.5",
     "eslint-plugin-prettier": "3.1.4",
     "file-loader": "6.0.0",
     "gscan": "3.5.7",
